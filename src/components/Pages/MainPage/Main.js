@@ -1,4 +1,4 @@
-import { db } from "../services/fireBaseConfig";
+import { db } from "../../../services/fireBaseConfig";
 const Main = () => {
   console.log("Main", db);
   return (

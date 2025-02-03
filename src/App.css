@@ -1,38 +1,22 @@
-.App {
-  text-align: center;
-}
+/* Page style sheets */
+@import "./components/Pages/LandingPage/styles/landing-page.scss";
+@import "./components/Pages/MainPage/styles/main.scss";
+@import "./components/Pages/InformationPage/styles/information-page.scss";
+@import "./components/Pages/SettingsPage/styles/settings-page.scss";
+@import "./components/Pages/GamePage/styles/game-page.scss";
+@import "./components/Pages/CreditsPage/styles/credits-page.scss";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* component style sheets */
+@import "./components/Button/styles/button.scss";
+@import "./components/Header/styles/header.scss";
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* game dedicated style sheets */
+@import "./components/CoreGameComponents/CategoryCard/styles/category-card.scss";
+@import "./components/CoreGameComponents/InfluencerCard/styles/influencer-card.scss";
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* global style sheets */
+body {
+  margin: 0;
+  padding: 0;
 }
