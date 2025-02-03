@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider } from "./context/ThemeContext";
 import { GameProvider } from "./context/GameContext";
 import { GlobalProvider } from "./context/GlobalContext";
-import Main from "./components/Main";
+import Main from "./components/Pages/MainPage/Main";
 import "./App.css";
 
 function App() {
