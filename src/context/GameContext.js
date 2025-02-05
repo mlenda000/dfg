@@ -36,4 +36,4 @@ const GameProvider = ({ children }) => {
   );
 };
 
-export { GameContext as default, GameProvider };
+export { GameContext, GameProvider };
