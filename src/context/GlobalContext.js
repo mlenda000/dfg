@@ -1,14 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+
 
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
   const [authorized, setAuthorized] = useState(false);
 
+
+
   return (
     <GlobalContext.Provider
       value={{
         authorized,
+
         setAuthorized,
       }}
     >

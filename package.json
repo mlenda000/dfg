@@ -4,6 +4,8 @@
   "homepage": "https://dfg-mark-lendackys-projects.vercel.app/",
   "private": true,
   "dependencies": {
+    "@dnd-kit/sortable": "^10.0.0",
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "dotenv": "^16.4.7",
     "firebase": "^11.2.0",
