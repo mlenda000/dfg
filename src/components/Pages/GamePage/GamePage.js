@@ -11,18 +11,18 @@ const GamePage = () => {
   //     setGameState("game");
   //   }, [setGameState]);
 
-  const playerCards = [
-    { id: "card1", name: "Category 1" },
-    { id: "card2", name: "Category 2" },
-    // Add more cards as needed
-  ];
+//   const playerCards = [
+//     { id: "card1", name: "Category 1" },
+//     { id: "card2", name: "Category 2" },
+//     // Add more cards as needed
+//   ];
 
-  const initialInfluencer = { id: "influencer1", name: "Influencer Card" };
+//   const initialInfluencer = { id: "influencer1", name: "Influencer Card" };
 
   return (
     <div>
-      <PlayersHand cards={playerCards} />
-      <MainTable initialInfluencer={initialInfluencer} />
+      <PlayersHand cards={categoryCards} />
+      <MainTable initialInfluencer={influencerCards} />
     </div>
   );
 };

@@ -12,7 +12,7 @@ const MainTable = ({ initialInfluencer }) => {
     if (over && over.id === "main-table") {
       setCards((prevCards) => [
         ...prevCards,
-        { id: active.id, name: active.data.current.name },
+        { id: active.id, name: active.data.current?.name },
       ]);
     }
   };
@@ -21,7 +21,7 @@ const MainTable = ({ initialInfluencer }) => {
     <DndContext onDragEnd={handleDragEnd}>
       <div ref={setNodeRef} className="main-table">
         {cards.map((card, index) => (
-          <div key={index}>{card.name}</div>
+          <div key={index}>{card?.name}</div>
         ))}
       </div>
     </DndContext>

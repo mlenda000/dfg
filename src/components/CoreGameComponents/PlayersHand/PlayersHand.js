@@ -1,5 +1,6 @@
 import React from "react";
 import { DndContext, useDraggable } from "@dnd-kit/core";
+import CategoryCard from "../CategoryCard/CategoryCard";
 
 const PlayersHand = ({ cards }) => {
   return (
@@ -22,7 +23,7 @@ const DraggableCard = ({ id, card }) => {
 
   return (
     <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      {card.name}
+      <CategoryCard image={card?.imageUrl} name={card?.name} />
     </div>
   );
 };
