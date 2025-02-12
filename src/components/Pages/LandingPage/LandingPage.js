@@ -15,7 +15,7 @@ const LandingPage = () => {
     //connects to the servers web address
     host: "http://127.0.0.1:1999",
     // the room that the client is connecting to
-    room: "dfg-mininformation",
+    room: "dfg-misinformation",
     // return from the server if its connected
     onOpen() {
       console.log("Connected to the WebSocket server");
