@@ -1,31 +1,57 @@
 import React from "react";
-import { DndContext, useDraggable } from "@dnd-kit/core";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import Button from "../../Button/Button";
+import { SortableContext } from "@dnd-kit/sortable";
+import SortableCard from "../../SortableCard/SortableCard";
+import { DndContext } from "@dnd-kit/core";
 
-const PlayersHand = ({ cards }) => {
-  return (
-    <div className="player-hand">
-      {cards.map((card, index) => (
-        <DraggableCard key={index} id={card.id} card={card} />
-      ))}
-    </div>
-  );
-};
-
-const DraggableCard = ({ id, card }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: id,
-  });
-
-  const style = {
-    transform: `translate3d(${transform?.x}px, ${transform?.y}px, 0)`,
-  };
+const PlayersHand = ({ items, handleDrag, handleDrop }) => {
+  //   console.log(items, "items");
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      <CategoryCard image={card?.imageUrl} name={card?.name} />
+    <div className="players-area">
+      <DndContext
+        onDragEnd={(e) => {
+          handleDrag(e);
+          handleDrop(e);
+        }}
+      >
+        <div className="players-hand">
+          <SortableContext items={items}>
+            {items.map((card) => {
+              return (
+                <SortableCard key={card?.id} id={card?.id}>
+                  <CategoryCard
+                    key={card?.id}
+                    name={card?.name}
+                    image={card?.imageUrl}
+                    id={card?.id}
+                  />
+                </SortableCard>
+              );
+            })}
+          </SortableContext>
+        </div>
+      </DndContext>
+      <div className="players-area__buttons">
+        <Button>Deal</Button>
+        <Button>Finish Round</Button>
+      </div>
     </div>
   );
 };
 
 export default PlayersHand;
+
+// import React from 'react';
+// import { DndContext, closestCenter } from '@dnd-kit/core';
+// import { SortableContext, useSortable, arrayMove } from '@dnd-kit/sortable';
+// import { CSS } from '@dnd-kit/utilities';
+
+// const PlayersHand = ({ items, setItems, onDrop }) => {
+//   return (
+
+//   );
+// };
+
+// export default PlayersHand;

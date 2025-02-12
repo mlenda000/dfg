@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import {
   fetchCategoryCards,
-  fetchMisinformationCards,
+  fetchInfluencerCards,
 } from "../services/fireBaseFunctions";
 
 const GameContext = createContext();
@@ -11,11 +11,11 @@ const GameProvider = ({ children }) => {
   const [playerCount, setPlayerCount] = useState(0);
   const [gameState, setGameState] = useState("lobby");
   const [categoryCards, setCategoryCards] = useState();
-  const [misinformationCards, setMisinformationCards] = useState();
+  const [influencerCards, setInfluencerCards] = useState();
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
-    fetchMisinformationCards("misinformation_cards", setMisinformationCards);
+    fetchInfluencerCards("misinformation_cards", setInfluencerCards);
   }, []);
 
   return (
@@ -25,7 +25,7 @@ const GameProvider = ({ children }) => {
         playerCount,
         gameState,
         categoryCards,
-        misinformationCards,
+        influencerCards,
         setGameRound,
         setPlayerCount,
         setGameState,

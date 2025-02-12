@@ -1,30 +1,38 @@
-import React, { useState } from "react";
-import { DndContext, useDroppable } from "@dnd-kit/core";
+import React from "react";
 
-const MainTable = ({ initialInfluencer }) => {
-  const [cards, setCards] = useState([initialInfluencer]);
-  const { setNodeRef } = useDroppable({
-    id: "main-table",
-  });
+import InfluencerCard from "../InfluencerCard/InfluencerCard";
+import SortableCard from "../../SortableCard/SortableCard";
+import TacticsCard from "../TacticsCard/TacticsCard";
+import { SortableContext } from "@dnd-kit/sortable";
+import { DndContext } from "@dnd-kit/core";
 
-  const handleDragEnd = (event) => {
-    const { active, over } = event;
-    if (over && over.id === "main-table") {
-      setCards((prevCards) => [
-        ...prevCards,
-        { id: active.id, name: active.data.current?.name },
-      ]);
-    }
-  };
-
+const MainTable = ({ items, handleDrag, handleDrop }) => {
   return (
-    <DndContext onDragEnd={handleDragEnd}>
-      <div ref={setNodeRef} className="main-table">
-        {cards.map((card, index) => (
-          <div key={index}>{card?.name}</div>
-        ))}
+    <div className="main-table">
+      <div className="main-table__influencer">
+        <InfluencerCard />
       </div>
-    </DndContext>
+      <DndContext
+        onDragEnd={(e) => {
+          handleDrag(e);
+          handleDrop(e);
+        }}
+      >
+        <div className="main-table__tactics">
+          <SortableContext items={items}>
+            {items.map((card) => (
+              <SortableCard key={card?.id} id={card?.id} text={card?.text}>
+                <TacticsCard
+                  name={card?.name}
+                  image={card?.imageUrl}
+                  text={card?.text}
+                />
+              </SortableCard>
+            ))}
+          </SortableContext>
+        </div>
+      </DndContext>
+    </div>
   );
 };
 

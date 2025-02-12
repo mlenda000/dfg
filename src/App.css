@@ -13,6 +13,9 @@
 /* game dedicated style sheets */
 @import "./components/CoreGameComponents/CategoryCard/styles/category-card.scss";
 @import "./components/CoreGameComponents/InfluencerCard/styles/influencer-card.scss";
+@import "./components//CoreGameComponents//PlayersHand/styles/players-hand.scss";
+@import "./components//CoreGameComponents/MainTable/styles/main-table.scss";
+@import "./components/CoreGameComponents/TacticsCard/styles/tactics-card.scss";
 
 
 /* global style sheets */

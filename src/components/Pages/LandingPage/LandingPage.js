@@ -44,6 +44,11 @@ const LandingPage = () => {
     }
   };
 
+  // print each incoming message from the server to console
+  ws.addEventListener("message", (e) => {
+    console.log(e.data);
+  });
+
   return (
     <div className="landing-page">
       <p>Description of the game and how its played</p>
