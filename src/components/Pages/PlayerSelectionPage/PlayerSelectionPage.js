@@ -17,7 +17,7 @@ const LandingPage = () => {
   };
 
   const avatars = [
-    `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
+    `public/images/avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
