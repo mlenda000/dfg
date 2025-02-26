@@ -1,17 +1,24 @@
 import React from "react";
-import { useSortable } from "@dnd-kit/sortable";
+// import { useSortable } from "@dnd-kit/sortable";
+import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
 const SortableCard = ({ id, children }) => {
   //   console.log(id, "sortable card id");
 
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
+    useDraggable({
       id: id,
     });
 
+  const adjustedTransform = {
+    ...transform,
+    scaleX: 1,
+    scaleY: 1,
+  };
+
   const style = {
-    transform: CSS?.Transform?.toString(transform),
+    transform: CSS?.Transform?.toString(adjustedTransform),
     transition,
   };
 

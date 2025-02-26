@@ -5,11 +5,15 @@ align-items: center;
 padding: 20px;
 
     .influencer-card__content{
-        width: 250px;
-        height: 350px;
-        padding:2px;
+        --color-primary: black;
+        padding:12px;
         background-color: white;
+        color: var(--color-primary);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .influencer-card__subheading{
+        font-size: 16px;
+        font-weight: 900;
     }
 }

@@ -1,8 +1,23 @@
 .main{
-    background-color: black;
     color: white;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 120px;
+
+    .main-title{
+        font-size: 8rem;
+        font-weight: 100;
+        margin-bottom: 20px;
+        font-family: "Oxanium", sans-serif;
+    }
+    .main-description{
+        font-size: 1.5rem;
+        font-weight: 100;
+        margin-bottom: 20px;
+        font-family: "Oxanium", sans-serif;
+        width: 60vw;
+        text-align: center;
+    }
 }

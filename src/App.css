@@ -4,11 +4,18 @@
 @import "./components/Pages/InformationPage/styles/information-page.scss";
 @import "./components/Pages/SettingsPage/styles/settings-page.scss";
 @import "./components/Pages/GamePage/styles/game-page.scss";
+@import "./components/Pages/ActiveGamePage/styles/active-game-page.scss";
 @import "./components/Pages/CreditsPage/styles/credits-page.scss";
+@import "./components/Pages/PlayerSelectionPage/styles/player-selection-page.scss";
 
 /* component style sheets */
-@import "./components/Button/styles/button.scss";
-@import "./components/Header/styles/header.scss";
+@import "./components/GenericComponents/Button/styles/button.scss";
+@import "./components//GenericComponents/Header/styles/header.scss";
+@import "./components/GenericComponents/SortableCard/styles/sortable-card.scss";
+@import "./components/GenericComponents/SortableItem/styles/sortable-item.scss";
+@import "./components//GenericComponents/Input/styles/input.scss";
+@import "./components/GenericComponents/AvatarImage/styles/avatar-image.scss";
+
 
 /* game dedicated style sheets */
 @import "./components/CoreGameComponents/CategoryCard/styles/category-card.scss";
@@ -23,5 +30,36 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
+  background-image: url("/public/images/cyber-background.jpeg") ;
+  background-size: cover;
   color: white;
 }
+
+/* custom fonts */
+@font-face {
+    font-family: 'Technology';
+    src: url('../public/fonts/Technology.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Technology-Bold';
+    src: url('../public/fonts/Technology-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Digital-Numbers';
+    src: url('../public/fonts/DigitalNumbers-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Oxanium';
+    src: url('../public/fonts/Oxanium-VariableFont_wght.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+

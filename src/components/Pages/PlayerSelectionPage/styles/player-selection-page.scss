@@ -1,0 +1,30 @@
+.player-selection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .player-selection__title{
+        font-family: "Digital-Numbers","Technology", sans-serif;
+        font-size: 3rem;
+        margin-bottom: 4rem;
+    }
+    .player-selection__input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .player-selection__avatar-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:1.5rem;
+    }
+    .player-selection__button{
+        position: absolute;
+        border: 0;
+        right: 120px;
+        margin-top: 4rem;
+    }
+}

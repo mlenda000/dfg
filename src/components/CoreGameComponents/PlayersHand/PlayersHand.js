@@ -1,41 +1,31 @@
 import React from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
-import Button from "../../Button/Button";
-import { SortableContext } from "@dnd-kit/sortable";
-import SortableCard from "../../SortableCard/SortableCard";
-import { DndContext } from "@dnd-kit/core";
+import Button from "../../GenericComponents/Button/Button";
+import SortableCard from "../../GenericComponents/SortableCard/SortableCard";
 
-const PlayersHand = ({ items, handleDrag, handleDrop }) => {
+const PlayersHand = ({ items }) => {
   //   console.log(items, "items");
 
   return (
     <div className="players-area">
-      <DndContext
-        onDragEnd={(e) => {
-          handleDrag(e);
-          handleDrop(e);
-        }}
-      >
-        <div className="players-hand">
-          <SortableContext items={items}>
-            {items.map((card) => {
-              return (
-                <SortableCard key={card?.id} id={card?.id}>
-                  <CategoryCard
-                    key={card?.id}
-                    name={card?.name}
-                    image={card?.imageUrl}
-                    id={card?.id}
-                  />
-                </SortableCard>
-              );
-            })}
-          </SortableContext>
-        </div>
-      </DndContext>
+      <div className="players-hand">
+        {items.map((card) => {
+          return (
+            <SortableCard key={card?.id} id={card?.id}>
+              <CategoryCard
+                key={card?.id}
+                name={card?.name}
+                image={card?.imageUrl}
+                id={card?.id}
+              />
+            </SortableCard>
+          );
+        })}
+      </div>
+
       <div className="players-area__buttons">
-        <Button>Deal</Button>
-        <Button>Finish Round</Button>
+        <Button display="next">Deal</Button>
+        <Button display="secondary">Finish Round</Button>
       </div>
     </div>
   );
