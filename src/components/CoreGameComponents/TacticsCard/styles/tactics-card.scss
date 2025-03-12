@@ -18,6 +18,27 @@
         object-fit: cover;
         border-radius: 10px;
     }
+    .tactics-card__title{
+        font-size: 1.3rem;
+        white-space: nowrap;
+        font-weight: 900;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        margin-top:50%;
+        margin-bottom: 2px;
+
+    }
+    .tactics-card__description{
+        text-align: center;
+        font-size: .75rem;
+        font-weight: 500;
+        color: black;
+        padding-inline: 12px;
+        padding-top: 0;
+        margin-top: 0;
+    }
 
 
 

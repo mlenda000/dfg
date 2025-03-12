@@ -4,7 +4,6 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
 const SortableCard = ({ id, children }) => {
-  //   console.log(id, "sortable card id");
 
   const { attributes, listeners, setNodeRef, transform, transition } =
     useDraggable({

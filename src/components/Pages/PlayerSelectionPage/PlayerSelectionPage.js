@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
 import { ThemeContext } from "../../../context/ThemeContext";
 import Button from "../../GenericComponents/Button/Button";
@@ -6,13 +6,12 @@ import Input from "../../GenericComponents/Input/Input";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 
 const LandingPage = () => {
-  const { setGameState, sendMessage } = useContext(GameContext);
+  const { setGameState, sendMessage, playerName, setPlayerName } =
+    useContext(GameContext);
   const { themeStyle } = useContext(ThemeContext);
-  const [input, setInput] = useState("");
 
   const handleSubmit = () => {
-    sendMessage(input, "player");
-    setInput("");
+    sendMessage({playerName, type:"player"});
     setGameState("game");
   };
 
@@ -37,8 +36,8 @@ const LandingPage = () => {
       >
         <div className="player-selection__input">
           <Input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+            value={playerName}
+            onChange={(e) => setPlayerName(e.target.value)}
             placeholder="Enter your name"
             themeStyle={themeStyle}
           />

@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { GameContext } from "../../../context/GameContext";
 import MainTable from "../../CoreGameComponents/MainTable/MainTable";
 import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
@@ -6,11 +6,24 @@ import { Droppable } from "../../GenericComponents/Droppable/Droppable";
 import { DndContext } from "@dnd-kit/core";
 
 const ActiveGamePage = () => {
-  const { categoryCards, sendMessage } = useContext(GameContext);
+  const {
+    categoryCards,
+    sendMessage,
+    gameRound,
+    setGameRound,
+    cardMessage,
+    setCardMessage,
+  } = useContext(GameContext);
+  const [currentInfluencer, setCurrentInfluencer] = useState(null);
   const playersHand = categoryCards.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([
-    { id: 1, text: "Play Cards here" },
+    {
+      id: 1,
+      name: "Sample Card",
+      imageUrl: "black.png",
+      description: "Play your cards here",
+    },
   ]);
 
   const [playersHandItems, setPlayersHandItems] = useState(playersHand);
@@ -29,14 +42,33 @@ const ActiveGamePage = () => {
       const removeStartingText = mainTableItems.filter((card) => card.id !== 1);
 
       setMainTableItems([...removeStartingText, activeCard]);
-      sendCardToServer(activeCard);
+      sendCardToServer(activeCard.category);
     }
   };
 
   const sendCardToServer = (card) => {
-    sendMessage(card);
-    console.log("send card to server", card);
+    sendMessage({ card, type: "tactic" });
   };
+
+  useEffect(() => {
+    if (cardMessage && typeof cardMessage !== "number") {
+      setMainTableItems([...mainTableItems, cardMessage]);
+    } else {
+      console.log("is this running in cardMessage", cardMessage, "is a number");
+      let updatedMainTableItems = [...mainTableItems];
+      for (let i = 0; i < cardMessage; i++) {
+        const index = updatedMainTableItems.findIndex(
+          (item) => item.imageUrl === "back.png"
+        );
+        if (index !== -1) {
+          updatedMainTableItems.splice(index, 1);
+        } else {
+          break;
+        }
+      }
+      setMainTableItems(updatedMainTableItems);
+    }
+  }, [cardMessage, setCardMessage]);
 
   return (
     <DndContext
@@ -46,9 +78,24 @@ const ActiveGamePage = () => {
     >
       <div>
         <Droppable>
-          <MainTable items={mainTableItems} handleDrop={handleDrop} />
+          <MainTable
+            items={mainTableItems}
+            round={gameRound}
+            currentInfluencer={currentInfluencer}
+            setCurrentInfluencer={setCurrentInfluencer}
+          />
         </Droppable>
-        <PlayersHand items={playersHandItems} handleDrop={handleDrop} />
+        <PlayersHand
+          items={playersHandItems}
+          setPlayersHandItems={setPlayersHandItems}
+          mainTableItems={mainTableItems}
+          setMainTableItems={setMainTableItems}
+          originalItems={playersHand}
+          round={gameRound}
+          setRound={setGameRound}
+          currentInfluencer={currentInfluencer}
+          setCurrentInfluencer={setCurrentInfluencer}
+        />
       </div>
     </DndContext>
   );

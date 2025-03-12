@@ -8,7 +8,6 @@ const InfluencerCard = ({
 }) => {
   //ratio 2.5 : 3.5
 
-  console.log(example);
   return (
     <div className="influencer-card">
       <div className="influencer-card__content">

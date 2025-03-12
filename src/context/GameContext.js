@@ -9,12 +9,16 @@ import { PARTYKIT_HOST } from "../services/env";
 const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
-  const [gameRound, setGameRound] = useState(3);
+  const [gameRound, setGameRound] = useState(1);
   const [playerCount, setPlayerCount] = useState(0);
   const [gameState, setGameState] = useState("lobby");
   const [categoryCards, setCategoryCards] = useState();
   const [influencerCards, setInfluencerCards] = useState();
   const [players, setPlayers] = useState([]);
+  const [playerScore, setPlayerScore] = useState(0);
+  const [playerName, setPlayerName] = useState("");
+  const [cardMessage, setCardMessage] = useState(undefined);
+  const [playerId, setPlayerId] = useState("");
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -37,6 +41,28 @@ const GameProvider = ({ children }) => {
     //when the server sends a message to the client it concats it to the list of previous messages
     onMessage(event) {
       const message = event.data;
+      const [type, id, data] = message.split("+");
+      //   console.log("message from server", type, id, data);
+
+      switch (type) {
+        case "id":
+          setPlayerId(id);
+          break;
+        case "score":
+          setPlayerScore(playerScore + Number(data));
+          break;
+        case "card":
+          setCardMessage({ id: data, imageUrl: id });
+          break;
+        case "undo":
+          console.log("undo message from server", type, id, data);
+          const removeThisManyCards = Number(id);
+          setCardMessage(removeThisManyCards);
+          break;
+        default:
+          break;
+      }
+
       setMessages((prevMessages) => [...prevMessages, message]);
     },
 
@@ -50,11 +76,11 @@ const GameProvider = ({ children }) => {
   //     console.log(e.data);
   //   });
 
-  const sendMessage = (input, type) => {
+  const sendMessage = (input) => {
     // Check if the WebSocket connection is open
     if (ws.readyState === ws.OPEN) {
       //sends whatever message is in the input field to the server
-      ws.send(`type=${type}-${JSON.stringify(input)}`);
+      ws.send(JSON.stringify(input));
     }
   };
 
@@ -62,6 +88,7 @@ const GameProvider = ({ children }) => {
     // Implement your message handling logic here
     // console.log("New message:", message);
   };
+  //   console.log(messages, "messages");
 
   return (
     <GameContext.Provider
@@ -72,6 +99,12 @@ const GameProvider = ({ children }) => {
         categoryCards,
         influencerCards,
         players,
+        playerScore,
+        playerName,
+        cardMessage,
+        playerId,
+        setCardMessage,
+        setPlayerName,
         sendMessage,
         handleMessage,
         setGameRound,
@@ -85,3 +118,13 @@ const GameProvider = ({ children }) => {
 };
 
 export { GameContext, GameProvider };
+
+// TODO: future improvement: add a function to shuffle the category cards
+// Utility function to shuffle the influencer deck
+export function shuffleInfluencerDeck(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+  return array;
+}

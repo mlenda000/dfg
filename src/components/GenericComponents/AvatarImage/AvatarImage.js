@@ -1,6 +1,12 @@
-const AvatarImage = ({ src, alt, onClick }) => {
+const AvatarImage = ({ src, alt, onClick, display }) => {
   return (
-    <div className="avatar-image-container">
+    <div
+      className={
+        display
+          ? `avatar-image-container__${display}`
+          : "avatar-image-container"
+      }
+    >
       <img
         src={src}
         alt={alt}

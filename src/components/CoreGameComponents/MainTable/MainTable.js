@@ -1,41 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import InfluencerCard from "../InfluencerCard/InfluencerCard";
 import TacticsCard from "../TacticsCard/TacticsCard";
 import { useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
 
-const MainTable = ({ items }) => {
+const MainTable = ({
+  items,
+  round,
+  currentInfluencer,
+  setCurrentInfluencer,
+}) => {
   const { influencerCards, sendMessage } = useContext(GameContext);
-  const [currentInfluencer, setCurrentInfluencer] = useState(null);
-  const [round, setRound] = useState(1);
+
   const gameCards = [...influencerCards];
 
   useEffect(() => {
     if (influencerCards.length > 0 && gameCards.length > round) {
-      console.log(gameCards[0], "gameCards------useEffect");
       setCurrentInfluencer(gameCards[0]);
     }
   }, []);
 
   useEffect(() => {
     const messageRdyInfluencer = {
+      type: "influencer",
       villain: currentInfluencer?.villain,
       tactic: currentInfluencer?.tacticUsed,
     };
-    sendMessage(messageRdyInfluencer, "influencer");
+    sendMessage(messageRdyInfluencer);
   }, [currentInfluencer]);
-
-  const handleButtonClick = () => {
-    if (gameCards.length > round) {
-      setRound(round + 1);
-      setCurrentInfluencer(gameCards[round]);
-      const messageRdyInfluencer = {
-        villain: currentInfluencer?.villain,
-        tactic: currentInfluencer?.tacticUsed,
-      };
-      sendMessage(messageRdyInfluencer, "influencer");
-    }
-  };
 
   return (
     <div className="main-table">
@@ -55,7 +47,8 @@ const MainTable = ({ items }) => {
           <TacticsCard
             name={card?.name}
             image={card?.imageUrl}
-            text={card?.text}
+            text={card?.description}
+            id={card?.id}
           />
         ))}
       </div>
