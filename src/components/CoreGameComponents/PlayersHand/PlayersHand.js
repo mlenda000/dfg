@@ -15,14 +15,13 @@ const PlayersHand = ({
   setCurrentInfluencer,
   currentInfluencer,
 }) => {
-  const { influencerCards, sendMessage, playerId } = useContext(GameContext);
+  const { influencerCards, sendMessage } = useContext(GameContext);
   const gameCards = [...influencerCards];
 
   const handleUndo = () => {
     // Send a message to the server to undo the last action
 
     setPlayersHandItems(originalItems);
-    console.log(mainTableItems, "items before undo");
     const filteredItems = mainTableItems.filter(
       (item) => item.collection !== "category_cards"
     );
@@ -30,12 +29,10 @@ const PlayersHand = ({
     const count = mainTableItems.filter(
       (item) => item.collection === "category_cards"
     ).length;
-    console.log(count, "count");
-    console.log(filteredItems, "updatedMainTableItems");
+
     // sendMessage({ action: "remove_cards", count: originalItems.length }, "update_clients");
     setMainTableItems(filteredItems);
     sendMessage({ count, type: "undo" });
-    console.log(filteredItems, "items after undo");
   };
 
   const handleDeal = () => {
@@ -52,8 +49,9 @@ const PlayersHand = ({
   };
 
   const handleFinishRound = () => {
-    handleUndo();
     sendMessage({ type: "finish round" });
+
+    handleUndo();
     handleDeal();
   };
 
