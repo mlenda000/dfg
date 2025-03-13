@@ -15,7 +15,7 @@ const ActiveGamePage = () => {
     setCardMessage,
   } = useContext(GameContext);
   const [currentInfluencer, setCurrentInfluencer] = useState(null);
-  const playersHand = categoryCards.filter((card) => card.imageUrl);
+  const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([
     {

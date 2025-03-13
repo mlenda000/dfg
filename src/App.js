@@ -30,7 +30,7 @@ function App() {
               />
               <Route path="/name-selection" element={<NameSelectionPage />} />
               <Route
-                path="/game"
+                path="/game?"
                 element={
                   <GameProvider>
                     <GamePage />

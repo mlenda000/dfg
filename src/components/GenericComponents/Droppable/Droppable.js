@@ -3,9 +3,8 @@ import { useDroppable } from "@dnd-kit/core";
 
 const CustomStyle = {
   display: "flex",
-  width: "100vw",
+  width: "100%",
   height: "100%",
-  background: "blue",
   justifyContent: "center",
   alignItems: "center",
   padding: "4px",

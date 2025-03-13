@@ -16,7 +16,7 @@ const GameProvider = ({ children }) => {
   const [influencerCards, setInfluencerCards] = useState();
   const [players, setPlayers] = useState([]);
   const [playerScore, setPlayerScore] = useState(0);
-
+  const [rooms, setRooms] = useState(["New game", "dfg-misinformation"]);
   const [cardMessage, setCardMessage] = useState(undefined);
   const [playerId, setPlayerId] = useState("");
 
@@ -107,6 +107,8 @@ const GameProvider = ({ children }) => {
         playerScore,
         cardMessage,
         playerId,
+        rooms,
+        setRooms,
         setCardMessage,
         sendMessage,
         handleMessage,

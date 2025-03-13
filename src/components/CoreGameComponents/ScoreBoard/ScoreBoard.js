@@ -1,18 +1,16 @@
 import { useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
+import { GlobalContext } from "../../../context/GlobalContext";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 
 const Scoreboard = () => {
-  const { playerName, playerScore, gameRound } = useContext(GameContext);
+  const { playerName, avatar } = useContext(GlobalContext);
+  const { playerScore, gameRound } = useContext(GameContext);
   return (
     <div className="scoreboard">
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <AvatarImage
-          display="mini"
-          src="/images/avatars/avatar.png"
-          alt="Avatar"
-        />
-        <h1 className="scoreboard__playerName">Player: {playerName}</h1>
+        <AvatarImage display="mini" src={avatar} alt="Avatar" />
+        <h1 className="scoreboard__playerName">{playerName}</h1>
       </div>
       <h1>Score: {playerScore}</h1>
 

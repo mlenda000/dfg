@@ -4,16 +4,41 @@ justify-content: center;
 align-items: center;
 padding: 20px;
 
+
     .influencer-card__content{
         --color-primary: black;
         padding:12px;
         background-color: white;
+        background-image: url("/public/images/influencer/influencer-bg.png");
         color: var(--color-primary);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        padding-left:0;
+        padding-block:0;
+        overflow: hidden;
     }
-    .influencer-card__subheading{
-        font-size: 16px;
+
+    .influencer-card__title{
+        font-family: "podium-soft", sans-serif;
+        font-size: 40px;
         font-weight: 900;
+        margin-bottom: 0.5rem;
+    }
+    .influencer-card__description{
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        font-family: "DIN-alternate", sans-serif;
+    }
+    .influencer-card__text{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 24px;
+
     }
 }

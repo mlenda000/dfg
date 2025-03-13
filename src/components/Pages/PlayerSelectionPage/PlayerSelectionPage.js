@@ -45,8 +45,12 @@ const PlayerSelectionPage = () => {
         }}
       >
         <div className="player-selection__avatar-container">
-          {avatars.map((avatar) => (
-            <AvatarImage src={avatar} setAvatar={setAvatar} />
+          {avatars.map((avatar, index) => (
+            <AvatarImage
+              src={avatar}
+              setAvatar={setAvatar}
+              key={`${avatar}-${index}`}
+            />
           ))}
         </div>
         <div className="player-selection__button">

@@ -19,7 +19,7 @@
 @import "./components//GenericComponents/Input/styles/input.scss";
 @import "./components/GenericComponents/AvatarImage/styles/avatar-image.scss";
 @import "./components/GenericComponents/BackButton/styles/back-button.scss";
-
+@import "./components/GenericComponents/RoomTab/styles/room-tab.scss";
 
 /* game dedicated style sheets */
 @import "./components/CoreGameComponents/CategoryCard/styles/category-card.scss";

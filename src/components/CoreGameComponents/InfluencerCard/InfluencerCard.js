@@ -11,28 +11,16 @@ const InfluencerCard = ({
   return (
     <div className="influencer-card">
       <div className="influencer-card__content">
-        <div>
-          {image && (
-            <img
-              src={image}
-              alt={category}
-              className="influencer-card__images"
-            />
-          )}
+        {image && (
+          <img src={image} alt={category} className="influencer-card__images" />
+        )}
+        <div className="influencer-card__text">
           <h1 className="influencer-card__title">{name}</h1>
-        </div>
-        {description && (
-          <>
-            <div className="influencer-card__subheading">Description</div>
+
+          {description && (
             <p className="influencer-card__description">{description}</p>
-          </>
-        )}
-        {example && (
-          <>
-            <div className="influencer-card__subheading">Example</div>
-            <p className="influencer-card__description">{example}</p>
-          </>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
