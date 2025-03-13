@@ -49,8 +49,9 @@ const PlayersHand = ({
   };
 
   const handleFinishRound = () => {
-    sendMessage({ type: "finish round" });
-
+    
+    
+    sendMessage({ type: "finish round", round });
     handleUndo();
     handleDeal();
   };

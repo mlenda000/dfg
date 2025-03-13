@@ -1,23 +1,43 @@
+.main-page{
+    position:absolute;
+    top: 0;
+    background-image: url("/public/images/Background.png");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
 .main{
     color: white;
     display:flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     margin: 120px;
 
+
     .main-title{
-        font-size: 8rem;
-        font-weight: 100;
-        margin-bottom: 20px;
-        font-family: "Oxanium", sans-serif;
+        font-size: 10rem;
+        font-weight: 900;
+        margin-top: 80px;
+        margin-bottom: 30px;
+        font-family: "podium-soft", sans-serif;
+        color: #E89AA8;
+        transform: rotate(-6.69deg);
     }
     .main-description{
         font-size: 1.5rem;
-        font-weight: 100;
+        font-weight: 900;
+        line-height: 36px;
+        margin-left: 40px;
         margin-bottom: 20px;
-        font-family: "Oxanium", sans-serif;
-        width: 60vw;
-        text-align: center;
+        font-family: "DIN-alternate", sans-serif;
+        width: 45vw;
+        transform: rotate(-6.69deg);
     }
+
+}
+.main-button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

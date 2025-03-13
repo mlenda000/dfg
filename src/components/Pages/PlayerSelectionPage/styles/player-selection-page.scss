@@ -7,9 +7,10 @@
     width: 100%;
 
     .player-selection__title{
-        font-family: "Digital-Numbers","Technology", sans-serif;
-        font-size: 3rem;
-        margin-bottom: 4rem;
+        font-family: "podium-soft", sans-serif;
+        font-size: 6rem;
+        margin-bottom: 2rem;
+        color: #E89AA8;
     }
     .player-selection__input{
         display: flex;
@@ -23,6 +24,7 @@
         justify-content: center;
         align-items: center;
         gap:1.5rem;
+        margin-inline: 80px;
     }
     .player-selection__button{
         position: absolute;

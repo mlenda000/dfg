@@ -1,55 +1,57 @@
-import React, { useContext } from "react";
-import { GameContext } from "../../../context/GameContext";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../../context/GlobalContext";
 import { ThemeContext } from "../../../context/ThemeContext";
 import Button from "../../GenericComponents/Button/Button";
 import Input from "../../GenericComponents/Input/Input";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 
-const LandingPage = () => {
-  const { setGameState, sendMessage, playerName, setPlayerName } =
-    useContext(GameContext);
+const PlayerSelectionPage = () => {
+  const navigate = useNavigate();
+  const { playerName, setPlayerName, avatar, setAvatar } =
+    useContext(GlobalContext);
   const { themeStyle } = useContext(ThemeContext);
 
-  const handleSubmit = () => {
-    sendMessage({playerName, type:"player"});
-    setGameState("game");
-  };
-
   const avatars = [
-    `/images/avatars/avatar.png`,
+    `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
   ];
 
+  const handleSubmit = () => {
+    if (avatar === "") {
+      alert("Please select an avatar");
+      return;
+    } else {
+      navigate("/name-selection");
+    }
+  };
+
   return (
     <div className="player-selection">
-      <div className="player-selection__title">
-        Enter Name and choose an Avatar
-      </div>
+      <button onClick={() => navigate(-1)} className="back-button">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/Back-arrow.png`}
+          alt="back"
+        />
+      </button>
+      <div className="player-selection__title">SELECT PROFILE</div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
       >
-        <div className="player-selection__input">
-          <Input
-            value={playerName}
-            onChange={(e) => setPlayerName(e.target.value)}
-            placeholder="Enter your name"
-            themeStyle={themeStyle}
-          />
-        </div>
         <div className="player-selection__avatar-container">
           {avatars.map((avatar) => (
-            <AvatarImage src={avatar} />
+            <AvatarImage src={avatar} setAvatar={setAvatar} />
           ))}
         </div>
         <div className="player-selection__button">
-          <Button onSubmit="submit" themeStyle={themeStyle} display="next">
-            Join a table
+          <Button onSubmit="submit" themeStyle={themeStyle} display="primary">
+            Next
           </Button>
         </div>
       </form>
@@ -57,4 +59,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default PlayerSelectionPage;

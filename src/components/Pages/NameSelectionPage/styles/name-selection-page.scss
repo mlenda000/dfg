@@ -1,0 +1,32 @@
+.name-selection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+    width: 100%;
+
+    .name-selection__title{
+        font-family: "podium-soft", sans-serif;
+        font-size: 6rem;
+        margin-bottom: 1rem;
+        color: #E89AA8;
+    }
+    .name-selection__avatar{
+        margin-bottom: 3rem;
+    }
+    .name-selection__input{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .name-selection__button{
+        position: absolute;
+        border: 0;
+        right: 120px;
+        bottom: 120px;
+        margin-top: 4rem;
+    }
+}

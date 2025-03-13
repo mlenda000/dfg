@@ -1,12 +1,15 @@
 /* Page style sheets */
-@import "./components/Pages/LandingPage/styles/landing-page.scss";
+@import "./components/Pages/LobbyPage/styles/lobby-page.scss";
 @import "./components/Pages/MainPage/styles/main.scss";
 @import "./components/Pages/InformationPage/styles/information-page.scss";
+@import "./components/Pages/InstructionsPage/styles/instructions-page.scss";
 @import "./components/Pages/SettingsPage/styles/settings-page.scss";
 @import "./components/Pages/GamePage/styles/game-page.scss";
 @import "./components/Pages/ActiveGamePage/styles/active-game-page.scss";
 @import "./components/Pages/CreditsPage/styles/credits-page.scss";
 @import "./components/Pages/PlayerSelectionPage/styles/player-selection-page.scss";
+@import "./components/Pages/CreateRoomPage/styles/create-room-page.scss";
+@import "./components/Pages/NameSelectionPage/styles/name-selection-page.scss";
 
 /* component style sheets */
 @import "./components/GenericComponents/Button/styles/button.scss";
@@ -15,6 +18,7 @@
 @import "./components/GenericComponents/SortableItem/styles/sortable-item.scss";
 @import "./components//GenericComponents/Input/styles/input.scss";
 @import "./components/GenericComponents/AvatarImage/styles/avatar-image.scss";
+@import "./components/GenericComponents/BackButton/styles/back-button.scss";
 
 
 /* game dedicated style sheets */
@@ -30,11 +34,12 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
-  background-image: url("/public/images/cyber-background.jpeg") ;
+  background-image: url("/public/images/Background2.png") ;
   background-size: cover;
   color: white;
 }
-body::before {
+/* background overlay */
+/* body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -44,7 +49,7 @@ body::before {
 background-color: rgba(0,0,0,.65);
   background-size: cover;
   z-index: -1;
-}
+} */
 
 /* custom fonts */
 @font-face {
@@ -70,6 +75,24 @@ background-color: rgba(0,0,0,.65);
 @font-face {
     font-family: 'Oxanium';
     src: url('../public/fonts/Oxanium-VariableFont_wght.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'podium-soft';
+    src: url('../public/fonts/podium-soft-regular.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DIN-alternate';
+    src: url('../public/fonts/DINAlternate-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'StussyScript';
+    src: url('../public/fonts/StussyScript-Regular.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }

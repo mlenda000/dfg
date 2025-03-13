@@ -16,9 +16,14 @@ const GameProvider = ({ children }) => {
   const [influencerCards, setInfluencerCards] = useState();
   const [players, setPlayers] = useState([]);
   const [playerScore, setPlayerScore] = useState(0);
-  const [playerName, setPlayerName] = useState("");
+
   const [cardMessage, setCardMessage] = useState(undefined);
   const [playerId, setPlayerId] = useState("");
+
+  // TODO: build a timer to go on gamepage
+  // TODO: flip functionality for the cards
+  // TODO: undo a single tactic card
+  // TODO: update designs to match the new designs
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -49,7 +54,7 @@ const GameProvider = ({ children }) => {
           setPlayerId(id);
           break;
         case "score":
-          setPlayerScore(playerScore + Number(data));
+          setPlayerScore(playerScore + Number(id));
           break;
         case "card":
           setCardMessage({ id: data, imageUrl: id });
@@ -100,11 +105,9 @@ const GameProvider = ({ children }) => {
         influencerCards,
         players,
         playerScore,
-        playerName,
         cardMessage,
         playerId,
         setCardMessage,
-        setPlayerName,
         sendMessage,
         handleMessage,
         setGameRound,

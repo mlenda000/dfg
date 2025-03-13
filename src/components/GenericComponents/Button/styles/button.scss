@@ -16,12 +16,11 @@
 }
 
 .button-primary{
-    background-color: rgba(196, 31, 86, 1);
-    border: white;
+    background-color: #383B92;
     border-radius: 50px;
     color: white;
     cursor: pointer;
-    font-family: 'Oxanium', sans-serif;
+    font-family: 'StussyScript', sans-serif;
     font-size: 36px;
     font-weight: 700;
     width: 275px;
@@ -48,4 +47,8 @@
 }
 .button-secondary:hover{
     background-color: rgb(77, 76, 76);
+}
+
+.button-navigation{
+    
 }

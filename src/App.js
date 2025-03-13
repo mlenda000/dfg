@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import {  } from "react-router";
 import { ThemeProvider } from "./context/ThemeContext";
 import { GlobalProvider } from "./context/GlobalContext";
 import { GameProvider } from "./context/GameContext";
@@ -9,8 +8,11 @@ import GamePage from "./components/Pages/GamePage/GamePage";
 import InformationPage from "./components/Pages/InformationPage/InformationPage";
 import CreditsPage from "./components/Pages/CreditsPage/CreditsPage";
 import UserPage from "./components/Pages/UserPage/UserPage";
-import "./App.css";
 import InstructionsPage from "./components/Pages/InstructionsPage/InstructionsPage";
+import PlayerSelectionPage from "./components/Pages/PlayerSelectionPage/PlayerSelectionPage";
+import NameSelectionPage from "./components/Pages/NameSelectionPage/NameSelectionPage";
+
+import "./App.css";
 
 function App() {
   return (
@@ -20,11 +22,13 @@ function App() {
           <ThemeProvider>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/information" element={<InformationPage />} />
               <Route path="/instructions" element={<InstructionsPage />} />
               <Route
-                path="/information/:categoryId"
-                element={<InformationPage />}
+                path="/player-selection"
+                element={<PlayerSelectionPage />}
               />
+              <Route path="/name-selection" element={<NameSelectionPage />} />
               <Route
                 path="/game"
                 element={

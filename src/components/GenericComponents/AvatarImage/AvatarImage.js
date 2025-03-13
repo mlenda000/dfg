@@ -1,4 +1,4 @@
-const AvatarImage = ({ src, alt, onClick, display }) => {
+const AvatarImage = ({ src, alt, setAvatar, display }) => {
   return (
     <div
       className={
@@ -10,7 +10,7 @@ const AvatarImage = ({ src, alt, onClick, display }) => {
       <img
         src={src}
         alt={alt}
-        onClick={onClick}
+        onClick={(e) => setAvatar(e.target.src)}
         style={{ borderRadius: "50%", cursor: "pointer" }}
         className="avatar-image"
       />

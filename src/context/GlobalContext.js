@@ -5,12 +5,18 @@ const GlobalContext = createContext();
 const GlobalProvider = ({ children }) => {
   const [authorized, setAuthorized] = useState(false);
   const [informationState, setInformationState] = useState(false);
+  const [playerName, setPlayerName] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   return (
     <GlobalContext.Provider
       value={{
         authorized,
         informationState,
+        playerName,
+        avatar,
+        setAvatar,
+        setPlayerName,
         setInformationState,
         setAuthorized,
       }}
@@ -20,4 +26,4 @@ const GlobalProvider = ({ children }) => {
   );
 };
 
-export { GlobalContext as default, GlobalProvider };
+export { GlobalContext, GlobalProvider };
