@@ -5,6 +5,7 @@ align-items: center;
 padding: 20px;
 
 
+
     .influencer-card__content{
         --color-primary: black;
         padding:12px;
@@ -17,16 +18,21 @@ padding: 20px;
         padding-left:0;
         padding-block:0;
         overflow: hidden;
+        max-width: 700px;
+    }
+    .influencer-card__images{
+        max-height: 350px;
+        width: auto;
     }
 
     .influencer-card__title{
         font-family: "podium-soft", sans-serif;
-        font-size: 40px;
+        font-size: 24px;
         font-weight: 900;
         margin-bottom: 0.5rem;
     }
     .influencer-card__description{
-        font-size: 24px;
+        font-size: 14px;
         font-weight: 400;
         margin-bottom: 0.5rem;
         font-family: "DIN-alternate", sans-serif;
