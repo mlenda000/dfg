@@ -13,11 +13,11 @@ const PlayerSelectionPage = () => {
   const { themeStyle } = useContext(ThemeContext);
 
   const avatars = [
-    `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
-    `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
-    `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
-    `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
-    `${process.env.PUBLIC_URL}/images/avatars/avatar.png`,
+    `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
+    `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
+    `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
+    `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
+    `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
   ];
 
   const handleSubmit = () => {
