@@ -1,15 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { ThemeContext } from "../../../context/ThemeContext";
 import Button from "../../GenericComponents/Button/Button";
-import Input from "../../GenericComponents/Input/Input";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 
 const PlayerSelectionPage = () => {
   const navigate = useNavigate();
-  const { playerName, setPlayerName, avatar, setAvatar } =
-    useContext(GlobalContext);
+  const { avatar, setAvatar } = useContext(GlobalContext);
   const { themeStyle } = useContext(ThemeContext);
 
   const avatars = [

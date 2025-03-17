@@ -18,18 +18,19 @@
         align-items: center;
 
     }
-    .player-selection__avatar-container{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap:1.5rem;
-        margin-inline: 80px;
-    }
+   
     .player-selection__button{
         position: absolute;
         border: 0;
         right: 120px;
         margin-top: 4rem;
     }
+}
+.player-selection__avatar-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:1.5rem;
+    margin-inline: 80px;
 }
