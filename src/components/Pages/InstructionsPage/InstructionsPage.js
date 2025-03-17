@@ -9,7 +9,7 @@ const InstructionsPage = () => {
     <>
       <button onClick={() => navigate(-1)} className="back-button">
         <img
-          src={`${process.env.PUBLIC_URL}/images/Back-arrow.png`}
+          src={`${process.env.PUBLIC_URL}/images/back-arrow.png`}
           alt="back"
         />
       </button>
