@@ -1,20 +1,40 @@
+import React from "react";
 
-const CategoryCard = ({ name, description, example, image, category }) => {
-
+const CategoryCard = ({ name, image, text }) => {
   //ratio 2.5 : 3.5
   return (
-    <div className="category-card">
-      <div className="category-card__content">
-        {image && (
-          <img src={image} alt={category} className="category-card__images" />
-        )}
-        <h1 className="category-card__title">{name}</h1>
-        <div className="category-card__subheading">Description</div>
-        <p className="category-card__description">{description}</p>
-        <div className="category-card__subheading">Example</div>
-        <p className="category-card__description">{example}</p>
-      </div>
-    </div>
+    <>
+      {name === "The Truth" ? (
+        <div className="category-card" id="playersHand">
+          <div
+            className="category-card__content"
+            style={{
+              backgroundImage: `url(${
+                process.env.PUBLIC_URL + "/images/" + image
+              })`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundColor: "white",
+              border: "3px solid white", // Add the border
+              boxSizing: "border-box", // Ensure the border is included in the element's total size
+            }}
+          >
+            <h1 className="category-card__title">{name}</h1>
+            <p className="category-card__description">{text}</p>
+          </div>
+        </div>
+      ) : (
+        <div className="category-card" id="playersHand">
+          <div className="category-card__content">
+            <img
+              src={process.env.PUBLIC_URL + "/images/" + image}
+              alt={name}
+              className="category-card__image"
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

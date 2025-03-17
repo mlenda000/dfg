@@ -19,9 +19,9 @@ export const fetchCategoryCards = async (collectionName, setCategoryCards) => {
   setCategoryCards(results);
 };
 
-export const fetchMisinformationCards = async (
+export const fetchInfluencerCards = async (
   collectionName,
-  setMisinformationCards
+  setInfluencerCards
 ) => {
   const collectionRef = collection(db, collectionName);
   const querySnapshot = await getDocs(collectionRef);
@@ -44,5 +44,5 @@ export const fetchMisinformationCards = async (
       villain: doc.data().villain,
     };
   });
-  setMisinformationCards(results);
+  setInfluencerCards(results);
 };

@@ -1,30 +1,60 @@
-import React, { useState } from "react";
-import { DndContext, useDroppable } from "@dnd-kit/core";
+import React, { useEffect } from "react";
+import InfluencerCard from "../InfluencerCard/InfluencerCard";
+import TacticsCard from "../TacticsCard/TacticsCard";
+import { useContext } from "react";
+import { GameContext } from "../../../context/GameContext";
 
-const MainTable = ({ initialInfluencer }) => {
-  const [cards, setCards] = useState([initialInfluencer]);
-  const { setNodeRef } = useDroppable({
-    id: "main-table",
-  });
+const MainTable = ({
+  items,
+  round,
+  currentInfluencer,
+  setCurrentInfluencer,
+}) => {
+  const { influencerCards, sendMessage } = useContext(GameContext);
 
-  const handleDragEnd = (event) => {
-    const { active, over } = event;
-    if (over && over.id === "main-table") {
-      setCards((prevCards) => [
-        ...prevCards,
-        { id: active.id, name: active.data.current.name },
-      ]);
+  const gameCards = [...influencerCards];
+
+  useEffect(() => {
+    if (influencerCards.length > 0 && gameCards.length > round) {
+      setCurrentInfluencer(gameCards[0]);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const messageRdyInfluencer = {
+      type: "influencer",
+      villain: currentInfluencer?.villain,
+      tactic: currentInfluencer?.tacticUsed,
+    };
+    sendMessage(messageRdyInfluencer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentInfluencer]);
 
   return (
-    <DndContext onDragEnd={handleDragEnd}>
-      <div ref={setNodeRef} className="main-table">
-        {cards.map((card, index) => (
-          <div key={index}>{card.name}</div>
+    <div className="main-table">
+      <div className="main-table__influencer">
+        <InfluencerCard
+          name={currentInfluencer?.caption}
+          description={currentInfluencer?.bodyCopy}
+          example="Influencer Example"
+          category={currentInfluencer?.tacticUsed}
+          villain={currentInfluencer?.villain}
+          image={process.env.PUBLIC_URL + `/images/influencer/scientist.png`}
+        />
+      </div>
+
+      <div className="main-table__tactics">
+        {items.map((card) => (
+          <TacticsCard
+            name={card?.name}
+            image={card?.imageUrl}
+            text={card?.description}
+            id={card?.id}
+          />
         ))}
       </div>
-    </DndContext>
+    </div>
   );
 };
 

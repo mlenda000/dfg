@@ -1,0 +1,20 @@
+.players-area{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+    .players-area__buttons{
+        margin-inline: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        z-index: 100;
+        
+    }
+}
+
+.players-hand{
+    display:flex;
+    align-items: center;
+    margin-left: 170px;
+}

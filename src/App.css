@@ -1,24 +1,99 @@
 /* Page style sheets */
-@import "./components/Pages/LandingPage/styles/landing-page.scss";
+@import "./components/Pages/LobbyPage/styles/lobby-page.scss";
 @import "./components/Pages/MainPage/styles/main.scss";
 @import "./components/Pages/InformationPage/styles/information-page.scss";
+@import "./components/Pages/InstructionsPage/styles/instructions-page.scss";
 @import "./components/Pages/SettingsPage/styles/settings-page.scss";
 @import "./components/Pages/GamePage/styles/game-page.scss";
+@import "./components/Pages/ActiveGamePage/styles/active-game-page.scss";
 @import "./components/Pages/CreditsPage/styles/credits-page.scss";
+@import "./components/Pages/PlayerSelectionPage/styles/player-selection-page.scss";
+@import "./components/Pages/CreateRoomPage/styles/create-room-page.scss";
+@import "./components/Pages/NameSelectionPage/styles/name-selection-page.scss";
 
 /* component style sheets */
-@import "./components/Button/styles/button.scss";
-@import "./components/Header/styles/header.scss";
+@import "./components/GenericComponents/Button/styles/button.scss";
+@import "./components//GenericComponents/Header/styles/header.scss";
+@import "./components/GenericComponents/SortableCard/styles/sortable-card.scss";
+@import "./components/GenericComponents/SortableItem/styles/sortable-item.scss";
+@import "./components//GenericComponents/Input/styles/input.scss";
+@import "./components/GenericComponents/AvatarImage/styles/avatar-image.scss";
+@import "./components/GenericComponents/BackButton/styles/back-button.scss";
+@import "./components/GenericComponents/RoomTab/styles/room-tab.scss";
 
 /* game dedicated style sheets */
 @import "./components/CoreGameComponents/CategoryCard/styles/category-card.scss";
 @import "./components/CoreGameComponents/InfluencerCard/styles/influencer-card.scss";
-
+@import "./components//CoreGameComponents//PlayersHand/styles/players-hand.scss";
+@import "./components//CoreGameComponents/MainTable/styles/main-table.scss";
+@import "./components/CoreGameComponents/TacticsCard/styles/tactics-card.scss";
+@import "./components/CoreGameComponents/ScoreBoard/styles/scoreboard.scss";
 
 /* global style sheets */
 body {
   margin: 0;
   padding: 0;
   background-color: black;
+  background-image: url("/public/images/Background2.png") ;
+  background-size: cover;
   color: white;
 }
+/* background overlay */
+/* body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+background-color: rgba(0,0,0,.65);
+  background-size: cover;
+  z-index: -1;
+} */
+
+/* custom fonts */
+@font-face {
+    font-family: 'Technology';
+    src: url('../public/fonts/Technology.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Technology-Bold';
+    src: url('../public/fonts/Technology-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Digital-Numbers';
+    src: url('../public/fonts/DigitalNumbers-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Oxanium';
+    src: url('../public/fonts/Oxanium-VariableFont_wght.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'podium-soft';
+    src: url('../public/fonts/podium-soft-regular.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'DIN-alternate';
+    src: url('../public/fonts/DINAlternate-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'StussyScript';
+    src: url('../public/fonts/StussyScript-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+

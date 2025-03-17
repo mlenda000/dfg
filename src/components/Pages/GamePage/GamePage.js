@@ -1,28 +1,30 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
-import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
-import MainTable from "../../CoreGameComponents/MainTable/MainTable";
+import { GlobalContext } from "../../../context/GlobalContext";
+import Scoreboard from "../../CoreGameComponents/ScoreBoard/ScoreBoard";
+import ActiveGamePage from "../ActiveGamePage/ActiveGamePage";
+import GameEndPage from "../GameEndPage/GameEndPage";
+import LobbyPage from "../LobbyPage/LobbyPage";
+import CreateRoomPage from "../CreateRoomPage/CreateRoomPage";
 
 const GamePage = () => {
-  const { gameState, setGameState, influencerCards, categoryCards } =
-    useContext(GameContext);
-
-  //   useEffect(() => {
-  //     setGameState("game");
-  //   }, [setGameState]);
-
-  const playerCards = [
-    { id: "card1", name: "Category 1" },
-    { id: "card2", name: "Category 2" },
-    // Add more cards as needed
-  ];
-
-  const initialInfluencer = { id: "influencer1", name: "Influencer Card" };
+  const { gameState } = useContext(GameContext);
+  const { playerName, avatar } = useContext(GlobalContext);
+  console.log("global context", playerName, avatar);
 
   return (
-    <div>
-      <PlayersHand cards={playerCards} />
-      <MainTable initialInfluencer={initialInfluencer} />
+    <div className="game-page">
+      <>
+        {gameState === "lobby" && <LobbyPage />}
+        {gameState === "newRoom" && <CreateRoomPage />}
+        {gameState === "game" && (
+          <>
+            <Scoreboard />
+            <ActiveGamePage />
+          </>
+        )}
+        {gameState === "end" && <GameEndPage />}
+      </>
     </div>
   );
 };

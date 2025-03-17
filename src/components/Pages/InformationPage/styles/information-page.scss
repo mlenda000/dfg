@@ -1,0 +1,43 @@
+.information-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "DIN-alternate", sans-serif;
+
+  
+
+
+    .information-page__button {
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.information-page__content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-block: 80px;
+    margin-inline: 23%;
+}
+
+.information-page__title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 30px;
+    color: #E89AA8;
+    font-family: "podium-soft", sans-serif;
+}
+
+.information-page__description {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 36px;
+    margin-bottom: 20px;
+    font-family: "DIN-alternate", sans-serif;
+
+}
