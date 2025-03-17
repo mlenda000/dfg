@@ -18,6 +18,7 @@ const MainTable = ({
     if (influencerCards.length > 0 && gameCards.length > round) {
       setCurrentInfluencer(gameCards[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -27,6 +28,7 @@ const MainTable = ({
       tactic: currentInfluencer?.tacticUsed,
     };
     sendMessage(messageRdyInfluencer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentInfluencer]);
 
   return (

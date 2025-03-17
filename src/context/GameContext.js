@@ -108,6 +108,8 @@ const GameProvider = ({ children }) => {
         cardMessage,
         playerId,
         rooms,
+        messages,
+        setPlayers,
         setRooms,
         setCardMessage,
         sendMessage,
