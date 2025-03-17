@@ -1,0 +1,16 @@
+.back-button {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background-color: transparent;
+    visibility: hidden;
+    z-index: 1;
+
+    img {
+        visibility: visible;
+    }
+    &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+}
