@@ -68,6 +68,7 @@ const ActiveGamePage = () => {
       }
       setMainTableItems(updatedMainTableItems);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardMessage, setCardMessage]);
 
   return (
