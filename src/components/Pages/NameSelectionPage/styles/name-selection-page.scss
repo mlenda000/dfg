@@ -13,6 +13,9 @@
         color: #E89AA8;
     }
     .name-selection__avatar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 3rem;
     }
     .name-selection__input{
