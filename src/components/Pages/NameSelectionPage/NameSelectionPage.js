@@ -29,10 +29,18 @@ const NameSelectionPage = () => {
       </button>
       <h1 className="name-selection__title">NAME PROFILE</h1>
 
-      <form className="name-selection__input" onSubmit={handleSubmit}>
-        <div className="name-selection__avatar">
-          <AvatarImage src={avatar} display="chosen-avatar" />
-        </div>
+      <form
+        className="name-selection__input"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        {avatar && (
+          <div className="name-selection__avatar">
+            <AvatarImage src={avatar} display="chosen-avatar" />
+          </div>
+        )}
         <Input
           value={playerName}
           onChange={(e) => setPlayerName(e.target.value)}

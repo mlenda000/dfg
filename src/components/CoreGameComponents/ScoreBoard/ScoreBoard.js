@@ -9,12 +9,17 @@ const Scoreboard = () => {
   return (
     <div className="scoreboard">
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <AvatarImage display="mini" src={avatar} alt="Avatar" />
-        <h1 className="scoreboard__playerName">{playerName}</h1>
+        <h1 className="scoreboard__round">
+          Round <span className="scoreboard__score-numeric">1</span>
+        </h1>
       </div>
-      <h1>Score: {playerScore}</h1>
-
-      <h1>Round: {gameRound}</h1>
+      <div className="scoreboard__avatar">
+        <AvatarImage src={avatar} display="mini" /> {playerName}
+      </div>
+      <h1 className="scoreboard__score">
+        <span className="scoreboard__score-numeric">{playerScore}</span>{" "}
+        Followers
+      </h1>
     </div>
   );
 };

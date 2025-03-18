@@ -16,34 +16,29 @@ import "./App.css";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <GlobalProvider>
-          <ThemeProvider>
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/information" element={<InformationPage />} />
-              <Route path="/instructions" element={<InstructionsPage />} />
-              <Route
-                path="/player-selection"
-                element={<PlayerSelectionPage />}
-              />
-              <Route path="/name-selection" element={<NameSelectionPage />} />
-              <Route
-                path="/game?"
-                element={
-                  <GameProvider>
-                    <GamePage />
-                  </GameProvider>
-                }
-              />
-              <Route path="/credits" element={<CreditsPage />} />
-              <Route path="/user" element={<UserPage />} />
-            </Routes>
-          </ThemeProvider>
-        </GlobalProvider>
-      </BrowserRouter>
-    </>
+    <GlobalProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/information" element={<InformationPage />} />
+            <Route path="/instructions" element={<InstructionsPage />} />
+            <Route path="/player-selection" element={<PlayerSelectionPage />} />
+            <Route path="/name-selection" element={<NameSelectionPage />} />
+            <Route
+              path="/game"
+              element={
+                <GameProvider>
+                  <GamePage />
+                </GameProvider>
+              }
+            />
+            <Route path="/credits" element={<CreditsPage />} />
+            <Route path="/user" element={<UserPage />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </GlobalProvider>
   );
 }
 

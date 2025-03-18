@@ -5,7 +5,7 @@ import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
 import { Droppable } from "../../GenericComponents/Droppable/Droppable";
 import { DndContext } from "@dnd-kit/core";
 
-const ActiveGamePage = () => {
+const ActiveGamePage = ({ setRoundEnd }) => {
   const {
     categoryCards,
     sendMessage,
@@ -96,6 +96,7 @@ const ActiveGamePage = () => {
           setRound={setGameRound}
           currentInfluencer={currentInfluencer}
           setCurrentInfluencer={setCurrentInfluencer}
+          setRoundEnd={setRoundEnd}
         />
       </div>
     </DndContext>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
 import RoomTab from "../../GenericComponents/RoomTab/RoomTab";
@@ -16,6 +16,16 @@ const LobbyPage = () => {
       setGameState("game");
     }
   };
+
+  useEffect(() => {
+    const filteredRooms = rooms.filter((room) => room !== "New game");
+    console.log("filteredRooms", filteredRooms);
+    const message = {
+      type: "enteredLobby",
+      room: filteredRooms,
+    };
+    sendMessage(message);
+  }, []);
 
   return (
     <>

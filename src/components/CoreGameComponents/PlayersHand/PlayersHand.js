@@ -14,8 +14,10 @@ const PlayersHand = ({
   setRound,
   setCurrentInfluencer,
   currentInfluencer,
+  setRoundEnd,
 }) => {
-  const { influencerCards, sendMessage } = useContext(GameContext);
+  const { influencerCards, sendMessage, room, setGameState } =
+    useContext(GameContext);
   const gameCards = [...influencerCards];
 
   const handleUndo = () => {
@@ -49,11 +51,15 @@ const PlayersHand = ({
   };
 
   const handleFinishRound = () => {
-    
-    
     sendMessage({ type: "finish round", round });
-    handleUndo();
-    handleDeal();
+    setRoundEnd(true);
+    // handleUndo();
+    // handleDeal();
+  };
+
+  const handleLeaveRoom = () => {
+    sendMessage({ type: "leaveRoom", room });
+    setGameState("lobby");
   };
 
   return (
@@ -82,7 +88,10 @@ const PlayersHand = ({
           Undo
         </Button>
         <Button display="secondary" onClick={handleFinishRound}>
-          Finish Round
+          Finish round
+        </Button>
+        <Button display="secondary" onClick={handleLeaveRoom}>
+          Leave room
         </Button>
       </div>
     </div>
