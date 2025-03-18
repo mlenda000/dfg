@@ -19,6 +19,7 @@ const GameProvider = ({ children }) => {
   const [rooms, setRooms] = useState(["New game", "dfg-misinformation"]);
   const [cardMessage, setCardMessage] = useState(undefined);
   const [playerId, setPlayerId] = useState("");
+  const [room, setRoom] = useState("lobby");
 
   // TODO: build a timer to go on gamepage
   // TODO: flip functionality for the cards
@@ -37,7 +38,7 @@ const GameProvider = ({ children }) => {
     //connects to the servers web address
     host: PARTYKIT_HOST,
     // the room that the client is connecting to
-    room: "dfg-misinformation",
+    room: room,
     // return from the server if its connected
     onOpen() {
       console.log("Connected to the WebSocket server");
@@ -109,6 +110,8 @@ const GameProvider = ({ children }) => {
         playerId,
         rooms,
         messages,
+        room,
+        setRoom,
         setPlayers,
         setRooms,
         setCardMessage,

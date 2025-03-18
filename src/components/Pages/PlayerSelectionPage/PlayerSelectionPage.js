@@ -15,7 +15,7 @@ const PlayerSelectionPage = () => {
     `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
     `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
-    `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,
+    `${process.env.PUBLIC_URL}/images/Avatars/avatar.png`,  
   ];
 
   const handleSubmit = () => {
