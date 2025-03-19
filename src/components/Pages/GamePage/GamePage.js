@@ -23,7 +23,7 @@ const GamePage = () => {
           <>
             <Scoreboard />
             <ActiveGamePage setRoundEnd={setRoundEnd} />
-            {roundEnd && <ResultModal />}
+            {roundEnd && <ResultModal setRoundEnd={setRoundEnd} />}
           </>
         )}
         {gameState === "end" && <GameEndPage />}

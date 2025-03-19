@@ -10,11 +10,12 @@ const Scoreboard = () => {
     <div className="scoreboard">
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <h1 className="scoreboard__round">
-          Round <span className="scoreboard__score-numeric">1</span>
+          Round <span className="scoreboard__score-numeric">{gameRound}</span>
         </h1>
       </div>
       <div className="scoreboard__avatar">
-        <AvatarImage src={avatar} display="mini" /> {playerName}
+        <AvatarImage src={avatar} display="mini" playerName={playerName} />
+        {/* {<p className="scoreboard__player-name">{playerName}</p>} */}
       </div>
       <h1 className="scoreboard__score">
         <span className="scoreboard__score-numeric">{playerScore}</span>{" "}

@@ -13,8 +13,9 @@ const ActiveGamePage = ({ setRoundEnd }) => {
     setGameRound,
     cardMessage,
     setCardMessage,
+    currentInfluencer,
+    setCurrentInfluencer,
   } = useContext(GameContext);
-  const [currentInfluencer, setCurrentInfluencer] = useState(null);
   const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([
@@ -54,7 +55,6 @@ const ActiveGamePage = ({ setRoundEnd }) => {
     if (cardMessage && typeof cardMessage !== "number") {
       setMainTableItems([...mainTableItems, cardMessage]);
     } else {
-      console.log("is this running in cardMessage", cardMessage, "is a number");
       let updatedMainTableItems = [...mainTableItems];
       for (let i = 0; i < cardMessage; i++) {
         const index = updatedMainTableItems.findIndex(

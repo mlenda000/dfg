@@ -20,6 +20,7 @@ const GameProvider = ({ children }) => {
   const [cardMessage, setCardMessage] = useState(undefined);
   const [playerId, setPlayerId] = useState("");
   const [room, setRoom] = useState("lobby");
+  const [currentInfluencer, setCurrentInfluencer] = useState(null);
 
   // TODO: build a timer to go on gamepage
   // TODO: flip functionality for the cards
@@ -115,6 +116,8 @@ const GameProvider = ({ children }) => {
         rooms,
         messages,
         room,
+        currentInfluencer,
+        setCurrentInfluencer,
         setRoom,
         setPlayers,
         setRooms,

@@ -1,0 +1,24 @@
+.reasons-card{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: white;
+    color:black;
+}
+.reasons-card__tactics{
+    display:flex;
+    width:auto;
+    height: 100%;
+    align-items: center;
+    gap: 8px;
+}
+.reasons-card__list{
+    text-align: left;
+}
