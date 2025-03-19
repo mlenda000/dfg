@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const GlobalContext = createContext();
 
@@ -7,6 +7,13 @@ const GlobalProvider = ({ children }) => {
   const [informationState, setInformationState] = useState(false);
   const [playerName, setPlayerName] = useState("");
   const [avatar, setAvatar] = useState("");
+
+  useEffect(() => {
+    console.log("global context rendered");
+  }, []);
+
+  //TODO: if authorized use local storage to get the player name and avatar
+  //TODO: if not authorized use session storage to store the player name and avatar
 
   return (
     <GlobalContext.Provider

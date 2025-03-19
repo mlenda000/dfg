@@ -19,6 +19,8 @@ const GameProvider = ({ children }) => {
   const [rooms, setRooms] = useState(["New game", "dfg-misinformation"]);
   const [cardMessage, setCardMessage] = useState(undefined);
   const [playerId, setPlayerId] = useState("");
+  const [room, setRoom] = useState("lobby");
+  const [currentInfluencer, setCurrentInfluencer] = useState(null);
 
   // TODO: build a timer to go on gamepage
   // TODO: flip functionality for the cards
@@ -37,7 +39,7 @@ const GameProvider = ({ children }) => {
     //connects to the servers web address
     host: PARTYKIT_HOST,
     // the room that the client is connecting to
-    room: "dfg-misinformation",
+    room: room,
     // return from the server if its connected
     onOpen() {
       console.log("Connected to the WebSocket server");
@@ -46,7 +48,7 @@ const GameProvider = ({ children }) => {
     //when the server sends a message to the client it concats it to the list of previous messages
     onMessage(event) {
       const message = event.data;
-      const [type, id, data] = message.split("+");
+      const [type, id, data, count] = message.split("+");
       //   console.log("message from server", type, id, data);
 
       switch (type) {
@@ -63,6 +65,10 @@ const GameProvider = ({ children }) => {
           console.log("undo message from server", type, id, data);
           const removeThisManyCards = Number(id);
           setCardMessage(removeThisManyCards);
+          break;
+        case "room":
+          console.log("room message from server", type, id, data, count);
+          setPlayerCount({ room: id, count });
           break;
         default:
           break;
@@ -109,6 +115,10 @@ const GameProvider = ({ children }) => {
         playerId,
         rooms,
         messages,
+        room,
+        currentInfluencer,
+        setCurrentInfluencer,
+        setRoom,
         setPlayers,
         setRooms,
         setCardMessage,

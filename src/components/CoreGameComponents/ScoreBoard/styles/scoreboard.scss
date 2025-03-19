@@ -4,5 +4,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(0,0,0,0.55);
+    font-family: "StussyScript", "Bradley",sans-serif;
+    margin-bottom: 0;
+   
+}
+.scoreboard__round{
+    margin-left: 40px;
+    margin-bottom:0;
+}
+.scoreboard__score{
+    margin-right:40px;
+    margin-bottom:0;
+}
+.scoreboard__score-numeric{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.scoreboard__avatar{
+}
+.scoreboard__player-name{
+   
+    
+
 }

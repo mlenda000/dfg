@@ -28,6 +28,8 @@
 @import "./components//CoreGameComponents/MainTable/styles/main-table.scss";
 @import "./components/CoreGameComponents/TacticsCard/styles/tactics-card.scss";
 @import "./components/CoreGameComponents/ScoreBoard/styles/scoreboard.scss";
+@import "./components/CoreGameComponents/ResultModal/styles/result-modal.scss";
+@import "./components/CoreGameComponents/ReasonsCard/styles/reasons-card.scss";
 
 /* global style sheets */
 body {
@@ -93,6 +95,12 @@ background-color: rgba(0,0,0,.65);
 @font-face {
     font-family: 'StussyScript';
     src: url('../public/fonts/StussyScript-Regular.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bradley';
+    src: url('../public/fonts/Bradley\ Hand\ Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }

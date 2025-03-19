@@ -5,7 +5,7 @@ import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
 import { Droppable } from "../../GenericComponents/Droppable/Droppable";
 import { DndContext } from "@dnd-kit/core";
 
-const ActiveGamePage = () => {
+const ActiveGamePage = ({ setRoundEnd }) => {
   const {
     categoryCards,
     sendMessage,
@@ -13,8 +13,9 @@ const ActiveGamePage = () => {
     setGameRound,
     cardMessage,
     setCardMessage,
+    currentInfluencer,
+    setCurrentInfluencer,
   } = useContext(GameContext);
-  const [currentInfluencer, setCurrentInfluencer] = useState(null);
   const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([
@@ -54,7 +55,6 @@ const ActiveGamePage = () => {
     if (cardMessage && typeof cardMessage !== "number") {
       setMainTableItems([...mainTableItems, cardMessage]);
     } else {
-      console.log("is this running in cardMessage", cardMessage, "is a number");
       let updatedMainTableItems = [...mainTableItems];
       for (let i = 0; i < cardMessage; i++) {
         const index = updatedMainTableItems.findIndex(
@@ -96,6 +96,7 @@ const ActiveGamePage = () => {
           setRound={setGameRound}
           currentInfluencer={currentInfluencer}
           setCurrentInfluencer={setCurrentInfluencer}
+          setRoundEnd={setRoundEnd}
         />
       </div>
     </DndContext>

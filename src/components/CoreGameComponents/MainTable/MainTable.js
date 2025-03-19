@@ -51,6 +51,7 @@ const MainTable = ({
             image={card?.imageUrl}
             text={card?.description}
             id={card?.id}
+            key={card?.id}
           />
         ))}
       </div>

@@ -11,12 +11,9 @@ const PlayersHand = ({
   mainTableItems,
   setMainTableItems,
   round,
-  setRound,
-  setCurrentInfluencer,
-  currentInfluencer,
+  setRoundEnd,
 }) => {
-  const { influencerCards, sendMessage } = useContext(GameContext);
-  const gameCards = [...influencerCards];
+  const { sendMessage, room, setGameState } = useContext(GameContext);
 
   const handleUndo = () => {
     // Send a message to the server to undo the last action
@@ -35,25 +32,15 @@ const PlayersHand = ({
     sendMessage({ count, type: "undo" });
   };
 
-  const handleDeal = () => {
-    if (gameCards.length > round) {
-      setRound(round + 1);
-      setCurrentInfluencer(gameCards[round]);
-      const messageRdyInfluencer = {
-        type: "influencer",
-        villain: currentInfluencer?.villain,
-        tactic: currentInfluencer?.tacticUsed,
-      };
-      sendMessage(messageRdyInfluencer);
-    }
+  const handleFinishRound = () => {
+    sendMessage({ type: "finish round", round });
+    setRoundEnd(true);
+    handleUndo();
   };
 
-  const handleFinishRound = () => {
-    
-    
-    sendMessage({ type: "finish round", round });
-    handleUndo();
-    handleDeal();
+  const handleLeaveRoom = () => {
+    sendMessage({ type: "leaveRoom", room });
+    setGameState("lobby");
   };
 
   return (
@@ -75,14 +62,14 @@ const PlayersHand = ({
       </div>
 
       <div className="players-area__buttons">
-        <Button display="next" onClick={handleDeal}>
-          Deal
+        <Button display="secondary" onClick={handleFinishRound}>
+          Finish round
         </Button>
         <Button display="secondary" onClick={handleUndo}>
           Undo
         </Button>
-        <Button display="secondary" onClick={handleFinishRound}>
-          Finish Round
+        <Button display="secondary" onClick={handleLeaveRoom}>
+          Leave room
         </Button>
       </div>
     </div>
