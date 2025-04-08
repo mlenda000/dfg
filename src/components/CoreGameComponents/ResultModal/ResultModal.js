@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
 import Tool from "../Tool/Tool"; // Assuming Tool is a component you want to show in the modal
-import InfluencerCard from "../InfluencerCard/InfluencerCard";
-import ReasonsCard from "../ReasonsCard/ReasonsCard";
 import Button from "../../GenericComponents/Button/Button";
 
 const ResultModal = ({ setRoundEnd }) => {
