@@ -5,11 +5,16 @@ const InfluencerCard = ({
   image,
   category,
   villain,
+  display,
 }) => {
   //ratio 2.5 : 3.5
 
   return (
-    <div className="influencer-card">
+    <div
+      className={
+        display === "modal" ? "influencer-card__modal" : "influencer-card"
+      }
+    >
       <div className="influencer-card__content">
         {image && (
           <img src={image} alt={category} className="influencer-card__images" />

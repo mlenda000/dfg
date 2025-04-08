@@ -1,0 +1,57 @@
+.tool-swiper {
+    position:absolute;
+    top: 7px;
+    left: 0;
+    width: 30px;
+    height: 500px;
+    animation: slide-in 4.5s ease-out forwards;
+    z-index: 3;
+}
+
+.tool__container{
+    position: relative;
+}
+
+.sliding-background {
+    position: relative;
+    overflow: hidden;
+}
+
+.sliding-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 190px;
+    width: 450px;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.5); /* Red background with transparency */
+    animation: slideBackground 4.5s ease-out forwards;
+    z-index: 4;
+}
+
+.sliding-background > * {
+    position: relative;
+    z-index: 3;
+}
+
+
+@keyframes slide-in-after {
+    from {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(450px);
+        opacity: 1;
+    }
+}
+
+
+@keyframes slide-in {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(450px);
+    }
+}
