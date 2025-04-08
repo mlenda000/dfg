@@ -30,6 +30,7 @@
 @import "./components/CoreGameComponents/ScoreBoard/styles/scoreboard.scss";
 @import "./components/CoreGameComponents/ResultModal/styles/result-modal.scss";
 @import "./components/CoreGameComponents/ReasonsCard/styles/reasons-card.scss";
+@import "./components/CoreGameComponents/Tool/styles/tool.scss"; 
 
 /* global style sheets */
 body {

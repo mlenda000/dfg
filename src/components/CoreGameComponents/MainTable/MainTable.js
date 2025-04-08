@@ -43,7 +43,6 @@ const MainTable = ({
           image={process.env.PUBLIC_URL + `/images/influencer/scientist.png`}
         />
       </div>
-
       <div className="main-table__tactics">
         {items.map((card) => (
           <TacticsCard
@@ -55,6 +54,7 @@ const MainTable = ({
           />
         ))}
       </div>
+      <div className="main-table__background">Place Cards here</div>
     </div>
   );
 };

@@ -18,14 +18,7 @@ const ActiveGamePage = ({ setRoundEnd }) => {
   } = useContext(GameContext);
   const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
-  const [mainTableItems, setMainTableItems] = useState([
-    {
-      id: 1,
-      name: "Sample Card",
-      imageUrl: "black.png",
-      description: "Play your cards here",
-    },
-  ]);
+  const [mainTableItems, setMainTableItems] = useState([]);
 
   const [playersHandItems, setPlayersHandItems] = useState(playersHand);
 
