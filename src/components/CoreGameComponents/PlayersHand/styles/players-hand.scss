@@ -1,20 +1,22 @@
 .players-area{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin-top: 40px;
 
     .players-area__buttons{
         margin-inline: 30px;
         display: flex;
-        flex-direction: column;
-        gap: 4px;
-
-        
+        flex-direction: row;
+        gap: 8px;
+        margin-bottom: 8px;
     }
 }
 
 .players-hand{
     display:flex;
     align-items: center;
-    margin-left: 170px;
+    height: fit-content;
+    padding-inline: 16px;
+    gap: 16px;
+
 }

@@ -45,7 +45,18 @@ const PlayersHand = ({
 
   return (
     <div className="players-area">
-      <div className="players-hand">
+      <div className="players-area__buttons">
+        <Button display="secondary" onClick={handleFinishRound}>
+          Finish round
+        </Button>
+        <Button display="secondary" onClick={handleUndo}>
+          Undo
+        </Button>
+        <Button display="secondary" onClick={handleLeaveRoom}>
+          Leave room
+        </Button>
+      </div>
+      <div className="players-hand" style={{ maxHeight: "185px" }}>
         {items.map((card) => {
           return (
             <SortableCard key={card?.id} id={card?.id}>
@@ -59,18 +70,6 @@ const PlayersHand = ({
             </SortableCard>
           );
         })}
-      </div>
-
-      <div className="players-area__buttons">
-        <Button display="secondary" onClick={handleFinishRound}>
-          Finish round
-        </Button>
-        <Button display="secondary" onClick={handleUndo}>
-          Undo
-        </Button>
-        <Button display="secondary" onClick={handleLeaveRoom}>
-          Leave room
-        </Button>
       </div>
     </div>
   );
