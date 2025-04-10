@@ -10,7 +10,6 @@ const ActiveGamePage = ({ setRoundEnd }) => {
     categoryCards,
     sendMessage,
     gameRound,
-    setGameRound,
     cardMessage,
     setCardMessage,
     currentInfluencer,
@@ -19,6 +18,7 @@ const ActiveGamePage = ({ setRoundEnd }) => {
   const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([]);
+  const [finishRound, setFinishRound] = useState(false);
 
   const [playersHandItems, setPlayersHandItems] = useState(playersHand);
 
@@ -43,6 +43,14 @@ const ActiveGamePage = ({ setRoundEnd }) => {
   const sendCardToServer = (card) => {
     sendMessage({ card, type: "tactic" });
   };
+
+  useEffect(() => {
+    if (mainTableItems.length > 0) {
+      setFinishRound(true);
+    } else {
+      setFinishRound(false);
+    }
+  }, [mainTableItems]);
 
   useEffect(() => {
     if (cardMessage && typeof cardMessage !== "number") {
@@ -77,20 +85,15 @@ const ActiveGamePage = ({ setRoundEnd }) => {
             round={gameRound}
             currentInfluencer={currentInfluencer}
             setCurrentInfluencer={setCurrentInfluencer}
+            finishRound={finishRound}
+            setRoundEnd={setRoundEnd}
+            setPlayersHandItems={setPlayersHandItems}
+            mainTableItems={mainTableItems}
+            setMainTableItems={setMainTableItems}
+            originalItems={playersHand}
           />
         </Droppable>
-        <PlayersHand
-          items={playersHandItems}
-          setPlayersHandItems={setPlayersHandItems}
-          mainTableItems={mainTableItems}
-          setMainTableItems={setMainTableItems}
-          originalItems={playersHand}
-          round={gameRound}
-          setRound={setGameRound}
-          currentInfluencer={currentInfluencer}
-          setCurrentInfluencer={setCurrentInfluencer}
-          setRoundEnd={setRoundEnd}
-        />
+        <PlayersHand items={playersHandItems} />
       </div>
     </DndContext>
   );

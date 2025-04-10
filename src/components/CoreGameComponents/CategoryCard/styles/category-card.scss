@@ -18,8 +18,9 @@
         transition: all 0.3s ease;
 
         &:hover{
-        transform: scale(1.35) ;
+        transform: scale(1.5) ;
         margin-left:0;
+        z-index: 10000;
         }
     }
     .category-card__image{

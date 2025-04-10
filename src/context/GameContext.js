@@ -21,11 +21,10 @@ const GameProvider = ({ children }) => {
   const [playerId, setPlayerId] = useState("");
   const [room, setRoom] = useState("lobby");
   const [currentInfluencer, setCurrentInfluencer] = useState(null);
+  const [showGameTimer, setShowGameTimer] = useState(false);
+  const [showScoringModal, setShowScoringModal] = useState(false);
 
-  // TODO: build a timer to go on gamepage
-  // TODO: flip functionality for the cards
   // TODO: undo a single tactic card
-  // TODO: update designs to match the new designs
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -117,6 +116,10 @@ const GameProvider = ({ children }) => {
         messages,
         room,
         currentInfluencer,
+        showGameTimer,
+        showScoringModal,
+        setShowGameTimer,
+        setShowScoringModal,
         setCurrentInfluencer,
         setRoom,
         setPlayers,

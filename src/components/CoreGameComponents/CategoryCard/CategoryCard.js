@@ -23,6 +23,14 @@ const CategoryCard = ({ name, image, text }) => {
               src={process.env.PUBLIC_URL + "/images/new-cards/" + image}
               alt={name}
               className="category-card__image"
+              onMouseOver={(e) =>
+                (e.currentTarget.src =
+                  process.env.PUBLIC_URL + "/images/new-cards-backs/" + image)
+              }
+              onMouseOut={(e) =>
+                (e.currentTarget.src =
+                  process.env.PUBLIC_URL + "/images/new-cards/" + image)
+              }
             />
           </div>
         </div>

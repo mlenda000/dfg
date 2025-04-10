@@ -10,12 +10,15 @@ const PlayerSelectionPage = () => {
   const { avatar, setAvatar } = useContext(GlobalContext);
   const { themeStyle } = useContext(ThemeContext);
 
+  //TODO: update icons to Avis versions
+
   const avatars = [
     `${process.env.PUBLIC_URL}/images/Avatars/avatar1.png`,
     `${process.env.PUBLIC_URL}/images/Avatars/avatar2.png`,
     `${process.env.PUBLIC_URL}/images/Avatars/avatar3.png`,
     `${process.env.PUBLIC_URL}/images/Avatars/avatar4.png`,
     `${process.env.PUBLIC_URL}/images/Avatars/avatar5.png`,
+    `${process.env.PUBLIC_URL}/images/Avatars/avatar6.png`,
   ];
 
   const handleSubmit = () => {
@@ -43,9 +46,10 @@ const PlayerSelectionPage = () => {
         }}
       >
         <div className="player-selection__avatar-container">
-          {avatars.map((avatar, index) => (
+          {avatars.map((img, index) => (
             <AvatarImage
-              src={avatar}
+              src={img}
+              avatar={avatar}
               setAvatar={setAvatar}
               key={`${avatar}-${index}`}
             />
