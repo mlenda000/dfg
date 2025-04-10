@@ -38,6 +38,8 @@ const ResultModal = ({ setRoundEnd }) => {
     }
   };
 
+  // TODO: add a scoring modal that the next button takes you to let you know what you got
+
   return (
     <div className="result-modal__overlay">
       <div className="result-modal__content ">

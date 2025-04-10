@@ -9,10 +9,39 @@ const MainTable = ({
   round,
   currentInfluencer,
   setCurrentInfluencer,
+  finishRound,
+  setRoundEnd,
+  setPlayersHandItems,
+  originalItems,
+  mainTableItems,
+  setMainTableItems,
 }) => {
   const { influencerCards, sendMessage } = useContext(GameContext);
 
   const gameCards = [...influencerCards];
+
+  const handleFinishRound = () => {
+    sendMessage({ type: "finish round", round });
+    setRoundEnd(true);
+    handleUndo();
+  };
+
+  const handleUndo = () => {
+    // Send a message to the server to undo the last action
+
+    setPlayersHandItems(originalItems);
+    const filteredItems = mainTableItems.filter(
+      (item) => item.collection !== "category_cards"
+    );
+
+    const count = mainTableItems.filter(
+      (item) => item.collection === "category_cards"
+    ).length;
+
+    // sendMessage({ action: "remove_cards", count: originalItems.length }, "update_clients");
+    setMainTableItems(filteredItems);
+    sendMessage({ count, type: "undo" });
+  };
 
   useEffect(() => {
     if (influencerCards.length > 0 && gameCards.length > round) {
@@ -54,6 +83,14 @@ const MainTable = ({
           />
         ))}
       </div>
+      {finishRound && (
+        <img
+          src={process.env.PUBLIC_URL + "/icons/check.svg"}
+          alt="Finish round"
+          className="main-table__finish-round"
+          onClick={handleFinishRound}
+        />
+      )}
       <div className="main-table__background">Place Cards here</div>
     </div>
   );

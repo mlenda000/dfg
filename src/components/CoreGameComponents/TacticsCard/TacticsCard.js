@@ -1,5 +1,5 @@
 import React from "react";
-
+//TODO: add remove single tactic card functionality
 const TacticsCard = ({ name, image, text, id }) => {
   //ratio 2.5 : 3.5
   return (
