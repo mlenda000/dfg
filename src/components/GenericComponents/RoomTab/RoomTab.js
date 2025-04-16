@@ -16,7 +16,7 @@ const RoomTab = ({ room, type, onClick }) => {
 
   return (
     <button className="room-tab" onClick={() => onClick(playerName, room)}>
-      <h2>{room}</h2>
+      <h2 className="room-tab__title">{room}</h2>
 
       {playerCount.count > 0 && room === playerCount.room && (
         <div className="player-avatars">

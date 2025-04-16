@@ -31,12 +31,21 @@ const LobbyPage = () => {
     <>
       <button onClick={() => navigate(-1)} className="back-button">
         <img
-          src={`${process.env.PUBLIC_URL}/images/back-arrow.png`}
-          alt="back"
+          src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+          alt="Go back"
         />
       </button>
+      <img
+        src={process.env.PUBLIC_URL + "/images/login-button.png"}
+        alt="Logo"
+        className="main-login"
+        style={{ cursor: "pointer" }}
+      />
       <div className="lobby">
-        <h1 className="lobby__title">JOIN GAME</h1>
+        <img
+          src={process.env.PUBLIC_URL + "/images/join-game.png"}
+          alt="Join game"
+        />
         <div className="lobby__rooms">
           {rooms &&
             rooms.map((room) => (

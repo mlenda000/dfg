@@ -1,16 +1,23 @@
 .input{
-    background-color: rgba(255, 255, 255, 0.1);
-    border: solid white 3px;
-    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 0;
+    border-radius: 20px;
     color:white;
-    width:30vw;
-    height: 50px;
+    width:50vw;
+    height: 80px;
     padding: 10px 20px;
     display: flex;
     align-items: center;
     text-align: center;
-    font-size: 36px;
-    font-family: "Arial", sans-serif;
+    font-size: 80px;
+    font-family: "subway-berlin-ot", sans-serif;
     margin-bottom: 2rem;
+    -webkit-text-stroke: black 3px;
+    -webkit-text-stroke: ;
+    &::placeholder{
+        color: white;
+        
+        opacity: 0.5;
+    }
 
 }

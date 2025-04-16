@@ -13,14 +13,15 @@ const AvatarImage = ({ src, alt, avatar, setAvatar, display }) => {
         avatarName === srcName
           ? {
               scale: 1.1,
-              borderColor: "#e89aab",
-              backgroundColor: "rgba(120, 0, 200, 0.5)",
+              border: "2px solid #e89aab",
+              boxShadow: "0 0 10pxrgb(226, 31, 73)",
+              backgroundColor: "#0b0b0b99",
             }
           : {}
       }
     >
       <img
-        src={src}
+        src={src ? src : process.env.PUBLIC_URL + "/images/avatar.png"}
         alt={alt}
         onClick={(e) => setAvatar(e.target.src)}
         style={{ borderRadius: "50%", cursor: "pointer" }}
