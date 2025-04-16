@@ -7,28 +7,29 @@ const Main = () => {
   const handleClick = () => navigate("/information");
 
   return (
-    <div className="main-page">
+    <>
       <div className="main">
-        <div className="main-title">
-          SUPER
-          <br />
-          DEBUNKERS
-        </div>
-        <div className="main-description">
-          <p>
-            Fake news is everywhere! Do you have what it takes to spot the lies
-            and uncover the truth? Sharpen your detective skills, bust fake
-            content, and become the ultimate debunker — while gaining tons of
-            followers along the way!
-          </p>
-        </div>
+        <img
+          src={process.env.PUBLIC_URL + "/images/SuperDebunkers.png"}
+          alt="Super Debunkers"
+          width="50%"
+          height="auto"
+        />
+
+        <img
+          src={process.env.PUBLIC_URL + "/images/play-button.png"}
+          alt="Play"
+          onClick={handleClick}
+          style={{ cursor: "pointer", marginTop: "-60px" }}
+        />
       </div>
-      <div className="main-button">
-        <Button display="primary" onClick={handleClick}>
-          Play
-        </Button>
-      </div>
-    </div>
+      <img
+        src={process.env.PUBLIC_URL + "/images/login-button.png"}
+        alt="Logo"
+        className="main-login"
+        style={{ cursor: "pointer" }}
+      />
+    </>
   );
 };
 

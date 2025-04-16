@@ -37,22 +37,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
-  background-image: url("/public/images/Background2.png") ;
-  background-size: cover;
+  background-image: url("/public/images/Background3.png") ;
   color: white;
 }
-/* background overlay */
-/* body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-background-color: rgba(0,0,0,.65);
-  background-size: cover;
-  z-index: -1;
-} */
 
 /* custom fonts */
 @font-face {
@@ -103,6 +90,24 @@ background-color: rgba(0,0,0,.65);
     font-family: 'Bradley';
     src: url('../public/fonts/Bradley\ Hand\ Bold.ttf') format('truetype');
     font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'plus-jakarta-sans';
+    src: url('../public/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+    font-weight:normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'alfa-slab-one';
+    src: url('../public/fonts/AlfaSlabOne-Regular.ttf') format('truetype');
+    font-weight:normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'subway-berlin-ot';
+    src: url('../public/fonts/subwayberlinot.otf') format('opentype');
+    font-weight:normal;
     font-style: normal;
 }
 

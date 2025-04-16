@@ -23,11 +23,30 @@ const NameSelectionPage = () => {
     <div className="name-selection">
       <button onClick={() => navigate(-1)} className="back-button">
         <img
-          src={`${process.env.PUBLIC_URL}/images/back-arrow.png`}
-          alt="back"
+          src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+          alt="Go back"
         />
       </button>
-      <h1 className="name-selection__title">NAME PROFILE</h1>
+      <img
+        src={process.env.PUBLIC_URL + "/images/login-button.png"}
+        alt="Logo"
+        className="main-login"
+        style={{ cursor: "pointer" }}
+      />
+      <button onClick={handleSubmit} className="next-button">
+        <img
+          src={process.env.PUBLIC_URL + "/images/next-button.png"}
+          alt="Logo"
+          style={{ cursor: "pointer", width: "50%", height: "auto" }}
+        />
+      </button>
+
+      <img
+        src={process.env.PUBLIC_URL + "/images/name-profile.png"}
+        alt="Logo"
+        style={{ width: "25%", height: "auto" }}
+        className="name-selection__title"
+      />
 
       <form
         className="name-selection__input"
@@ -47,12 +66,6 @@ const NameSelectionPage = () => {
           placeholder="Enter your name"
           themeStyle={themeStyle}
         />
-
-        <div className="name-selection__button">
-          <Button onSubmit="submit" themeStyle={themeStyle} display="primary">
-            Next
-          </Button>
-        </div>
       </form>
     </div>
   );

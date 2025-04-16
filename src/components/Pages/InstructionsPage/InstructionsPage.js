@@ -9,45 +9,44 @@ const InstructionsPage = () => {
     <>
       <button onClick={() => navigate(-1)} className="back-button">
         <img
-          src={`${process.env.PUBLIC_URL}/images/back-arrow.png`}
-          alt="back"
+          src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+          alt="Go back"
         />
       </button>
-      <div className="instruction-page">
+      <img
+        src={process.env.PUBLIC_URL + "/images/login-button.png"}
+        alt="Logo"
+        className="main-login"
+        style={{ cursor: "pointer" }}
+      />
+      <button onClick={handleClick} className="next-button">
+        <img
+          src={process.env.PUBLIC_URL + "/images/next-button.png"}
+          alt="Logo"
+          style={{ cursor: "pointer", width: "50%", height: "auto" }}
+        />
+      </button>
+      <div className="instructions-page">
+        <img
+          src={process.env.PUBLIC_URL + "/images/instructions.png"}
+          alt="Instructions"
+        />
         <div className="instruction-page__content">
-          <div style={{ width: "75%" }}>
-            <span className="instruction-page__title">HOW TO PLAY</span>
-
-            <div className="instruction-page__description">
-              <p>
-                You will be shown online articles which you must examine
-                carefully and determine if its real or fake.
-              </p>
-              <ol>
-                <li>
-                  Take your time to read the Article Carefully. Think about
-                  whether the article seems true or if something feels off. Does
-                  it sound believable
-                </li>
-                <li>
-                  Pick a Debunker Card: If you think the article is fake, choose
-                  the debunker card that shows what’s wrong with it.
-                </li>
-              </ol>
-            </div>
-          </div>
-          <div className="instruction-page__image-container">
-            <img
-              className="instruction-page__image"
-              src={`${process.env.PUBLIC_URL}/images/instructions.png`}
-              alt="placeholder"
-            />
-          </div>
-        </div>
-        <div className="instruction-page__button">
-          <Button display="primary" onClick={handleClick}>
-            Skip
-          </Button>
+          <ol>
+            <li>
+              You will be shown online articles which you must examine carefully
+              and determine if its real or fake.
+            </li>
+            <li>Take your time to read the Article Carefully.</li>
+            <li>
+              Think about whether the article seems true or if something feels
+              off. Does it sound believable?
+            </li>
+            <li>
+              Pick a Debunker Card: If you think the article is fake, choose the
+              debunker card that shows what’s wrong with it.
+            </li>
+          </ol>
         </div>
       </div>
     </>

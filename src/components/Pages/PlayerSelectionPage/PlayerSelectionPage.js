@@ -34,11 +34,30 @@ const PlayerSelectionPage = () => {
     <div className="player-selection">
       <button onClick={() => navigate(-1)} className="back-button">
         <img
-          src={`${process.env.PUBLIC_URL}/images/back-arrow.png`}
-          alt="back"
+          src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+          alt="Go back"
         />
       </button>
-      <div className="player-selection__title">SELECT PROFILE</div>
+      <img
+        src={process.env.PUBLIC_URL + "/images/login-button.png"}
+        alt="Logo"
+        className="main-login"
+        style={{ cursor: "pointer" }}
+      />
+      <button onClick={handleSubmit} className="next-button">
+        <img
+          src={process.env.PUBLIC_URL + "/images/next-button.png"}
+          alt="Logo"
+          style={{ cursor: "pointer", width: "50%", height: "auto" }}
+        />
+      </button>
+
+      <img
+        src={process.env.PUBLIC_URL + "/images/select-profile.png"}
+        alt="Select profile"
+        style={{ width: "30%", height: "auto", marginTop: "80px" }}
+      />
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -54,11 +73,6 @@ const PlayerSelectionPage = () => {
               key={`${avatar}-${index}`}
             />
           ))}
-        </div>
-        <div className="player-selection__button">
-          <Button onSubmit="submit" themeStyle={themeStyle} display="primary">
-            Next
-          </Button>
         </div>
       </form>
     </div>
