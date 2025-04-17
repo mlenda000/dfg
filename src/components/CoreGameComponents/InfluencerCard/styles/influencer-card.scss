@@ -4,6 +4,7 @@ justify-content: center;
 align-items: center;
 padding: 20px;
 min-width: 580px;
+position: relative;
 
 
 
@@ -20,6 +21,7 @@ min-width: 580px;
         padding-block:0;
         overflow: hidden;
         max-width: 700px;
+        max-height: 350px;
     }
     .influencer-card__images{
         max-height: 350px;
@@ -27,15 +29,16 @@ min-width: 580px;
     }
 
     .influencer-card__title{
-        font-family: "podium-soft", sans-serif;
-        font-size: 24px;
-        font-weight: 900;
-        margin-bottom: 0.5rem;
+        font-family: "alfa-slab-one", sans-serif;
+        font-size: 26px;
+        font-weight: 400;
+        margin-block: 4px;
     }
     .influencer-card__description{
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 400;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
+        padding-bottom: 0;
         font-family: "DIN-alternate", sans-serif;
     }
     .influencer-card__text{
@@ -43,9 +46,7 @@ min-width: 580px;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        font-size: 14px;
-        font-weight: 400;
-        padding: 24px;
+        padding-inline: 24px;
 
     }
 }
@@ -99,4 +100,9 @@ min-width: 580px;
         padding: 24px;
 
     }
+}
+.influencer-card__tactic-count{
+    position: absolute;
+    bottom: 25px;
+    right: 30px;
 }

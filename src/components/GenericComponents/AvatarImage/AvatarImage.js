@@ -15,7 +15,7 @@ const AvatarImage = ({ src, alt, avatar, setAvatar, display }) => {
               scale: 1.1,
               border: "2px solid #e89aab",
               boxShadow: "0 0 10pxrgb(226, 31, 73)",
-              backgroundColor: "#0b0b0b99",
+              backgroundColor: "rgba(255, 154, 171, 0.2)",
             }
           : {}
       }

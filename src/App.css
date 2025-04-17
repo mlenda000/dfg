@@ -32,6 +32,7 @@
 @import "./components/CoreGameComponents/ReasonsCard/styles/reasons-card.scss";
 @import "./components/CoreGameComponents/Tool/styles/tool.scss"; 
 @import "./components/CoreGameComponents/GameTimer/styles/game-timer.scss";
+@import "./components//CoreGameComponents/RoundModal/styles/round-modal.scss";
 
 /* global style sheets */
 body {

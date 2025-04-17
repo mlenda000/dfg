@@ -23,6 +23,8 @@ const GameProvider = ({ children }) => {
   const [currentInfluencer, setCurrentInfluencer] = useState(null);
   const [showGameTimer, setShowGameTimer] = useState(false);
   const [showScoringModal, setShowScoringModal] = useState(false);
+  const [roundEnd, setRoundEnd] = useState(false);
+  const [roundStart, setRoundStart] = useState(true);
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -116,6 +118,10 @@ const GameProvider = ({ children }) => {
         currentInfluencer,
         showGameTimer,
         showScoringModal,
+        roundEnd,
+        roundStart,
+        setRoundEnd,
+        setRoundStart,
         setShowGameTimer,
         setShowScoringModal,
         setCurrentInfluencer,

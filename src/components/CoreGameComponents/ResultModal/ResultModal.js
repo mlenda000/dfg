@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
 import Tool from "../Tool/Tool"; // Assuming Tool is a component you want to show in the modal
-import Button from "../../GenericComponents/Button/Button";
 
 const ResultModal = ({ setRoundEnd }) => {
   const {
@@ -11,6 +10,8 @@ const ResultModal = ({ setRoundEnd }) => {
     setGameRound,
     setCurrentInfluencer,
     sendMessage,
+    setRoundStart,
+    setShowGameTimer,
   } = useContext(GameContext);
   const [showComponents, setShowComponents] = useState(false);
   const [resultMessage, setResultMessage] = useState("0");
@@ -33,8 +34,11 @@ const ResultModal = ({ setRoundEnd }) => {
         villain: currentInfluencer?.villain,
         tactic: currentInfluencer?.tacticUsed,
       };
+
       sendMessage(messageRdyInfluencer);
       setRoundEnd(false);
+      setShowGameTimer(false);
+      setRoundStart(true);
     }
   };
 
@@ -47,9 +51,14 @@ const ResultModal = ({ setRoundEnd }) => {
 
         {showComponents && (
           <div className="result-modal__button">
-            <Button onClick={handleDeal} display="primary">
-              Next
-            </Button>
+            <img
+              src={process.env.PUBLIC_URL + "/images/next-button.png"}
+              alt="Ready for next round"
+              width={"50%"}
+              height={"auto"}
+              style={{ cursor: "pointer" }}
+              onClick={handleDeal}
+            />
           </div>
         )}
       </div>

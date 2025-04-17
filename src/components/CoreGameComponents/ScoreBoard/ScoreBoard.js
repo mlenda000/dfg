@@ -8,11 +8,11 @@ import GameTimer from "../GameTimer/GameTimer";
 const Scoreboard = () => {
   const { playerName, avatar } = useContext(GlobalContext);
   const {
-    playerScore,
     gameRound,
     showGameTimer,
     setShowGameTimer,
     otherPlayers,
+    roundStart,
   } = useContext(GameContext);
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const Scoreboard = () => {
     setTimeout(() => {
       setShowGameTimer(true);
     }, 5000);
-  }, []);
+  }, [roundStart, setShowGameTimer]);
 
   // TODO: other player icons with the ability to show a check/tick on them when they have played their cards
   return (
