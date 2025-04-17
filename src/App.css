@@ -31,13 +31,14 @@
 @import "./components/CoreGameComponents/ResultModal/styles/result-modal.scss";
 @import "./components/CoreGameComponents/ReasonsCard/styles/reasons-card.scss";
 @import "./components/CoreGameComponents/Tool/styles/tool.scss"; 
+@import "./components/CoreGameComponents/GameTimer/styles/game-timer.scss";
 
 /* global style sheets */
 body {
   margin: 0;
   padding: 0;
   background-color: black;
-  background-image: url("/public/images/Background3.png") ;
+  background-image: url("/public/images/Background2.png") ;
   color: white;
 }
 

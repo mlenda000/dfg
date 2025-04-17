@@ -1,0 +1,14 @@
+.timer{
+    font-family: "subway-berlin-ot", sans-serif;
+    font-size: 2.5em;
+    -webkit-text-stroke: black 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: -10px;
+    
+}
+.timer__time{
+    width: 150px
+}

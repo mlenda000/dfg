@@ -3,20 +3,13 @@
     flex-direction: column;
     margin-top: 40px;
 
-    .players-area__buttons{
-        margin-inline: 30px;
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        margin-bottom: 8px;
-    }
 }
 
 .players-hand{
     display:flex;
     align-items: center;
     padding-inline: 16px;
-    gap: 16px;
+    gap: 8px;
     position: absolute;
     bottom: 40px;
 

@@ -1,13 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../GenericComponents/Button/Button";
 
 const Main = () => {
   const navigate = useNavigate();
   const handleClick = () => navigate("/information");
 
   return (
-    <>
+    <div className="main-page">
       <div className="main">
         <img
           src={process.env.PUBLIC_URL + "/images/SuperDebunkers.png"}
@@ -29,7 +28,7 @@ const Main = () => {
         className="main-login"
         style={{ cursor: "pointer" }}
       />
-    </>
+    </div>
   );
 };
 

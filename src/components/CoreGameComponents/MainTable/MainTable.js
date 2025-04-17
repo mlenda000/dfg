@@ -26,6 +26,33 @@ const MainTable = ({
     handleUndo();
   };
 
+  //   const handleDrop = (event) => {
+  //     const { active, over } = event;
+  //     if (over?.id == null) {
+  //       return;
+  //     }
+
+  //     if (active.id !== over.id) {
+  //       const activeCard = playersHandItems.find((item) => item.id === active.id);
+  //       setPlayersHandItems((items) =>
+  //         items.filter((item) => item.id !== active.id)
+  //       );
+  //       const removeStartingText = mainTableItems.filter((card) => card.id !== 1);
+
+  //       setMainTableItems([...removeStartingText, activeCard]);
+  //       sendCardToServer(activeCard.category);
+  //     }
+  //   };
+
+  const handleReturnCard = (cardId) => {
+    const cardToReturn = mainTableItems.find((item) => item.id === cardId);
+    if (cardToReturn) {
+      setMainTableItems((items) => items.filter((item) => item.id !== cardId));
+      setPlayersHandItems((items) => [...items, cardToReturn]);
+      sendMessage({ type: "return card", cardId });
+    }
+  };
+
   const handleUndo = () => {
     // Send a message to the server to undo the last action
 
@@ -80,6 +107,7 @@ const MainTable = ({
             text={card?.description}
             id={card?.id}
             key={card?.id}
+            onUndo={handleReturnCard}
           />
         ))}
       </div>
@@ -105,7 +133,15 @@ const MainTable = ({
           </svg>
         </div>
       )}
-      <div className="main-table__background">Place Cards here</div>
+      <div
+        className="main-table__background"
+        style={finishRound ? { display: "none" } : { display: "block" }}
+      >
+        <img
+          src={process.env.PUBLIC_URL + "/images/place-cards.png"}
+          alt="Place cards"
+        />
+      </div>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
 import Input from "../../GenericComponents/Input/Input";
-import Button from "../../GenericComponents/Button/Button";
 
 const CreateRoomPage = () => {
   const navigate = useNavigate();
@@ -48,7 +47,12 @@ const CreateRoomPage = () => {
         style={{ width: "25%", height: "auto" }}
         className="create-room__title"
       />
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
         <div className="create-room__input">
           <Input
             placeholder="Room name"

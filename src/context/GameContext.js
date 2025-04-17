@@ -24,8 +24,6 @@ const GameProvider = ({ children }) => {
   const [showGameTimer, setShowGameTimer] = useState(false);
   const [showScoringModal, setShowScoringModal] = useState(false);
 
-  // TODO: undo a single tactic card
-
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
     fetchInfluencerCards("misinformation_cards", setInfluencerCards);
