@@ -1,21 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
+
 import Tool from "../Tool/Tool"; // Assuming Tool is a component you want to show in the modal
 
 const ResultModal = ({ setRoundEnd }) => {
-  const {
-    currentInfluencer,
-    influencerCards,
-    gameRound,
-    setGameRound,
-    setCurrentInfluencer,
-    sendMessage,
-    setRoundStart,
-    setShowGameTimer,
-  } = useContext(GameContext);
+  const { setShowResponseModal } = useContext(GameContext);
+
   const [showComponents, setShowComponents] = useState(false);
   const [resultMessage, setResultMessage] = useState("0");
-  const gameCards = [...influencerCards];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,23 +16,6 @@ const ResultModal = ({ setRoundEnd }) => {
 
     return () => clearTimeout(timer);
   }, []);
-
-  const handleDeal = () => {
-    if (gameCards.length > gameRound) {
-      setCurrentInfluencer(gameCards[gameRound]);
-      setGameRound(gameRound + 1);
-      const messageRdyInfluencer = {
-        type: "influencer",
-        villain: currentInfluencer?.villain,
-        tactic: currentInfluencer?.tacticUsed,
-      };
-
-      sendMessage(messageRdyInfluencer);
-      setRoundEnd(false);
-      setShowGameTimer(false);
-      setRoundStart(true);
-    }
-  };
 
   // TODO: add a scoring modal that the next button takes you to let you know what you got
 
@@ -57,7 +32,9 @@ const ResultModal = ({ setRoundEnd }) => {
               width={"50%"}
               height={"auto"}
               style={{ cursor: "pointer" }}
-              onClick={handleDeal}
+              onClick={() => {
+                return setRoundEnd(false), setShowResponseModal(true);
+              }}
             />
           </div>
         )}

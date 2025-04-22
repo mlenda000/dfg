@@ -33,6 +33,9 @@
 @import "./components/CoreGameComponents/Tool/styles/tool.scss"; 
 @import "./components/CoreGameComponents/GameTimer/styles/game-timer.scss";
 @import "./components//CoreGameComponents/RoundModal/styles/round-modal.scss";
+@import "./components/CoreGameComponents/ResultModal/styles/result-modal.scss";
+@import "./components/CoreGameComponents/ResponseModal/styles/response-modal.scss";
+@import "./components/CoreGameComponents/ScoreModal/styles/score-modal.scss";
 
 /* global style sheets */
 body {

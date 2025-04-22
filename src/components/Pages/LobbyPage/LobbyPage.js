@@ -1,58 +1,79 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
+import { GlobalContext } from "../../../context/GlobalContext";
 import RoomTab from "../../GenericComponents/RoomTab/RoomTab";
 
 const LobbyPage = () => {
-  const { setGameState, sendMessage, rooms } = useContext(GameContext);
+  const { setGameState, sendMessage, rooms, webSocketReady } =
+    useContext(GameContext);
+  const { avatar, playerName } = useContext(GlobalContext);
+  const [isConnected, setIsConnected] = useState(false);
+
   const navigate = useNavigate();
 
-  const handleClick = (name, room) => {
+  const handleClick = (name, room, avatar) => {
     console.log("handleClick", name, room);
+    avatar = avatar.substring(avatar.lastIndexOf("/") + 1);
     if (room === "New game") {
       setGameState("newRoom");
     } else {
-      sendMessage({ name, type: "player", avatar: "avatar1", room });
+      sendMessage({
+        type: "playerEnters",
+        player: { name, avatar, room },
+      });
       setGameState("game");
     }
   };
 
   useEffect(() => {
-    const filteredRooms = rooms.filter((room) => room !== "New game");
-    console.log("filteredRooms", filteredRooms);
-    const message = {
-      type: "enteredLobby",
-      room: filteredRooms,
-    };
-    sendMessage(message);
-  }, []);
+    if (webSocketReady && !isConnected) {
+      const filteredRooms = rooms.find((room) => room !== "New game");
+      const message = {
+        type: "enteredLobby",
+        room: filteredRooms,
+        avatar: avatar.substring(avatar.lastIndexOf("/") + 1),
+        name: playerName,
+      };
+      setIsConnected(true);
+      sendMessage(message);
+    }
+  }, [rooms, sendMessage, webSocketReady, isConnected, avatar, playerName]);
 
   return (
     <>
-      <button onClick={() => navigate(-1)} className="back-button">
-        <img
-          src={`${process.env.PUBLIC_URL}/images/back-button.png`}
-          alt="Go back"
-        />
-      </button>
-      <img
-        src={process.env.PUBLIC_URL + "/images/login-button.png"}
-        alt="Logo"
-        className="main-login"
-        style={{ cursor: "pointer" }}
-      />
-      <div className="lobby">
-        <img
-          src={process.env.PUBLIC_URL + "/images/join-game.png"}
-          alt="Join game"
-        />
-        <div className="lobby__rooms">
-          {rooms &&
-            rooms.map((room) => (
-              <RoomTab room={room} onClick={handleClick} key={room} />
-            ))}
-        </div>
-      </div>
+      {webSocketReady && (
+        <>
+          <button onClick={() => navigate(-1)} className="back-button">
+            <img
+              src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+              alt="Go back"
+            />
+          </button>
+          <img
+            src={process.env.PUBLIC_URL + "/images/login-button.png"}
+            alt="Logo"
+            className="main-login"
+            style={{ cursor: "pointer" }}
+          />
+          <div className="lobby">
+            <img
+              src={process.env.PUBLIC_URL + "/images/join-game.png"}
+              alt="Join game"
+            />
+            <div className="lobby__rooms">
+              {rooms &&
+                rooms.map((room) => (
+                  <RoomTab
+                    room={room}
+                    onClick={() => handleClick(playerName, room, avatar)}
+                    key={room}
+                  />
+                ))}
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { GameContext } from "../../../context/GameContext";
 import { GlobalContext } from "../../../context/GlobalContext";
 import Scoreboard from "../../CoreGameComponents/ScoreBoard/ScoreBoard";
@@ -8,16 +8,27 @@ import LobbyPage from "../LobbyPage/LobbyPage";
 import CreateRoomPage from "../CreateRoomPage/CreateRoomPage";
 import ResultModal from "../../CoreGameComponents/ResultModal/ResultModal";
 import RoundModal from "../../CoreGameComponents/RoundModal/RoundModal";
+import ResponseModal from "../../CoreGameComponents/ResponseModal/ResponseModal";
+import ScoreModal from "../../CoreGameComponents/ScoreModal/ScoreModal";
 
 const GamePage = () => {
-  const { gameState, roundEnd, setRoundEnd, roundStart, setRoundStart } =
-    useContext(GameContext);
+  const {
+    gameState,
+    roundEnd,
+    setRoundEnd,
+    roundStart,
+    setRoundStart,
+    showResponseModal,
+    showScoreCard,
+    setShowResponseModal,
+    setShowScoreCard,
+  } = useContext(GameContext);
   const { playerName, avatar } = useContext(GlobalContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setRoundStart(false);
-    }, 4500);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [roundStart, setRoundStart]);
@@ -33,8 +44,10 @@ const GamePage = () => {
             <ActiveGamePage setRoundEnd={setRoundEnd} />
             {roundStart && <RoundModal setRoundStart={setRoundStart} />}
             {roundEnd && <ResultModal setRoundEnd={setRoundEnd} />}
-            {/* {results && <ResponseModal setResults={setResults} />}
-            {scoreCard && <ScoreModal setScoreCard={setScoreCard} />} */}
+            {showResponseModal && (
+              <ResponseModal setShowResponseModal={setShowResponseModal} />
+            )}
+            {showScoreCard && <ScoreModal setScoreCard={setShowScoreCard} />}
           </>
         )}
         {gameState === "end" && <GameEndPage />}

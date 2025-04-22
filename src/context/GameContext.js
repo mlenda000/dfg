@@ -25,6 +25,9 @@ const GameProvider = ({ children }) => {
   const [showScoringModal, setShowScoringModal] = useState(false);
   const [roundEnd, setRoundEnd] = useState(false);
   const [roundStart, setRoundStart] = useState(true);
+  const [showResponseModal, setShowResponseModal] = useState(null);
+  const [showScoreCard, setShowScoreCard] = useState(false);
+  const [webSocketReady, setWebSocketReady] = useState(false);
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -41,37 +44,69 @@ const GameProvider = ({ children }) => {
     room: room,
     // return from the server if its connected
     onOpen() {
+      setWebSocketReady(true);
       console.log("Connected to the WebSocket server");
     },
 
     //when the server sends a message to the client it concats it to the list of previous messages
     onMessage(event) {
       const message = event.data;
-      const [type, id, data, count] = message.split("+");
-      //   console.log("message from server", type, id, data);
-
-      switch (type) {
-        case "id":
-          setPlayerId(id);
-          break;
-        case "score":
-          setPlayerScore(playerScore + Number(id));
-          break;
-        case "card":
-          setCardMessage({ id: data, imageUrl: id });
-          break;
-        case "undo":
-          console.log("undo message from server", type, id, data);
-          const removeThisManyCards = Number(id);
-          setCardMessage(removeThisManyCards);
-          break;
-        case "room":
-          console.log("room message from server", type, id, data, count);
-          setPlayerCount({ room: id, count });
-          break;
-        default:
-          break;
+      if (message && typeof message === "string") {
+        const parsedMessage = JSON.parse(message);
+        console.log("Received message from server:", parsedMessage);
+        switch (parsedMessage?.type) {
+          case "announcement":
+            parsedMessage?.text &&
+              console.log("Announcement from server:", parsedMessage?.text);
+            break;
+          case "id":
+            setPlayerId(parsedMessage?.id);
+            break;
+          case "score":
+            setPlayerScore(playerScore + Number(parsedMessage?.id));
+            break;
+          case "lobbyUpdate":
+            setPlayerCount(parsedMessage);
+            break;
+          case "card":
+            setCardMessage({
+              id: parsedMessage?.data,
+              imageUrl: parsedMessage?.id,
+            });
+            break;
+          case "undo":
+            console.log(
+              "undo message from server",
+              parsedMessage?.type,
+              parsedMessage?.id,
+              parsedMessage?.data
+            );
+            const removeThisManyCards = Number(parsedMessage?.id);
+            setCardMessage(removeThisManyCards);
+            break;
+          case "room":
+            console.log(
+              "room message from server",
+              parsedMessage?.type,
+              parsedMessage?.id,
+              parsedMessage?.data,
+              parsedMessage?.count
+            );
+            setPlayerCount({
+              room: parsedMessage?.id,
+              count: parsedMessage?.roomData?.count,
+              avatars: parsedMessage?.roomData?.avatars,
+            });
+            break;
+          default:
+            break;
+        }
+      } else {
+        console.log("Received message from server:", message);
+        const type = "announcement";
+        const text = message;
       }
+      //   console.log("message from server", type, id, data);
 
       setMessages((prevMessages) => [...prevMessages, message]);
     },
@@ -91,6 +126,8 @@ const GameProvider = ({ children }) => {
     if (ws.readyState === ws.OPEN) {
       //sends whatever message is in the input field to the server
       ws.send(JSON.stringify(input));
+    } else {
+      console.error("WebSocket connection is not open. Cannot send message.");
     }
   };
 
@@ -120,6 +157,11 @@ const GameProvider = ({ children }) => {
         showScoringModal,
         roundEnd,
         roundStart,
+        showResponseModal,
+        showScoreCard,
+        webSocketReady,
+        setShowResponseModal,
+        setShowScoreCard,
         setRoundEnd,
         setRoundStart,
         setShowGameTimer,

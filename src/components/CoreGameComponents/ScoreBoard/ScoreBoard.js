@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
 import { GlobalContext } from "../../../context/GlobalContext";
@@ -11,17 +11,29 @@ const Scoreboard = () => {
     gameRound,
     showGameTimer,
     setShowGameTimer,
-    otherPlayers,
     roundStart,
+    playerCount,
   } = useContext(GameContext);
   const navigate = useNavigate();
+  const [otherPlayers, setOtherPlayers] = useState(
+    playerCount?.roomData?.players || []
+  );
 
   useEffect(() => {
     setTimeout(() => {
       setShowGameTimer(true);
     }, 5000);
   }, [roundStart, setShowGameTimer]);
+  useEffect(() => {
+    if (playerCount?.roomData?.players) {
+      const filteredPlayers = playerCount.roomData.players.filter(
+        (player) => !(player.name === playerName && player.avatar === avatar)
+      );
+      setOtherPlayers(filteredPlayers);
+    }
+  }, [playerCount, playerName, avatar, setOtherPlayers]);
 
+  console.log(playerCount, "playerCount in scoreboard");
   // TODO: other player icons with the ability to show a check/tick on them when they have played their cards
   return (
     <div className="scoreboard">
@@ -31,30 +43,31 @@ const Scoreboard = () => {
         onClick={() => navigate("/")}
         style={{ cursor: "pointer" }}
       />
-      {otherPlayers?.length > 0 &&
-        otherPlayers.map((avatar, ready) => (
-          <AvatarImage
-            src={avatar}
-            display="mini"
-            playerName={playerName}
-            playerReady={ready}
-          />
-        ))}
+
       <div className="scoreboard__avatar">
         <AvatarImage src={avatar} display="mini" playerName={playerName} />
-        <span className="scoreboard__names">{playerName}</span>
+        <span className="scoreboard__names" style={{ marginLeft: "8px" }}>
+          {playerName}
+        </span>
         {otherPlayers?.length > 0 &&
-          otherPlayers.map((avatar, ready) => (
-            <>
-              <AvatarImage
-                src={avatar}
-                display="mini"
-                playerName={playerName}
-                playerReady={ready}
-              />
-              <span className="scoreboard__names">{playerName}</span>
-            </>
-          ))}
+          otherPlayers.map((avatar, ready) => {
+            console.log(avatar, "avatar in scoreboard");
+            return (
+              <>
+                <AvatarImage
+                  src={avatar?.avatar}
+                  display="mini"
+                  playerReady={ready}
+                />
+                <span
+                  className="scoreboard__names"
+                  style={{ marginLeft: "8px" }}
+                >
+                  {avatar?.name}
+                </span>
+              </>
+            );
+          })}
       </div>
       <div style={{ width: "200px" }}>
         {showGameTimer ? (

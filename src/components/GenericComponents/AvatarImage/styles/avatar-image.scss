@@ -7,7 +7,7 @@
     border-radius: 50%;
     background-color: rgba(0,0,0,.4);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 3px solid rgba(255,255,255,.4);
+    border: 3px solid rgba(255,255,255,1);
     overflow: hidden;
     margin-block: 4rem;
 }
@@ -23,8 +23,8 @@
 }
 
 .avatar-image-container__mini{
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
 
     overflow: hidden;
