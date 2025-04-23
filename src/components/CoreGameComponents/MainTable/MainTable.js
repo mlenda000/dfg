@@ -16,14 +16,18 @@ const MainTable = ({
   mainTableItems,
   setMainTableItems,
 }) => {
-  const { influencerCards, sendMessage } = useContext(GameContext);
+  const { influencerCards, sendMessage, playerId } = useContext(GameContext);
 
   const gameCards = [...influencerCards];
 
   const handleFinishRound = () => {
-    sendMessage({ type: "finish round", round });
+    sendMessage({ type: "endOfRound", round });
     setRoundEnd(true);
     handleUndo();
+  };
+
+  const handlePlayerReady = ({ name }) => {
+    sendMessage({ type: "playerReady", playerId, name, round });
   };
 
   const handleReturnCard = (cardId) => {
@@ -63,7 +67,9 @@ const MainTable = ({
     const messageRdyInfluencer = {
       type: "influencer",
       villain: currentInfluencer?.villain,
-      tactic: currentInfluencer?.tacticUsed,
+      tactic: Array.isArray(currentInfluencer?.tacticUsed)
+        ? currentInfluencer?.tacticUsed
+        : [currentInfluencer?.tacticUsed],
     };
     sendMessage(messageRdyInfluencer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,7 +106,7 @@ const MainTable = ({
         ))}
       </div>
       {finishRound && (
-        <div onClick={handleFinishRound} className="main-table__finish-round">
+        <div onClick={handlePlayerReady} className="main-table__finish-round">
           <img
             src={`${process.env.PUBLIC_URL}/images/next-button.png`}
             alt="Ready"

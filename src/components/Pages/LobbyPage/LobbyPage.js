@@ -5,7 +5,7 @@ import { GlobalContext } from "../../../context/GlobalContext";
 import RoomTab from "../../GenericComponents/RoomTab/RoomTab";
 
 const LobbyPage = () => {
-  const { setGameState, sendMessage, rooms, webSocketReady } =
+  const { setGameState, sendMessage, rooms, webSocketReady, gameRoom } =
     useContext(GameContext);
   const { avatar, playerName } = useContext(GlobalContext);
   const [isConnected, setIsConnected] = useState(false);
@@ -20,6 +20,7 @@ const LobbyPage = () => {
     } else {
       sendMessage({
         type: "playerEnters",
+        room,
         player: { name, avatar, room },
       });
       setGameState("game");

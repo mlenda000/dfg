@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GameContext } from "../../../context/GameContext";
+import { GlobalContext } from "../../../context/GlobalContext";
 import MainTable from "../../CoreGameComponents/MainTable/MainTable";
 import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
 import { Droppable } from "../../GenericComponents/Droppable/Droppable";
@@ -10,17 +11,22 @@ const ActiveGamePage = ({ setRoundEnd }) => {
     categoryCards,
     sendMessage,
     gameRound,
-    cardMessage,
-    setCardMessage,
     currentInfluencer,
     setCurrentInfluencer,
   } = useContext(GameContext);
+  const { playerName } = useContext(GlobalContext);
   const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([]);
   const [finishRound, setFinishRound] = useState(false);
 
   const [playersHandItems, setPlayersHandItems] = useState(playersHand);
+
+  const [cardsPlayed, setCardsPlayed] = useState({
+    id: "",
+    name: playerName,
+    tactic: [],
+  });
 
   const handleDrop = (event) => {
     const { active, over } = event;
@@ -36,7 +42,7 @@ const ActiveGamePage = ({ setRoundEnd }) => {
       const removeStartingText = mainTableItems.filter((card) => card.id !== 1);
 
       setMainTableItems([...removeStartingText, activeCard]);
-      sendCardToServer(activeCard.category);
+      console.log(activeCard.category);
     }
   };
 
@@ -51,26 +57,6 @@ const ActiveGamePage = ({ setRoundEnd }) => {
       setFinishRound(false);
     }
   }, [mainTableItems]);
-
-  useEffect(() => {
-    if (cardMessage && typeof cardMessage !== "number") {
-      setMainTableItems([...mainTableItems, cardMessage]);
-    } else {
-      let updatedMainTableItems = [...mainTableItems];
-      for (let i = 0; i < cardMessage; i++) {
-        const index = updatedMainTableItems.findIndex(
-          (item) => item.imageUrl === "back.png"
-        );
-        if (index !== -1) {
-          updatedMainTableItems.splice(index, 1);
-        } else {
-          break;
-        }
-      }
-      setMainTableItems(updatedMainTableItems);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardMessage, setCardMessage]);
 
   return (
     <DndContext

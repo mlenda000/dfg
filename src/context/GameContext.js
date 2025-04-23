@@ -10,7 +10,8 @@ const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   const [gameRound, setGameRound] = useState(1);
-  const [playerCount, setPlayerCount] = useState(0);
+  const [gameRoom, setGameRoom] = useState("");
+  const [playersInRoom, setPlayersInRoom] = useState([]);
   const [gameState, setGameState] = useState("lobby");
   const [categoryCards, setCategoryCards] = useState();
   const [influencerCards, setInfluencerCards] = useState();
@@ -53,20 +54,23 @@ const GameProvider = ({ children }) => {
       const message = event.data;
       if (message && typeof message === "string") {
         const parsedMessage = JSON.parse(message);
-        console.log("Received message from server:", parsedMessage);
         switch (parsedMessage?.type) {
           case "announcement":
             parsedMessage?.text &&
               console.log("Announcement from server:", parsedMessage?.text);
             break;
-          case "id":
+          case "playerId":
             setPlayerId(parsedMessage?.id);
             break;
-          case "score":
-            setPlayerScore(playerScore + Number(parsedMessage?.id));
-            break;
+          //   case "score":
+          //     setPlayerScore(playerScore + Number(parsedMessage?.id));
+          //     break;
           case "lobbyUpdate":
-            setPlayerCount(parsedMessage);
+            setGameRoom({
+              room: parsedMessage?.room,
+              count: parsedMessage?.count,
+              roomData: parsedMessage?.roomData?.players || [],
+            });
             break;
           case "card":
             setCardMessage({
@@ -84,29 +88,36 @@ const GameProvider = ({ children }) => {
             const removeThisManyCards = Number(parsedMessage?.id);
             setCardMessage(removeThisManyCards);
             break;
-          case "room":
-            console.log(
-              "room message from server",
-              parsedMessage?.type,
-              parsedMessage?.id,
-              parsedMessage?.data,
-              parsedMessage?.count
-            );
-            setPlayerCount({
-              room: parsedMessage?.id,
-              count: parsedMessage?.roomData?.count,
-              avatars: parsedMessage?.roomData?.avatars,
-            });
+          case "roomUpdate":
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              room: prevGameRoom?.room,
+              count: prevGameRoom?.count,
+              roomData:
+                parsedMessage?.players?.map((newPlayer) => {
+                  const existingPlayer = prevGameRoom?.roomData?.find(
+                    (player) => player.id === newPlayer.id
+                  );
+                  return existingPlayer ? existingPlayer : newPlayer;
+                }) ||
+                prevGameRoom?.roomData ||
+                [],
+            }));
+            break;
+          case "playerReady":
+            console.log(parsedMessage?.roomData, "playerReady");
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              roomData: parsedMessage?.roomData || [],
+            }));
             break;
           default:
+            console.log("Unhandled message type from server:", parsedMessage);
             break;
         }
       } else {
         console.log("Received message from server:", message);
-        const type = "announcement";
-        const text = message;
       }
-      //   console.log("message from server", type, id, data);
 
       setMessages((prevMessages) => [...prevMessages, message]);
     },
@@ -116,10 +127,6 @@ const GameProvider = ({ children }) => {
       console.log("Disconnected from the WebSocket server");
     },
   });
-
-  //   ws.addEventListener("message", (e) => {
-  //     console.log(e.data);
-  //   });
 
   const sendMessage = (input) => {
     // Check if the WebSocket connection is open
@@ -141,7 +148,7 @@ const GameProvider = ({ children }) => {
     <GameContext.Provider
       value={{
         gameRound,
-        playerCount,
+        gameRoom,
         gameState,
         categoryCards,
         influencerCards,
@@ -160,6 +167,8 @@ const GameProvider = ({ children }) => {
         showResponseModal,
         showScoreCard,
         webSocketReady,
+        playersInRoom,
+        setPlayersInRoom,
         setShowResponseModal,
         setShowScoreCard,
         setRoundEnd,
@@ -170,11 +179,13 @@ const GameProvider = ({ children }) => {
         setRoom,
         setPlayers,
         setRooms,
+        setMessages,
         setCardMessage,
         sendMessage,
         handleMessage,
         setGameRound,
-        setPlayerCount,
+        setGameRoom,
+
         setGameState,
       }}
     >
