@@ -11,33 +11,23 @@ const ResultModal = ({ setRoundEnd }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      setRoundEnd(false);
+      setShowResponseModal(true);
+    }, 9000);
+    const componentTimer = setTimeout(() => {
       setShowComponents(true);
     }, 4300);
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  // TODO: add a scoring modal that the next button takes you to let you know what you got
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(componentTimer);
+    };
+  }, [setRoundEnd, setShowResponseModal]);
 
   return (
     <div className="result-modal__overlay">
       <div className="result-modal__content ">
         <Tool showResults={showComponents} />
-
-        {showComponents && (
-          <div className="result-modal__button">
-            <img
-              src={process.env.PUBLIC_URL + "/images/next-button.png"}
-              alt="Ready for next round"
-              width={"50%"}
-              height={"auto"}
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                return setRoundEnd(false), setShowResponseModal(true);
-              }}
-            />
-          </div>
-        )}
       </div>
     </div>
   );

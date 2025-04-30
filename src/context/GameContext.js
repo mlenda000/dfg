@@ -16,7 +16,6 @@ const GameProvider = ({ children }) => {
   const [categoryCards, setCategoryCards] = useState();
   const [influencerCards, setInfluencerCards] = useState();
   const [players, setPlayers] = useState([]);
-  const [playerScore, setPlayerScore] = useState(0);
   const [rooms, setRooms] = useState(["New game", "dfg-misinformation"]);
   const [cardMessage, setCardMessage] = useState(undefined);
   const [playerId, setPlayerId] = useState("");
@@ -25,10 +24,14 @@ const GameProvider = ({ children }) => {
   const [showGameTimer, setShowGameTimer] = useState(false);
   const [showScoringModal, setShowScoringModal] = useState(false);
   const [roundEnd, setRoundEnd] = useState(false);
-  const [roundStart, setRoundStart] = useState(true);
+  const [roundStart, setRoundStart] = useState(false);
   const [showResponseModal, setShowResponseModal] = useState(null);
   const [showScoreCard, setShowScoreCard] = useState(false);
   const [webSocketReady, setWebSocketReady] = useState(false);
+  const [waitingForPlayers, setWaitingForPlayers] = useState(true);
+  const [roundTimer, setRoundTimer] = useState(30);
+  const [message, setMessage] = useState("");
+  const [responseMsg, setResponseMsg] = useState("");
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -62,9 +65,6 @@ const GameProvider = ({ children }) => {
           case "playerId":
             setPlayerId(parsedMessage?.id);
             break;
-          //   case "score":
-          //     setPlayerScore(playerScore + Number(parsedMessage?.id));
-          //     break;
           case "lobbyUpdate":
             setGameRoom({
               room: parsedMessage?.room,
@@ -104,12 +104,67 @@ const GameProvider = ({ children }) => {
                 [],
             }));
             break;
+          case "roundStart":
+            console.log("Game started with room data:", parsedMessage);
+            setRoundTimer(30); // Reset round timer to 30 seconds
+            setShowGameTimer(true);
+            break;
           case "playerReady":
             console.log(parsedMessage?.roomData, "playerReady");
             setGameRoom((prevGameRoom) => ({
               ...prevGameRoom,
-              roomData: parsedMessage?.roomData || [],
+              roomData:
+                prevGameRoom?.roomData?.map((player) => {
+                  console.log(
+                    player,
+                    " ----------------------------------- player in playerReady"
+                  );
+                  const updatedPlayer = parsedMessage?.roomData.find(
+                    (data) => data.id === parsedMessage?.sender
+                  );
+                  return player.id === parsedMessage?.sender
+                    ? updatedPlayer
+                    : player;
+                }) || [],
             }));
+            break;
+          case "allReady":
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              roomData: prevGameRoom?.roomData?.map((player) => ({
+                ...player,
+                status: true,
+              })),
+            }));
+            break;
+          case "scoreUpdate":
+            parsedMessage?.players.map((player) => {
+              player.scoreUpdated = false;
+              return player;
+            });
+
+            // Update the game room with the new scores
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              roomData: parsedMessage?.players,
+            }));
+            setMessage("endOfRound");
+            setResponseMsg({
+              wasCorrect: parsedMessage?.players?.find(
+                (player) => player.id === playerId
+              )?.wasCorrect,
+              hasStreak: parsedMessage?.players?.find(
+                (player) => player.id === playerId
+              )?.hasStreak,
+              streak: parsedMessage?.players?.find(
+                (player) => player.id === playerId
+              )?.streak,
+            });
+            console.log(
+              "All players scoreUpdated:",
+              parsedMessage,
+              "----------------------------------------------"
+            );
             break;
           default:
             console.log("Unhandled message type from server:", parsedMessage);
@@ -153,7 +208,6 @@ const GameProvider = ({ children }) => {
         categoryCards,
         influencerCards,
         players,
-        playerScore,
         cardMessage,
         playerId,
         rooms,
@@ -168,6 +222,13 @@ const GameProvider = ({ children }) => {
         showScoreCard,
         webSocketReady,
         playersInRoom,
+        waitingForPlayers,
+        roundTimer,
+        message,
+        responseMsg,
+        setMessage,
+        setRoundTimer,
+        setWaitingForPlayers,
         setPlayersInRoom,
         setShowResponseModal,
         setShowScoreCard,
@@ -185,7 +246,6 @@ const GameProvider = ({ children }) => {
         handleMessage,
         setGameRound,
         setGameRoom,
-
         setGameState,
       }}
     >

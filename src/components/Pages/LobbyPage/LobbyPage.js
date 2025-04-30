@@ -13,7 +13,7 @@ const LobbyPage = () => {
   const navigate = useNavigate();
 
   const handleClick = (name, room, avatar) => {
-    console.log("handleClick", name, room);
+    // console.log("handleClick", name, room);
     avatar = avatar.substring(avatar.lastIndexOf("/") + 1);
     if (room === "New game") {
       setGameState("newRoom");

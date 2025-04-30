@@ -15,46 +15,38 @@ const MainTable = ({
   originalItems,
   mainTableItems,
   setMainTableItems,
+  setSubmitForScoring,
 }) => {
-  const { influencerCards, sendMessage, playerId } = useContext(GameContext);
+  const { influencerCards, sendMessage, gameRoom, message, setMessage } =
+    useContext(GameContext);
 
   const gameCards = [...influencerCards];
 
-  const handleFinishRound = () => {
-    sendMessage({ type: "endOfRound", round });
-    setRoundEnd(true);
-    handleUndo();
-  };
+  useEffect(() => {
+    const resetTable = () => {
+      setMessage("");
+      setPlayersHandItems(originalItems);
+      const filteredItems = mainTableItems.filter(
+        (item) => item.collection !== "category_cards"
+      );
 
-  const handlePlayerReady = ({ name }) => {
-    sendMessage({ type: "playerReady", playerId, name, round });
-  };
-
-  const handleReturnCard = (cardId) => {
-    const cardToReturn = mainTableItems.find((item) => item.id === cardId);
-    if (cardToReturn) {
-      setMainTableItems((items) => items.filter((item) => item.id !== cardId));
-      setPlayersHandItems((items) => [...items, cardToReturn]);
-      sendMessage({ type: "return card", cardId });
+      setMainTableItems(filteredItems);
+      setSubmitForScoring(false);
+    };
+    if (message === "endOfRound") {
+      console.log("in the if statement");
+      resetTable();
     }
-  };
-
-  const handleUndo = () => {
-    // Send a message to the server to undo the last action
-
-    setPlayersHandItems(originalItems);
-    const filteredItems = mainTableItems.filter(
-      (item) => item.collection !== "category_cards"
-    );
-
-    const count = mainTableItems.filter(
-      (item) => item.collection === "category_cards"
-    ).length;
-
-    // sendMessage({ action: "remove_cards", count: originalItems.length }, "update_clients");
-    setMainTableItems(filteredItems);
-    sendMessage({ count, type: "undo" });
-  };
+  }, [
+    mainTableItems,
+    originalItems,
+    setMainTableItems,
+    setPlayersHandItems,
+    setRoundEnd,
+    message,
+    setMessage,
+    setSubmitForScoring,
+  ]);
 
   useEffect(() => {
     if (influencerCards.length > 0 && gameCards.length > round) {
@@ -74,6 +66,20 @@ const MainTable = ({
     sendMessage(messageRdyInfluencer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentInfluencer]);
+
+  const handlePlayerReady = () => {
+    // console.log("Player is ready" + gameRoom?.roomData);
+    sendMessage({ type: "playerReady", players: gameRoom?.roomData });
+  };
+
+  const handleReturnCard = (cardId) => {
+    const cardToReturn = mainTableItems.find((item) => item.id === cardId);
+    if (cardToReturn) {
+      setMainTableItems((items) => items.filter((item) => item.id !== cardId));
+      setPlayersHandItems((items) => [...items, cardToReturn]);
+      sendMessage({ type: "return card", cardId });
+    }
+  };
 
   return (
     <div className="main-table">

@@ -1,0 +1,21 @@
+.response-modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "subway-berlin-ot", sans-serif;
+
+  -webkit-text-stroke: black 1px;
+}
+.response-modal__title {
+  font-size: 172px;
+  font-weight: 900;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.response-modal__subtitle {
+  font-size: 80px;
+  font-weight: 700;
+  margin-bottom: 120px;
+  margin-top: 20px;
+}

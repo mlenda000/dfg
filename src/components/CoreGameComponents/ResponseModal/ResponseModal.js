@@ -16,15 +16,21 @@ const ResponseModal = ({ setShowResponseModal }) => {
 
   return (
     <div className="round-modal__overlay">
-      <div className="round-modal__content ">
-        <h1 className="round-modal__title">
-          {responseMsg ? "Correct!" : "Sorry, that wasn't right"}
+      <div className="response-modal__content ">
+        <h1 className="response-modal__title">
+          {responseMsg?.hasStreak
+            ? "WIN STREAK!"
+            : responseMsg?.wasCorrect
+            ? "DEBUNKED!"
+            : "OOPS!"}
         </h1>
-        {responseMsg?.streak && (
-          <h2 className="round-modal__subtitle">
-            {`You got a streak! ${responseMsg.streak} correct`}
-          </h2>
-        )}
+        <h3 className="response-modal__subtitle">
+          {responseMsg?.hasStreak
+            ? `YOU DEBUNKED ${responseMsg?.streak} IN A ROW`
+            : responseMsg?.wasCorrect
+            ? "YOU NAILED IT"
+            : "YOU'LL GET THEM NEXT TIME"}
+        </h3>
       </div>
     </div>
   );

@@ -1,37 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
-import { GlobalContext } from "../../../context/GlobalContext";
+// import { GlobalContext } from "../../../context/GlobalContext";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 import GameTimer from "../GameTimer/GameTimer";
 
-const Scoreboard = () => {
-  const { playerName, avatar } = useContext(GlobalContext);
-  const {
-    gameRound,
-    showGameTimer,
-    setShowGameTimer,
-    roundStart,
-    gameRoom,
-    playerReady,
-    playerId,
-  } = useContext(GameContext);
+const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
+  //   const { playerName, avatar } = useContext(GlobalContext);
+  const { gameRound, showGameTimer, gameRoom, roundTimer } =
+    useContext(GameContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowGameTimer(true);
-    }, 5000);
-  }, [roundStart, setShowGameTimer]);
-  useEffect(() => {}, [
-    playerName,
-    avatar,
-    gameRound,
-    gameRoom?.roomData?.players,
-  ]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {}, [JSON.stringify(gameRoom?.roomData)]);
+  //   console.log(gameRoom, "gameRoom in scoreboard");
 
-  //   console.log(avatar, playerId, "gameRoom in scoreboard");
-  // TODO: other player icons with the ability to show a check/tick on them when they have played their cards
   return (
     <div className="scoreboard">
       <img
@@ -42,16 +25,10 @@ const Scoreboard = () => {
       />
 
       <div className="scoreboard__avatar">
-        {/* <AvatarImage src={avatar} display="mini" playerName={playerName} />
-        <span className="scoreboard__names" style={{ marginLeft: "8px" }}>
-          {playerName}
-        </span> */}
         {gameRoom?.roomData?.length > 0 &&
           gameRoom?.roomData?.map((avatar, ready) => {
-            console.log(avatar, "avatar in scoreboard");
-
             return (
-              <>
+              <React.Fragment key={avatar?.id}>
                 {avatar?.status ? (
                   <img
                     src={process.env.PUBLIC_URL + "/icons/player-ready.png"}
@@ -71,7 +48,7 @@ const Scoreboard = () => {
                 >
                   {avatar?.name}
                 </span>
-              </>
+              </React.Fragment>
             );
           })}
       </div>
@@ -80,8 +57,10 @@ const Scoreboard = () => {
           <div className="scoreboard__timer">
             <GameTimer
               initialMinutes={0}
-              initialSeconds={30}
+              initialSeconds={roundTimer}
               initialMilliseconds={0}
+              roundHasEnded={roundHasEnded}
+              setRoundHasEnded={setRoundHasEnded}
             />
           </div>
         ) : (

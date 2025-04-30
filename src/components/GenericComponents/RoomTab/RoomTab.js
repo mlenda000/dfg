@@ -9,7 +9,7 @@ const RoomTab = ({ room, type, onClick }) => {
   React.useEffect(() => {
     // Trigger a re-render or handle updates when players change
     if (gameRoom?.gameData) {
-      console.log("Players updated:", gameRoom.gameData);
+      //   console.log("Players updated:", gameRoom.gameData);
     }
   }, [gameRoom?.gameData]);
 
@@ -19,7 +19,9 @@ const RoomTab = ({ room, type, onClick }) => {
       {gameRoom?.count > 0 && room === gameRoom?.room && (
         <div className="player-avatars">
           {gameRoom?.roomData?.map((player, index) => {
-            console.log(player, "player in RoomTab");
+            {
+              /* console.log(player, "player in RoomTab"); */
+            }
             return (
               <img
                 src={`${process.env.PUBLIC_URL}/images/Avatars/${player.avatar}`}

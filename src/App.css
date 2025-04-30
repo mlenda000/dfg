@@ -36,6 +36,7 @@
 @import "./components/CoreGameComponents/ResultModal/styles/result-modal.scss";
 @import "./components/CoreGameComponents/ResponseModal/styles/response-modal.scss";
 @import "./components/CoreGameComponents/ScoreModal/styles/score-modal.scss";
+@import "./components//CoreGameComponents//WaitingModal/styles/waiting-modal.scss";
 
 /* global style sheets */
 body {

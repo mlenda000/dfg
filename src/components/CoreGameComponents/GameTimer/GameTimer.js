@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { GameContext } from "../../../context/GameContext";
 
 const GameTimer = ({
   initialMinutes = 0,
-  initialSeconds = 0,
+  initialSeconds = 30,
   initialMilliseconds = 0,
+  roundHasEnded,
+  setRoundHasEnded,
 }) => {
   const [time, setTime] = useState({
     minutes: initialMinutes,
     seconds: initialSeconds,
     milliseconds: initialMilliseconds,
   });
+  const { sendMessage, setShowGameTimer } = useContext(GameContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,13 +40,18 @@ const GameTimer = ({
     return () => clearInterval(interval);
   }, []);
 
-  //TODO: this needs to send a message to the server when the timer reaches zero that the round is over
   useEffect(() => {
-    if (time.minutes === 0 && time.seconds === 0 && time.milliseconds === 0) {
-      // Assuming partysocket is already imported and initialized
-      // partysocket.send("finish_round", { message: "Timer reached zero" });
+    if (
+      time.minutes === 0 &&
+      time.seconds === 0 &&
+      time.milliseconds === 0 &&
+      !roundHasEnded
+    ) {
+      sendMessage({ type: "allReady", status: true });
+      setRoundHasEnded(true);
+      setShowGameTimer(false);
     }
-  }, [time]);
+  }, [roundHasEnded, sendMessage, setRoundHasEnded, setShowGameTimer, time]);
 
   return (
     <div className="timer">

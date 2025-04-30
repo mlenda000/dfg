@@ -29,7 +29,7 @@ const InfluencerCard = ({
         </div>
         {tacticUsed?.length > 0 && (
           <div className="influencer-card__tactic-count">
-            {tacticUsed.map(() => (
+            {tacticUsed.map((tactic) => (
               <img
                 src={
                   process.env.PUBLIC_URL +
@@ -38,6 +38,7 @@ const InfluencerCard = ({
                 alt="Tactic used count"
                 height="20px"
                 width="auto"
+                key={tactic}
               />
             ))}
           </div>

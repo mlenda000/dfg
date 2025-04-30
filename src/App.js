@@ -33,7 +33,8 @@ function App() {
                 </GameProvider>
               }
             />
-            <Route path="/credits" element={<CreditsPage />} />
+            {/*TODO:  when credits is added reenable this*/}
+            {/* <Route path="/credits" element={<CreditsPage />} /> */}
             <Route path="/user" element={<UserPage />} />
           </Routes>
         </BrowserRouter>

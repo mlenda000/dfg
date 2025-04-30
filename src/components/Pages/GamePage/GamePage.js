@@ -1,6 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../../context/GameContext";
-import { GlobalContext } from "../../../context/GlobalContext";
+// import { GlobalContext } from "../../../context/GlobalContext";
 import Scoreboard from "../../CoreGameComponents/ScoreBoard/ScoreBoard";
 import ActiveGamePage from "../ActiveGamePage/ActiveGamePage";
 import GameEndPage from "../GameEndPage/GameEndPage";
@@ -10,6 +10,7 @@ import ResultModal from "../../CoreGameComponents/ResultModal/ResultModal";
 import RoundModal from "../../CoreGameComponents/RoundModal/RoundModal";
 import ResponseModal from "../../CoreGameComponents/ResponseModal/ResponseModal";
 import ScoreModal from "../../CoreGameComponents/ScoreModal/ScoreModal";
+import WaitingModal from "../../CoreGameComponents/WaitingModal/WaitingModal";
 
 const GamePage = () => {
   const {
@@ -22,8 +23,19 @@ const GamePage = () => {
     showScoreCard,
     setShowResponseModal,
     setShowScoreCard,
+    gameRoom,
+    waitingForPlayers,
+    setWaitingForPlayers,
   } = useContext(GameContext);
-  const { playerName, avatar } = useContext(GlobalContext);
+  //   const { playerName, avatar } = useContext(GlobalContext);
+  const [roundHasEnded, setRoundHasEnded] = useState(false);
+
+  useEffect(() => {
+    if (gameRoom?.count === 5) {
+      setWaitingForPlayers(false);
+      setRoundStart(true);
+    }
+  }, [gameRoom?.count, setRoundStart, setWaitingForPlayers]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,8 +52,18 @@ const GamePage = () => {
         {gameState === "newRoom" && <CreateRoomPage />}
         {gameState === "game" && (
           <>
-            <Scoreboard />
-            <ActiveGamePage setRoundEnd={setRoundEnd} />
+            <Scoreboard
+              roundHasEnded={roundHasEnded}
+              setRoundHasEnded={setRoundHasEnded}
+            />
+            <ActiveGamePage
+              setRoundEnd={setRoundEnd}
+              roundHasEnded={roundHasEnded}
+              setRoundHasEnded={setRoundHasEnded}
+            />
+            {/* {waitingForPlayers && (
+              <WaitingModal setWaitingForPlayers={setWaitingForPlayers} />
+            )} */}
             {roundStart && <RoundModal setRoundStart={setRoundStart} />}
             {roundEnd && <ResultModal setRoundEnd={setRoundEnd} />}
             {showResponseModal && (
