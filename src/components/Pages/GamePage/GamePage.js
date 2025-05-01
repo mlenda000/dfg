@@ -46,7 +46,7 @@ const GamePage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setRoundStart(false);
-    }, 2000);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, [roundStart, setRoundStart]);
@@ -92,7 +92,7 @@ const GamePage = () => {
               <ScoreModal
                 setScoreCard={setShowScoreCard}
                 endGame={endGame}
-                setEndGame={setIsEndGame}
+                setIsEndGame={setIsEndGame}
               />
             )}
             {isEndGame && (
