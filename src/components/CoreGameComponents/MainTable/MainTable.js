@@ -57,14 +57,15 @@ const MainTable = ({
     setMessage,
     setSubmitForScoring,
   ]);
-
+  let index = 0;
   useEffect(() => {
     if (
       influencerCards.length > 0 &&
       gameCards.length > round &&
       isDeckShuffled
     ) {
-      setCurrentInfluencer(gameCards[0]);
+      setCurrentInfluencer(gameCards[index]);
+      index++;
     } else {
       console.log(
         "No influencer cards available or deck not shuffled yet. influencerCards:"
