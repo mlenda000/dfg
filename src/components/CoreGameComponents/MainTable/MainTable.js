@@ -16,7 +16,7 @@ const MainTable = ({
   mainTableItems,
   setMainTableItems,
   setSubmitForScoring,
-  setGameEnd,
+  //   setGameEnd,
 }) => {
   const {
     influencerCards,
@@ -63,7 +63,11 @@ const MainTable = ({
     ) {
       setCurrentInfluencer(gameCards[0]);
     } else {
-      setGameEnd(true);
+      console.log(
+        "No influencer cards available or deck not shuffled yet. influencerCards:",
+        influencerCards
+      );
+      //   setGameEnd(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

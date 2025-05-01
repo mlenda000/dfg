@@ -1,52 +1,48 @@
-.main-table{
-  position:relative;
+.main-table {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   height: fit-content;
   width: 100%;
   padding-inline: 16px;
 
-    .main-table__influencer{
-        width: 100%; 
-        height:100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    .main-table__tactics {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-        padding-inline: 16px;
-        gap: 4px;
-        border-radius: 24px;
-        background-color: rgba(0,0,0,.4);
-        outline: 3px dashed rgba(255,255,255,.2);
-        outline-offset: -20px;
-        
-    }
-    .main-table__background{
-        position: absolute;
-        top: 43%;
-        right: 17%;
-        color: #e89aab;
-        font-family: "technology";
-        font-size: 22px;
-
-    }
-    .main-table__finish-round{
-        position:absolute;
-        bottom: -2px;
-        right: 18px;
-        width: 100px;
-        height:auto;
-
-
-    }
-    .main-table__finish-round:hover{
-        scale: 1.5;
-        cursor: pointer;
-    }
-   
+  .main-table__influencer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-table__tactics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    padding-inline: 16px;
+    padding-bottom: 40px;
+    gap: 4px;
+    border-radius: 24px;
+    background-color: rgba(0, 0, 0, 0.4);
+    outline: 3px dashed rgba(255, 255, 255, 0.2);
+    outline-offset: -20px;
+  }
+  .main-table__background {
+    position: absolute;
+    top: 43%;
+    right: 17%;
+    color: #e89aab;
+    font-family: "technology";
+    font-size: 22px;
+  }
+  .main-table__finish-round {
+    position: absolute;
+    bottom: -2px;
+    right: 18px;
+    width: 100px;
+    height: auto;
+  }
+  .main-table__finish-round:hover {
+    scale: 1.5;
+    cursor: pointer;
+  }
 }
