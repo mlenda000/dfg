@@ -6,7 +6,6 @@ import {
 } from "../services/fireBaseFunctions";
 import usePartySocket from "partysocket/react";
 import { PARTYKIT_HOST } from "../services/env";
-import { parse } from "path-browserify";
 
 const GameContext = createContext();
 
@@ -34,6 +33,8 @@ const GameProvider = ({ children }) => {
   const [roundTimer, setRoundTimer] = useState(30);
   const [message, setMessage] = useState("");
   const [responseMsg, setResponseMsg] = useState("");
+  const [finalRound, setFinalRound] = useState(false);
+  const [endGame, setEndGame] = useState(false);
 
   const { isDeckShuffled, setIsDeckShuffled } = useContext(GlobalContext);
 
@@ -253,6 +254,10 @@ const GameProvider = ({ children }) => {
         message,
         responseMsg,
         isDeckShuffled,
+        finalRound,
+        endGame,
+        setEndGame,
+        setFinalRound,
         setMessage,
         setRoundTimer,
         setWaitingForPlayers,
