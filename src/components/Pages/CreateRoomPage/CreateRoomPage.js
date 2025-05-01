@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 import Input from "../../GenericComponents/Input/Input";
-import Button from "../../GenericComponents/Button/Button";
 
 const CreateRoomPage = () => {
   const navigate = useNavigate();
   const { room, setRoom, setRooms, setGameState } = useContext(GameContext);
+  const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
   const handleInput = (value) => {
     setRoom(value);
   };
@@ -22,7 +23,22 @@ const CreateRoomPage = () => {
   };
 
   return (
-    <div className="create-room">
+    <div
+      className="create-room"
+      style={{
+        backgroundImage: `url(${
+          process.env.PUBLIC_URL +
+          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+        })`,
+        backgroundSize: "cover",
+        margin: "0",
+        padding: "0",
+        position: "absolute",
+        top: 0,
+        width: "100%",
+        height: "100vh",
+      }}
+    >
       <button onClick={() => navigate(-1)} className="back-button">
         <img
           src={`${process.env.PUBLIC_URL}/images/back-button.png`}
@@ -48,7 +64,12 @@ const CreateRoomPage = () => {
         style={{ width: "25%", height: "auto" }}
         className="create-room__title"
       />
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
         <div className="create-room__input">
           <Input
             placeholder="Room name"

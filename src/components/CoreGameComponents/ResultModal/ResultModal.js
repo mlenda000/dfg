@@ -1,57 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
+
 import Tool from "../Tool/Tool"; // Assuming Tool is a component you want to show in the modal
-import Button from "../../GenericComponents/Button/Button";
 
 const ResultModal = ({ setRoundEnd }) => {
-  const {
-    currentInfluencer,
-    influencerCards,
-    gameRound,
-    setGameRound,
-    setCurrentInfluencer,
-    sendMessage,
-  } = useContext(GameContext);
+  const { setShowResponseModal } = useContext(GameContext);
+
   const [showComponents, setShowComponents] = useState(false);
   const [resultMessage, setResultMessage] = useState("0");
-  const gameCards = [...influencerCards];
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      setRoundEnd(false);
+      setShowResponseModal(true);
+    }, 9000);
+    const componentTimer = setTimeout(() => {
       setShowComponents(true);
     }, 4300);
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleDeal = () => {
-    if (gameCards.length > gameRound) {
-      setCurrentInfluencer(gameCards[gameRound]);
-      setGameRound(gameRound + 1);
-      const messageRdyInfluencer = {
-        type: "influencer",
-        villain: currentInfluencer?.villain,
-        tactic: currentInfluencer?.tacticUsed,
-      };
-      sendMessage(messageRdyInfluencer);
-      setRoundEnd(false);
-    }
-  };
-
-  // TODO: add a scoring modal that the next button takes you to let you know what you got
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(componentTimer);
+    };
+  }, [setRoundEnd, setShowResponseModal]);
 
   return (
-    <div className="result-modal__overlay">
+    <div className="result-modal__overlay" style={{ zIndex: 100 }}>
       <div className="result-modal__content ">
         <Tool showResults={showComponents} />
-
-        {showComponents && (
-          <div className="result-modal__button">
-            <Button onClick={handleDeal} display="primary">
-              Next
-            </Button>
-          </div>
-        )}
       </div>
     </div>
   );

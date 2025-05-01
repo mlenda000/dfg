@@ -1,67 +1,87 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
-import { GlobalContext } from "../../../context/GlobalContext";
+// import { GlobalContext } from "../../../context/GlobalContext";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 import GameTimer from "../GameTimer/GameTimer";
 
-const Scoreboard = () => {
-  const { playerName, avatar } = useContext(GlobalContext);
-  const {
-    playerScore,
-    gameRound,
-    showGameTimer,
-    setShowGameTimer,
-    otherPlayers,
-  } = useContext(GameContext);
+const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
+  //   const { playerName, avatar } = useContext(GlobalContext);
+  const { gameRound, showGameTimer, gameRoom, roundTimer } =
+    useContext(GameContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowGameTimer(true);
-    }, 5000);
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {}, [JSON.stringify(gameRoom?.roomData)]);
+  //   console.log(gameRoom, "gameRoom in scoreboard");
 
-  // TODO: other player icons with the ability to show a check/tick on them when they have played their cards
   return (
     <div className="scoreboard">
-      <div className="scoreboard__home">
-        <img
-          src={`${process.env.PUBLIC_URL}/icons/home.svg`}
-          alt="home"
-          onClick={() => navigate("/")}
-          width={40}
-          style={{ cursor: "pointer", color: "#e89aab" }}
-        />
-        {otherPlayers?.length > 0 &&
-          otherPlayers.map((avatar, ready) => (
-            <AvatarImage
-              src={avatar}
-              display="mini"
-              playerName={playerName}
-              playerReady={ready}
-            />
-          ))}
-      </div>
-      {showGameTimer ? (
-        <GameTimer
-          initialMinutes={0}
-          initialSeconds={30}
-          initialMilliseconds={0}
-        />
-      ) : (
-        <h1>
-          Round <span className="scoreboard__score-numeric">{gameRound}</span>
-        </h1>
-      )}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+          zIndex: 0,
+        }}
+      />
+      <img
+        src={`${process.env.PUBLIC_URL}/images/home-button.png`}
+        alt="home"
+        onClick={() => navigate("/")}
+        style={{ cursor: "pointer", zIndex: 2 }}
+      />
 
       <div className="scoreboard__avatar">
-        <AvatarImage src={avatar} display="mini" playerName={playerName} />
-        {/* {<p className="scoreboard__player-name">{playerName}</p>} */}
-        <h1 className="scoreboard__score">
-          <span className="scoreboard__score-numeric">{playerScore}</span>{" "}
-          Followers
-        </h1>
+        {gameRoom?.roomData?.length > 0 &&
+          gameRoom?.roomData?.map((avatar, ready) => {
+            return (
+              <React.Fragment key={avatar?.id}>
+                {avatar?.status ? (
+                  <img
+                    src={process.env.PUBLIC_URL + "/icons/player-ready.png"}
+                    alt="Player ready"
+                    width="60px"
+                    style={{ zIndex: 2 }}
+                  />
+                ) : (
+                  <AvatarImage
+                    src={avatar?.avatar}
+                    display="mini"
+                    playerReady={ready}
+                  />
+                )}
+                <span
+                  className="scoreboard__names"
+                  style={{ marginLeft: "8px", zIndex: 2 }}
+                >
+                  {avatar?.name}
+                </span>
+              </React.Fragment>
+            );
+          })}
+      </div>
+      <div style={{ width: "200px", zIndex: 2 }}>
+        {showGameTimer ? (
+          <div className="scoreboard__timer" style={{ zIndex: 2 }}>
+            <GameTimer
+              initialMinutes={0}
+              initialSeconds={roundTimer}
+              initialMilliseconds={0}
+              roundHasEnded={roundHasEnded}
+              setRoundHasEnded={setRoundHasEnded}
+            />
+          </div>
+        ) : (
+          <h1 className="scoreboard__timer" style={{ zIndex: 2 }}>
+            <span className="scoreboard__score-numeric" style={{ zIndex: 2 }}>
+              Round {gameRound}
+            </span>
+          </h1>
+        )}
       </div>
     </div>
   );

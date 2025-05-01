@@ -3,7 +3,6 @@ import React from "react";
 const CategoryCard = ({ name, image, text }) => {
   //ratio 2.5 : 3.5
 
-  console.log(image);
   return (
     <>
       {name === "The Truth" ? (

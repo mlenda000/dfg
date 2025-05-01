@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
-import Button from "../../GenericComponents/Button/Button";
 
 const InstructionsPage = () => {
   const navigate = useNavigate();
   const handleClick = () => navigate("/player-selection");
+  const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url(${
+          process.env.PUBLIC_URL +
+          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+        })`,
+        backgroundSize: "cover",
+        margin: "0",
+        padding: "0",
+        position: "absolute",
+        top: 0,
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+          zIndex: 0,
+        }}
+      />
       <button onClick={() => navigate(-1)} className="back-button">
         <img
           src={`${process.env.PUBLIC_URL}/images/back-button.png`}
@@ -26,12 +52,13 @@ const InstructionsPage = () => {
           style={{ cursor: "pointer", width: "50%", height: "auto" }}
         />
       </button>
-      <div className="instructions-page">
+      <div className="instructions-page" zIndex={1}>
         <img
           src={process.env.PUBLIC_URL + "/images/instructions.png"}
           alt="Instructions"
+          style={{ zIndex: 2 }}
         />
-        <div className="instruction-page__content">
+        <div className="instruction-page__content" style={{ zIndex: 2 }}>
           <ol>
             <li>
               You will be shown online articles which you must examine carefully
@@ -49,7 +76,7 @@ const InstructionsPage = () => {
           </ol>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

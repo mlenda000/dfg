@@ -34,7 +34,12 @@ const Tool = ({ showResults }) => {
             example="Influencer Example"
             category={currentInfluencer?.tacticUsed}
             villain={currentInfluencer?.villain}
-            image={process.env.PUBLIC_URL + `/images/influencer/scientist.png`}
+            image={
+              currentInfluencer?.newsImage
+                ? process.env.PUBLIC_URL +
+                  `/images/influencer/${currentInfluencer.newsImage}`
+                : process.env.PUBLIC_URL + `/images/influencer/scientist.png`
+            }
             display="modal"
           />
         </div>

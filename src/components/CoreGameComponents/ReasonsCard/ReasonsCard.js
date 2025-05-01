@@ -4,10 +4,10 @@ import { GameContext } from "../../../context/GameContext";
 const ReasonsCard = ({ reasons, onClick }) => {
   const { gameRound, influencerCards } = useContext(GameContext);
 
-  console.log(influencerCards, "influencer cards");
-  console.log(gameRound, "game round");
+  //   console.log(influencerCards, "influencer cards");
+  //   console.log(gameRound, "game round");
   const currentInfluencerCard = influencerCards[gameRound - 1];
-  console.log(currentInfluencerCard, "current influencer card");
+  //   console.log(currentInfluencerCard, "current influencer card");
   return (
     <div className="reasons-card">
       <div className="reasons-card__tactics">

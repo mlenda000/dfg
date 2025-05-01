@@ -1,24 +1,30 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GameContext } from "../../../context/GameContext";
+// import { GlobalContext } from "../../../context/GlobalContext";
 import MainTable from "../../CoreGameComponents/MainTable/MainTable";
 import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
 import { Droppable } from "../../GenericComponents/Droppable/Droppable";
 import { DndContext } from "@dnd-kit/core";
+import { all } from "axios";
 
-const ActiveGamePage = ({ setRoundEnd }) => {
+const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
   const {
     categoryCards,
     sendMessage,
     gameRound,
-    cardMessage,
-    setCardMessage,
     currentInfluencer,
     setCurrentInfluencer,
+    gameRoom,
+    setGameRoom,
+    playerId,
+    messages,
   } = useContext(GameContext);
+  //   const { playerName } = useContext(GlobalContext);
   const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([]);
   const [finishRound, setFinishRound] = useState(false);
+  const [submitForScoring, setSubmitForScoring] = useState(false);
 
   const [playersHandItems, setPlayersHandItems] = useState(playersHand);
 
@@ -36,13 +42,62 @@ const ActiveGamePage = ({ setRoundEnd }) => {
       const removeStartingText = mainTableItems.filter((card) => card.id !== 1);
 
       setMainTableItems([...removeStartingText, activeCard]);
-      sendCardToServer(activeCard.category);
+
+      setGameRoom((prevRoom) => {
+        const updatedPlayers = prevRoom.roomData.map((player) => {
+          if (player.id === playerId) {
+            return {
+              ...player,
+              tacticUsed: player?.tacticUsed
+                ? [...player.tacticUsed, activeCard.category]
+                : [activeCard.category],
+            };
+          }
+          return player;
+        });
+
+        return {
+          ...prevRoom,
+          roomData: updatedPlayers,
+        };
+      });
     }
   };
 
-  const sendCardToServer = (card) => {
-    sendMessage({ card, type: "tactic" });
-  };
+  useEffect(() => {
+    const handleFinishRound = () => {
+      sendMessage({
+        type: "endOfRound",
+        players: gameRoom.roomData,
+        round: gameRound,
+      });
+      setRoundEnd(true);
+    };
+
+    const allPlayersReady =
+      Array.isArray(gameRoom?.roomData) &&
+      gameRoom.roomData.length > 0 &&
+      gameRoom.roomData.every(
+        (player) => player?.status === true && player?.tacticUsed?.length > 0
+      );
+
+    if (allPlayersReady && !submitForScoring) {
+      console.log("All players are ready and conditional let me in");
+      setRoundHasEnded(true);
+      handleFinishRound();
+      setSubmitForScoring(true);
+      setRoundHasEnded(false);
+    }
+  }, [
+    gameRoom.roomData,
+    gameRound,
+    roundHasEnded,
+    sendMessage,
+    setRoundHasEnded,
+    submitForScoring,
+    messages,
+    setRoundEnd,
+  ]);
 
   useEffect(() => {
     if (mainTableItems.length > 0) {
@@ -52,33 +107,13 @@ const ActiveGamePage = ({ setRoundEnd }) => {
     }
   }, [mainTableItems]);
 
-  useEffect(() => {
-    if (cardMessage && typeof cardMessage !== "number") {
-      setMainTableItems([...mainTableItems, cardMessage]);
-    } else {
-      let updatedMainTableItems = [...mainTableItems];
-      for (let i = 0; i < cardMessage; i++) {
-        const index = updatedMainTableItems.findIndex(
-          (item) => item.imageUrl === "back.png"
-        );
-        if (index !== -1) {
-          updatedMainTableItems.splice(index, 1);
-        } else {
-          break;
-        }
-      }
-      setMainTableItems(updatedMainTableItems);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardMessage, setCardMessage]);
-
   return (
     <DndContext
       onDragEnd={(e) => {
         handleDrop(e);
       }}
     >
-      <div>
+      <div style={{ zIndex: 2 }}>
         <Droppable>
           <MainTable
             items={mainTableItems}
@@ -91,6 +126,7 @@ const ActiveGamePage = ({ setRoundEnd }) => {
             mainTableItems={mainTableItems}
             setMainTableItems={setMainTableItems}
             originalItems={playersHand}
+            setSubmitForScoring={setSubmitForScoring}
           />
         </Droppable>
         <PlayersHand items={playersHandItems} />

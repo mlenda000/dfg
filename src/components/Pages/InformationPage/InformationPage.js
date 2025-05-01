@@ -1,15 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
-import Button from "../../GenericComponents/Button/Button";
 
 const InformationPage = () => {
   const navigate = useNavigate();
   const handleClick = () => navigate("/instructions");
+  const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
 
   return (
-    <>
-      <div className="information-page">
-        <button onClick={() => navigate(-1)} className="back-button">
+    <div
+      style={{
+        backgroundImage: `url(${
+          process.env.PUBLIC_URL +
+          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+        })`,
+        backgroundSize: "cover",
+        margin: "0",
+        padding: "0",
+        position: "absolute",
+        top: 0,
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+          zIndex: 0,
+        }}
+      />
+      <div className="information-page" style={{ zIndex: 1 }}>
+        <button
+          onClick={() => navigate(-1)}
+          className="back-button"
+          style={{ zIndex: 2 }}
+        >
           <img
             src={process.env.PUBLIC_URL + "/images/back-button.png"}
             alt="Go back"
@@ -20,9 +50,9 @@ const InformationPage = () => {
           src={process.env.PUBLIC_URL + "/images/about.png"}
           alt="Super Debunkers"
           height="90px"
-          style={{ marginBottom: "-40px" }}
+          style={{ marginBottom: "-40px", zIndex: 2 }}
         />
-        <div className="information-page__content">
+        <div className="information-page__content" style={{ zIndex: 2 }}>
           <div className="information-page__title">
             ONLINE ACTIONS HAVE
             <br /> OFFLINE CONSEQUENCES
@@ -52,7 +82,7 @@ const InformationPage = () => {
           style={{ cursor: "pointer", width: "50%", height: "auto" }}
         />
       </button>
-    </>
+    </div>
   );
 };
 

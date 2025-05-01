@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { GlobalContext } from "./GlobalContext";
 import {
   fetchCategoryCards,
   fetchInfluencerCards,
@@ -10,12 +11,12 @@ const GameContext = createContext();
 
 const GameProvider = ({ children }) => {
   const [gameRound, setGameRound] = useState(1);
-  const [playerCount, setPlayerCount] = useState(0);
+  const [gameRoom, setGameRoom] = useState("");
+  const [playersInRoom, setPlayersInRoom] = useState([]);
   const [gameState, setGameState] = useState("lobby");
   const [categoryCards, setCategoryCards] = useState();
   const [influencerCards, setInfluencerCards] = useState();
   const [players, setPlayers] = useState([]);
-  const [playerScore, setPlayerScore] = useState(0);
   const [rooms, setRooms] = useState(["New game", "dfg-misinformation"]);
   const [cardMessage, setCardMessage] = useState(undefined);
   const [playerId, setPlayerId] = useState("");
@@ -23,8 +24,17 @@ const GameProvider = ({ children }) => {
   const [currentInfluencer, setCurrentInfluencer] = useState(null);
   const [showGameTimer, setShowGameTimer] = useState(false);
   const [showScoringModal, setShowScoringModal] = useState(false);
+  const [roundEnd, setRoundEnd] = useState(false);
+  const [roundStart, setRoundStart] = useState(false);
+  const [showResponseModal, setShowResponseModal] = useState(null);
+  const [showScoreCard, setShowScoreCard] = useState(false);
+  const [webSocketReady, setWebSocketReady] = useState(false);
+  const [waitingForPlayers, setWaitingForPlayers] = useState(true);
+  const [roundTimer, setRoundTimer] = useState(30);
+  const [message, setMessage] = useState("");
+  const [responseMsg, setResponseMsg] = useState("");
 
-  // TODO: undo a single tactic card
+  const { isDeckShuffled, setIsDeckShuffled } = useContext(GlobalContext);
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -41,36 +51,135 @@ const GameProvider = ({ children }) => {
     room: room,
     // return from the server if its connected
     onOpen() {
+      setWebSocketReady(true);
       console.log("Connected to the WebSocket server");
     },
 
     //when the server sends a message to the client it concats it to the list of previous messages
     onMessage(event) {
       const message = event.data;
-      const [type, id, data, count] = message.split("+");
-      //   console.log("message from server", type, id, data);
+      if (message && typeof message === "string") {
+        const parsedMessage = JSON.parse(message);
+        switch (parsedMessage?.type) {
+          case "announcement":
+            parsedMessage?.text &&
+              console.log("Announcement from server:", parsedMessage?.text);
+            break;
+          case "playerId":
+            setPlayerId(parsedMessage?.id);
+            break;
+          case "lobbyUpdate":
+            setGameRoom({
+              room: parsedMessage?.room,
+              count: parsedMessage?.count,
+              roomData: parsedMessage?.roomData?.players || [],
+            });
+            break;
+          case "card":
+            setCardMessage({
+              id: parsedMessage?.data,
+              imageUrl: parsedMessage?.id,
+            });
+            break;
+          case "undo":
+            console.log(
+              "undo message from server",
+              parsedMessage?.type,
+              parsedMessage?.id,
+              parsedMessage?.data
+            );
+            const removeThisManyCards = Number(parsedMessage?.id);
+            setCardMessage(removeThisManyCards);
+            break;
+          case "roomUpdate":
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              room: prevGameRoom?.room,
+              count: prevGameRoom?.count,
+              roomData:
+                parsedMessage?.players?.map((newPlayer) => {
+                  const existingPlayer = prevGameRoom?.roomData?.find(
+                    (player) => player.id === newPlayer.id
+                  );
+                  return existingPlayer ? existingPlayer : newPlayer;
+                }) ||
+                prevGameRoom?.roomData ||
+                [],
+            }));
+            break;
+          case "roundStart":
+            console.log("Game started with room data:", parsedMessage);
+            setRoundTimer(30); // Reset round timer to 30 seconds
+            setShowGameTimer(true);
+            break;
+          case "playerReady":
+            console.log(parsedMessage?.roomData, "playerReady");
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              roomData:
+                prevGameRoom?.roomData?.map((player) => {
+                  console.log(
+                    player,
+                    " ----------------------------------- player in playerReady"
+                  );
+                  const updatedPlayer = parsedMessage?.roomData.find(
+                    (data) => data.id === parsedMessage?.sender
+                  );
+                  return player.id === parsedMessage?.sender
+                    ? updatedPlayer
+                    : player;
+                }) || [],
+            }));
+            break;
+          case "allReady":
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              roomData: prevGameRoom?.roomData?.map((player) => ({
+                ...player,
+                status: true,
+              })),
+            }));
+            break;
+          case "scoreUpdate":
+            parsedMessage?.players.map((player) => {
+              player.scoreUpdated = false;
+              return player;
+            });
 
-      switch (type) {
-        case "id":
-          setPlayerId(id);
-          break;
-        case "score":
-          setPlayerScore(playerScore + Number(id));
-          break;
-        case "card":
-          setCardMessage({ id: data, imageUrl: id });
-          break;
-        case "undo":
-          console.log("undo message from server", type, id, data);
-          const removeThisManyCards = Number(id);
-          setCardMessage(removeThisManyCards);
-          break;
-        case "room":
-          console.log("room message from server", type, id, data, count);
-          setPlayerCount({ room: id, count });
-          break;
-        default:
-          break;
+            // Update the game room with the new scores
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              roomData: parsedMessage?.players,
+            }));
+            setMessage("endOfRound");
+            setResponseMsg({
+              wasCorrect: parsedMessage?.players?.find(
+                (player) => player.id === playerId
+              )?.wasCorrect,
+              hasStreak: parsedMessage?.players?.find(
+                (player) => player.id === playerId
+              )?.hasStreak,
+              streak: parsedMessage?.players?.find(
+                (player) => player.id === playerId
+              )?.streak,
+            });
+            console.log(
+              "All players scoreUpdated:",
+              parsedMessage,
+              "----------------------------------------------"
+            );
+            break;
+          case "shuffledDeck":
+            console.log("Deck shuffled ----------------------");
+            setInfluencerCards(parsedMessage?.data);
+            setIsDeckShuffled(true);
+            break;
+          default:
+            console.log("Unhandled message type from server:", parsedMessage);
+            break;
+        }
+      } else {
+        console.log("Received message from server:", message);
       }
 
       setMessages((prevMessages) => [...prevMessages, message]);
@@ -82,15 +191,13 @@ const GameProvider = ({ children }) => {
     },
   });
 
-  //   ws.addEventListener("message", (e) => {
-  //     console.log(e.data);
-  //   });
-
   const sendMessage = (input) => {
     // Check if the WebSocket connection is open
     if (ws.readyState === ws.OPEN) {
       //sends whatever message is in the input field to the server
       ws.send(JSON.stringify(input));
+    } else {
+      console.error("WebSocket connection is not open. Cannot send message.");
     }
   };
 
@@ -98,18 +205,25 @@ const GameProvider = ({ children }) => {
     // Implement your message handling logic here
     // console.log("New message:", message);
   };
-  //   console.log(messages, "messages");
 
+  useEffect(() => {
+    if (influencerCards?.length > 0 && !isDeckShuffled) {
+      sendMessage({
+        type: "startingDeck",
+        data: influencerCards,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [influencerCards]);
   return (
     <GameContext.Provider
       value={{
         gameRound,
-        playerCount,
+        gameRoom,
         gameState,
         categoryCards,
         influencerCards,
         players,
-        playerScore,
         cardMessage,
         playerId,
         rooms,
@@ -118,17 +232,36 @@ const GameProvider = ({ children }) => {
         currentInfluencer,
         showGameTimer,
         showScoringModal,
+        roundEnd,
+        roundStart,
+        showResponseModal,
+        showScoreCard,
+        webSocketReady,
+        playersInRoom,
+        waitingForPlayers,
+        roundTimer,
+        message,
+        responseMsg,
+        setMessage,
+        setRoundTimer,
+        setWaitingForPlayers,
+        setPlayersInRoom,
+        setShowResponseModal,
+        setShowScoreCard,
+        setRoundEnd,
+        setRoundStart,
         setShowGameTimer,
         setShowScoringModal,
         setCurrentInfluencer,
         setRoom,
         setPlayers,
         setRooms,
+        setMessages,
         setCardMessage,
         sendMessage,
         handleMessage,
         setGameRound,
-        setPlayerCount,
+        setGameRoom,
         setGameState,
       }}
     >
@@ -138,13 +271,3 @@ const GameProvider = ({ children }) => {
 };
 
 export { GameContext, GameProvider };
-
-// TODO: future improvement: add a function to shuffle the category cards
-// Utility function to shuffle the influencer deck
-export function shuffleInfluencerDeck(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-  }
-  return array;
-}

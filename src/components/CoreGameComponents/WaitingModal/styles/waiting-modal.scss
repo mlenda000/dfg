@@ -1,0 +1,41 @@
+.waiting-modal__content {
+    display: flex;
+    padding: 20px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    font-family: "subway-berlin-ot", sans-serif;
+    font-size: 44px;
+    -webkit-text-stroke: black 3px;
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+  
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.ellipsis--1, .ellipsis--2, .ellipsis--3 {
+    animation: fadeInOut 2s infinite;
+}
+
+.ellipsis--1 {
+    animation-delay: 0s;
+}
+
+.ellipsis--2 {
+    animation-delay: 0.5s;
+}
+
+.ellipsis--3 {
+    animation-delay: 1s;
+}

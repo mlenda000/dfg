@@ -1,32 +1,30 @@
-.scoreboard{
-    width: 100%;
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: "StussyScript", "Bradley",sans-serif;
-    margin-bottom:40px;
-   
+.scoreboard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "subway-berlin-ot", sans-serif;
+  padding-inline: 40px;
+  -webkit-text-stroke: black 1px;
 }
-.scoreboard__home{
-    margin-left: 40px;
-    color: white;
+.scoreboard__names {
+  margin-right: 40px;
+  margin-left: 4px;
+  font-size: 2.5em;
 }
-.scoreboard__score{
-    margin-right:40px;
-    margin-left: 12px;
-}
-.scoreboard__score-numeric{
-    font-size: 1.5em;
-    font-weight: bold;
-}
-.scoreboard__avatar{
-    display: flex;
-    align-items: center;
-    
-}
-.scoreboard__player-name{
-   
-    
 
+.scoreboard__avatar {
+  display: flex;
+  align-items: center;
+  margin-top: -20px;
+}
+.scoreboard-timer {
+  width: 150px;
+  margin-top: -20px;
+}
+.scoreboard__score-numeric {
+  padding-top: 0;
+  font-size: 1.5em;
+  font-weight: 900;
+  margin-right: 40px;
 }

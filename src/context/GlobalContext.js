@@ -7,6 +7,7 @@ const GlobalProvider = ({ children }) => {
   const [informationState, setInformationState] = useState(false);
   const [playerName, setPlayerName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [isDeckShuffled, setIsDeckShuffled] = useState(false);
 
   useEffect(() => {
     console.log("global context rendered");
@@ -22,6 +23,8 @@ const GlobalProvider = ({ children }) => {
         informationState,
         playerName,
         avatar,
+        isDeckShuffled,
+        setIsDeckShuffled,
         setAvatar,
         setPlayerName,
         setInformationState,

@@ -1,0 +1,27 @@
+.round-modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .80);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .round-modal__content {
+    display:flex;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: "subway-berlin-ot", sans-serif;
+    font-size: 74px;
+    -webkit-text-stroke: black 3px;
+  }
+
+  .round-modal__button {
+    position: absolute;
+    bottom: 60px;
+    right: 100px;
+    z-index: 1;
+  }
