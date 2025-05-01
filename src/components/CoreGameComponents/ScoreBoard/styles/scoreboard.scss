@@ -1,32 +1,30 @@
-.scoreboard{
-width: 100% ;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: "subway-berlin-ot",sans-serif;
-    padding-right: 40px;
-    -webkit-text-stroke: black 1px;
-   
+.scoreboard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "subway-berlin-ot", sans-serif;
+  padding-inline: 40px;
+  -webkit-text-stroke: black 1px;
 }
-.scoreboard__names{
-    margin-right:40px;
-    margin-left: 4px;
-    font-size: 2.5em;
+.scoreboard__names {
+  margin-right: 40px;
+  margin-left: 4px;
+  font-size: 2.5em;
 }
 
-.scoreboard__avatar{
-    display: flex;
-    align-items: center;
-    margin-top: -20px;   
+.scoreboard__avatar {
+  display: flex;
+  align-items: center;
+  margin-top: -20px;
 }
-.scoreboard-timer{
-    width: 150px;
-    margin-top: -20px;
-
+.scoreboard-timer {
+  width: 150px;
+  margin-top: -20px;
 }
-.scoreboard__score-numeric{
-    padding-top: 0;
-    font-size: 1.5em;
-    font-weight: 900;
-    margin-right: 40px;
+.scoreboard__score-numeric {
+  padding-top: 0;
+  font-size: 1.5em;
+  font-weight: 900;
+  margin-right: 40px;
 }

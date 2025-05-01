@@ -15,7 +15,7 @@ const ResponseModal = ({ setShowResponseModal }) => {
   }, [setShowResponseModal, setShowScoreCard]);
 
   return (
-    <div className="round-modal__overlay">
+    <div className="round-modal__overlay" style={{ zIndex: 100 }}>
       <div className="response-modal__content ">
         <h1 className="response-modal__title">
           {responseMsg?.hasStreak

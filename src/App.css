@@ -42,8 +42,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
-  background-image: url("/public/images/Background2.png") ;
+
   color: white;
 }
 

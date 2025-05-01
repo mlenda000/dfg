@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 import Input from "../../GenericComponents/Input/Input";
 
 const CreateRoomPage = () => {
   const navigate = useNavigate();
   const { room, setRoom, setRooms, setGameState } = useContext(GameContext);
+  const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
   const handleInput = (value) => {
     setRoom(value);
   };
@@ -21,7 +23,22 @@ const CreateRoomPage = () => {
   };
 
   return (
-    <div className="create-room">
+    <div
+      className="create-room"
+      style={{
+        backgroundImage: `url(${
+          process.env.PUBLIC_URL +
+          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+        })`,
+        backgroundSize: "cover",
+        margin: "0",
+        padding: "0",
+        position: "absolute",
+        top: 0,
+        width: "100%",
+        height: "100vh",
+      }}
+    >
       <button onClick={() => navigate(-1)} className="back-button">
         <img
           src={`${process.env.PUBLIC_URL}/images/back-button.png`}

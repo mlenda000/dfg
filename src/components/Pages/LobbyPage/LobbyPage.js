@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 import { GlobalContext } from "../../../context/GlobalContext";
 import RoomTab from "../../GenericComponents/RoomTab/RoomTab";
 
 const LobbyPage = () => {
-  const { setGameState, sendMessage, rooms, webSocketReady, gameRoom } =
+  const { setGameState, sendMessage, rooms, webSocketReady } =
     useContext(GameContext);
   const { avatar, playerName } = useContext(GlobalContext);
+  const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
   const [isConnected, setIsConnected] = useState(false);
 
   const navigate = useNavigate();
@@ -44,7 +46,32 @@ const LobbyPage = () => {
   return (
     <>
       {webSocketReady && (
-        <>
+        <div
+          style={{
+            backgroundImage: `url(${
+              process.env.PUBLIC_URL +
+              `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+            })`,
+            backgroundSize: "cover",
+            margin: "0",
+            padding: "0",
+            position: "absolute",
+            top: 0,
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+              zIndex: 1,
+            }}
+          />
           <button onClick={() => navigate(-1)} className="back-button">
             <img
               src={`${process.env.PUBLIC_URL}/images/back-button.png`}
@@ -55,12 +82,13 @@ const LobbyPage = () => {
             src={process.env.PUBLIC_URL + "/images/login-button.png"}
             alt="Logo"
             className="main-login"
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", zIndex: 2 }}
           />
           <div className="lobby">
             <img
               src={process.env.PUBLIC_URL + "/images/join-game.png"}
               alt="Join game"
+              style={{ zIndex: 2, marginBottom: "20px" }}
             />
             <div className="lobby__rooms">
               {rooms &&
@@ -73,7 +101,7 @@ const LobbyPage = () => {
                 ))}
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );

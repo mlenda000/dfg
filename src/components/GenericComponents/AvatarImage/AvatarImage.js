@@ -31,8 +31,9 @@ const AvatarImage = ({ src, alt, avatar, setAvatar, display }) => {
               scale: 1.2,
               border: "3px solid rgb(226, 31, 73)",
               boxShadow: "0 0 10px rgb(226, 31, 73)",
+              zIndex: 2,
             }
-          : {}
+          : { zIndex: 2 }
       }
     >
       <img
@@ -43,7 +44,7 @@ const AvatarImage = ({ src, alt, avatar, setAvatar, display }) => {
         }
         alt={alt}
         onClick={(e) => setAvatar(e.target.src)}
-        style={{ borderRadius: "50%", cursor: "pointer" }}
+        style={{ borderRadius: "50%", cursor: "pointer", zIndex: 2 }}
         className="avatar-image"
       />
     </div>

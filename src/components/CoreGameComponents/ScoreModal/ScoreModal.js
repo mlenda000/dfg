@@ -1,5 +1,6 @@
 import { useContext, useEffect, useCallback } from "react";
 import { GameContext } from "../../../context/GameContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 //TODO: style this properly with all content that needs to be displayed and is returned form the game
 
@@ -18,6 +19,7 @@ const ScoreModal = () => {
     setShowResponseModal,
     gameRoom,
   } = useContext(GameContext);
+  const { setThemeStyle } = useContext(ThemeContext);
 
   const handleDeal = useCallback(() => {
     const gameCards = [...influencerCards];
@@ -32,6 +34,7 @@ const ScoreModal = () => {
       };
 
       sendMessage(messageRdyInfluencer);
+      setThemeStyle(currentInfluencer?.villain);
       setShowScoreCard(false);
       setShowGameTimer(false);
       setRoundStart(true);
@@ -47,6 +50,7 @@ const ScoreModal = () => {
     setRoundStart,
     setShowGameTimer,
     setShowScoreCard,
+    setThemeStyle,
   ]);
 
   useEffect(() => {
@@ -56,7 +60,7 @@ const ScoreModal = () => {
   }, [handleDeal, setShowResponseModal, showResponseModal]);
 
   return (
-    <div className="round-modal__overlay">
+    <div className="round-modal__overlay" style={{ zIndex: 100 }}>
       <div className="score-modal__content ">
         <div className="score-modal__scores">
           <img

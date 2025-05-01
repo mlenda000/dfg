@@ -17,11 +17,22 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
 
   return (
     <div className="scoreboard">
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+          zIndex: 0,
+        }}
+      />
       <img
         src={`${process.env.PUBLIC_URL}/images/home-button.png`}
         alt="home"
         onClick={() => navigate("/")}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", zIndex: 2 }}
       />
 
       <div className="scoreboard__avatar">
@@ -34,6 +45,7 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
                     src={process.env.PUBLIC_URL + "/icons/player-ready.png"}
                     alt="Player ready"
                     width="60px"
+                    style={{ zIndex: 2 }}
                   />
                 ) : (
                   <AvatarImage
@@ -44,7 +56,7 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
                 )}
                 <span
                   className="scoreboard__names"
-                  style={{ marginLeft: "8px" }}
+                  style={{ marginLeft: "8px", zIndex: 2 }}
                 >
                   {avatar?.name}
                 </span>
@@ -52,9 +64,9 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
             );
           })}
       </div>
-      <div style={{ width: "200px" }}>
+      <div style={{ width: "200px", zIndex: 2 }}>
         {showGameTimer ? (
-          <div className="scoreboard__timer">
+          <div className="scoreboard__timer" style={{ zIndex: 2 }}>
             <GameTimer
               initialMinutes={0}
               initialSeconds={roundTimer}
@@ -64,8 +76,10 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
             />
           </div>
         ) : (
-          <h1 className="scoreboard__timer">
-            <span className="scoreboard__score-numeric">Round {gameRound}</span>
+          <h1 className="scoreboard__timer" style={{ zIndex: 2 }}>
+            <span className="scoreboard__score-numeric" style={{ zIndex: 2 }}>
+              Round {gameRound}
+            </span>
           </h1>
         )}
       </div>

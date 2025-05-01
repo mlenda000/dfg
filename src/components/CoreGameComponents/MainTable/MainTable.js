@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import InfluencerCard from "../InfluencerCard/InfluencerCard";
 import TacticsCard from "../TacticsCard/TacticsCard";
-import { useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 
 const MainTable = ({
   items,
@@ -16,9 +16,11 @@ const MainTable = ({
   mainTableItems,
   setMainTableItems,
   setSubmitForScoring,
+  setGameEnd,
 }) => {
   const { influencerCards, sendMessage, gameRoom, message, setMessage } =
     useContext(GameContext);
+  const { setThemeStyle } = useContext(ThemeContext);
 
   const gameCards = [...influencerCards];
 
@@ -34,7 +36,6 @@ const MainTable = ({
       setSubmitForScoring(false);
     };
     if (message === "endOfRound") {
-      console.log("in the if statement");
       resetTable();
     }
   }, [
@@ -51,11 +52,14 @@ const MainTable = ({
   useEffect(() => {
     if (influencerCards.length > 0 && gameCards.length > round) {
       setCurrentInfluencer(gameCards[0]);
+    } else {
+      setGameEnd(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    setThemeStyle(currentInfluencer?.villain);
     const messageRdyInfluencer = {
       type: "influencer",
       villain: currentInfluencer?.villain,

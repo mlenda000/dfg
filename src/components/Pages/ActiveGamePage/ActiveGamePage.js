@@ -65,7 +65,6 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
   };
 
   useEffect(() => {
-    console.log("ActiveGamePage useEffect called to finish round");
     const handleFinishRound = () => {
       sendMessage({
         type: "endOfRound",
@@ -82,9 +81,6 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
         (player) => player?.status === true && player?.tacticUsed?.length > 0
       );
 
-    console.log("All players ready:", allPlayersReady);
-    console.log("Submit for scoring:", submitForScoring);
-    console.log(allPlayersReady && !submitForScoring);
     if (allPlayersReady && !submitForScoring) {
       console.log("All players are ready and conditional let me in");
       setRoundHasEnded(true);
@@ -117,7 +113,7 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
         handleDrop(e);
       }}
     >
-      <div>
+      <div style={{ zIndex: 2 }}>
         <Droppable>
           <MainTable
             items={mainTableItems}

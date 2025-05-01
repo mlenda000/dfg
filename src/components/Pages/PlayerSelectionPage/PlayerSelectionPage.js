@@ -2,15 +2,12 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { ThemeContext } from "../../../context/ThemeContext";
-import Button from "../../GenericComponents/Button/Button";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 
 const PlayerSelectionPage = () => {
   const navigate = useNavigate();
   const { avatar, setAvatar } = useContext(GlobalContext);
-  const { themeStyle } = useContext(ThemeContext);
-
-  //TODO: update icons to Avis versions
+  const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
 
   const avatars = [
     `${process.env.PUBLIC_URL}/images/Avatars/avatar1.png`,
@@ -31,7 +28,33 @@ const PlayerSelectionPage = () => {
   };
 
   return (
-    <div className="player-selection">
+    <div
+      className="player-selection"
+      style={{
+        backgroundImage: `url(${
+          process.env.PUBLIC_URL +
+          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+        })`,
+        backgroundSize: "cover",
+        margin: "0",
+        padding: "0",
+        position: "absolute",
+        top: 0,
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+          zIndex: 0,
+        }}
+      />
       <button onClick={() => navigate(-1)} className="back-button">
         <img
           src={`${process.env.PUBLIC_URL}/images/back-button.png`}
@@ -55,7 +78,7 @@ const PlayerSelectionPage = () => {
       <img
         src={process.env.PUBLIC_URL + "/images/select-profile.png"}
         alt="Select profile"
-        style={{ width: "30%", height: "auto", marginTop: "80px" }}
+        style={{ width: "30%", height: "auto", marginTop: "80px", zIndex: 2 }}
       />
 
       <form

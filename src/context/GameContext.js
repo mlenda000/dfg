@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { GlobalContext } from "./GlobalContext";
 import {
   fetchCategoryCards,
   fetchInfluencerCards,
@@ -32,6 +33,8 @@ const GameProvider = ({ children }) => {
   const [roundTimer, setRoundTimer] = useState(30);
   const [message, setMessage] = useState("");
   const [responseMsg, setResponseMsg] = useState("");
+
+  const { isDeckShuffled, setIsDeckShuffled } = useContext(GlobalContext);
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
@@ -166,6 +169,11 @@ const GameProvider = ({ children }) => {
               "----------------------------------------------"
             );
             break;
+          case "shuffledDeck":
+            console.log("Deck shuffled ----------------------");
+            setInfluencerCards(parsedMessage?.data);
+            setIsDeckShuffled(true);
+            break;
           default:
             console.log("Unhandled message type from server:", parsedMessage);
             break;
@@ -197,8 +205,16 @@ const GameProvider = ({ children }) => {
     // Implement your message handling logic here
     // console.log("New message:", message);
   };
-  //   console.log(messages, "messages");
 
+  useEffect(() => {
+    if (influencerCards?.length > 0 && !isDeckShuffled) {
+      sendMessage({
+        type: "startingDeck",
+        data: influencerCards,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [influencerCards]);
   return (
     <GameContext.Provider
       value={{
@@ -255,13 +271,3 @@ const GameProvider = ({ children }) => {
 };
 
 export { GameContext, GameProvider };
-
-// TODO: future improvement: add a function to shuffle the category cards
-// Utility function to shuffle the influencer deck
-export function shuffleInfluencerDeck(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-  }
-  return array;
-}

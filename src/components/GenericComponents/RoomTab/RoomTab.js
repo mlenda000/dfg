@@ -14,14 +14,15 @@ const RoomTab = ({ room, type, onClick }) => {
   }, [gameRoom?.gameData]);
 
   return (
-    <button className="room-tab" onClick={() => onClick(playerName, room)}>
+    <button
+      className="room-tab"
+      onClick={() => onClick(playerName, room)}
+      style={{ zIndex: 2 }}
+    >
       <h2 className="room-tab__title">{room}</h2>
       {gameRoom?.count > 0 && room === gameRoom?.room && (
         <div className="player-avatars">
           {gameRoom?.roomData?.map((player, index) => {
-            {
-              /* console.log(player, "player in RoomTab"); */
-            }
             return (
               <img
                 src={`${process.env.PUBLIC_URL}/images/Avatars/${player.avatar}`}

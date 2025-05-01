@@ -25,7 +25,7 @@ const ResultModal = ({ setRoundEnd }) => {
   }, [setRoundEnd, setShowResponseModal]);
 
   return (
-    <div className="result-modal__overlay">
+    <div className="result-modal__overlay" style={{ zIndex: 100 }}>
       <div className="result-modal__content ">
         <Tool showResults={showComponents} />
       </div>

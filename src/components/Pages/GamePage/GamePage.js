@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../../context/GameContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 // import { GlobalContext } from "../../../context/GlobalContext";
 import Scoreboard from "../../CoreGameComponents/ScoreBoard/ScoreBoard";
 import ActiveGamePage from "../ActiveGamePage/ActiveGamePage";
@@ -29,6 +30,7 @@ const GamePage = () => {
   } = useContext(GameContext);
   //   const { playerName, avatar } = useContext(GlobalContext);
   const [roundHasEnded, setRoundHasEnded] = useState(false);
+  const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
 
   useEffect(() => {
     if (gameRoom?.count === 5) {
@@ -46,7 +48,20 @@ const GamePage = () => {
   }, [roundStart, setRoundStart]);
 
   return (
-    <div className="game-page">
+    <div
+      style={{
+        backgroundImage: `url(${
+          process.env.PUBLIC_URL +
+          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+        })`,
+        backgroundSize: "cover",
+
+        position: "absolute",
+        top: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <>
         {gameState === "lobby" && <LobbyPage />}
         {gameState === "newRoom" && <CreateRoomPage />}
