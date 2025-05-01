@@ -28,7 +28,10 @@ const MainTable = ({
   } = useContext(GameContext);
   const { setThemeStyle } = useContext(ThemeContext);
 
-  const gameCards = [...influencerCards];
+  const gameCards = React.useMemo(
+    () => [...influencerCards],
+    [influencerCards]
+  );
 
   useEffect(() => {
     const resetTable = () => {
