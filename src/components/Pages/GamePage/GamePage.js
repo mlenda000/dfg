@@ -12,6 +12,7 @@ import RoundModal from "../../CoreGameComponents/RoundModal/RoundModal";
 import ResponseModal from "../../CoreGameComponents/ResponseModal/ResponseModal";
 import ScoreModal from "../../CoreGameComponents/ScoreModal/ScoreModal";
 import WaitingModal from "../../CoreGameComponents/WaitingModal/WaitingModal";
+import EndGameModal from "../../CoreGameComponents/EndGameModal/EndGameModal";
 
 const GamePage = () => {
   const {
@@ -27,10 +28,13 @@ const GamePage = () => {
     gameRoom,
     waitingForPlayers,
     setWaitingForPlayers,
+    endGame,
+    setEndGame,
   } = useContext(GameContext);
   //   const { playerName, avatar } = useContext(GlobalContext);
   const [roundHasEnded, setRoundHasEnded] = useState(false);
   const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
+  const [isEndGame, setIsEndGame] = useState(false);
 
   useEffect(() => {
     if (gameRoom?.count === 5) {
@@ -84,7 +88,19 @@ const GamePage = () => {
             {showResponseModal && (
               <ResponseModal setShowResponseModal={setShowResponseModal} />
             )}
-            {showScoreCard && <ScoreModal setScoreCard={setShowScoreCard} />}
+            {showScoreCard && (
+              <ScoreModal
+                setScoreCard={setShowScoreCard}
+                endGame={endGame}
+                setEndGame={setIsEndGame}
+              />
+            )}
+            {isEndGame && (
+              <EndGameModal
+                setEndGame={setEndGame}
+                setIsEndGame={setIsEndGame}
+              />
+            )}
           </>
         )}
         {gameState === "end" && <GameEndPage />}

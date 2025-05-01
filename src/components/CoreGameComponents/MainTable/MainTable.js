@@ -25,6 +25,8 @@ const MainTable = ({
     message,
     setMessage,
     isDeckShuffled,
+    setFinalRound,
+    setGameEnd,
   } = useContext(GameContext);
   const { setThemeStyle } = useContext(ThemeContext);
 
@@ -66,12 +68,18 @@ const MainTable = ({
     ) {
       setCurrentInfluencer(gameCards[index]);
       index++;
+      if (index === 14) {
+        setFinalRound(true);
+      } else if (index === 15) {
+        setGameEnd(true);
+      }
     } else {
       console.log(
         "No influencer cards available or deck not shuffled yet. influencerCards:"
       );
       //   setGameEnd(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     gameCards,
     influencerCards.length,

@@ -2,12 +2,16 @@ import React, { useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
 
 const RoundModal = () => {
-  const { gameRound } = useContext(GameContext);
+  const { gameRound, finalRound } = useContext(GameContext);
 
   return (
     <div className="round-modal__overlay" style={{ zIndex: 100 }}>
       <div className="round-modal__content ">
-        <h1 className="round-modal__title">Round {gameRound}</h1>
+        {finalRound ? (
+          <h1 className="round-modal__title">Final round!</h1>
+        ) : (
+          <h1 className="round-modal__title">Round {gameRound}</h1>
+        )}
       </div>
     </div>
   );

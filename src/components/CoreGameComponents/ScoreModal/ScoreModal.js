@@ -4,7 +4,7 @@ import { ThemeContext } from "../../../context/ThemeContext";
 
 //TODO: style this properly with all content that needs to be displayed and is returned form the game
 
-const ScoreModal = () => {
+const ScoreModal = ({ setIsEndGame }) => {
   const {
     gameRound,
     setGameRound,
@@ -18,6 +18,7 @@ const ScoreModal = () => {
     showResponseModal,
     setShowResponseModal,
     gameRoom,
+    endGame,
   } = useContext(GameContext);
   const { setThemeStyle } = useContext(ThemeContext);
 
@@ -37,8 +38,13 @@ const ScoreModal = () => {
       setThemeStyle(currentInfluencer?.villain);
       setShowScoreCard(false);
       setShowGameTimer(false);
-      setRoundStart(true);
+      if (!endGame) {
+        setRoundStart(true);
+      } else {
+        setIsEndGame(true);
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     currentInfluencer?.tacticUsed,
     currentInfluencer?.villain,
@@ -47,6 +53,7 @@ const ScoreModal = () => {
     sendMessage,
     setCurrentInfluencer,
     setGameRound,
+    setIsEndGame,
     setRoundStart,
     setShowGameTimer,
     setShowScoreCard,
