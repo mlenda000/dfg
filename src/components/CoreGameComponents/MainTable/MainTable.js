@@ -18,8 +18,14 @@ const MainTable = ({
   setSubmitForScoring,
   setGameEnd,
 }) => {
-  const { influencerCards, sendMessage, gameRoom, message, setMessage } =
-    useContext(GameContext);
+  const {
+    influencerCards,
+    sendMessage,
+    gameRoom,
+    message,
+    setMessage,
+    isDeckShuffled,
+  } = useContext(GameContext);
   const { setThemeStyle } = useContext(ThemeContext);
 
   const gameCards = [...influencerCards];
@@ -50,7 +56,11 @@ const MainTable = ({
   ]);
 
   useEffect(() => {
-    if (influencerCards.length > 0 && gameCards.length > round) {
+    if (
+      influencerCards.length > 0 &&
+      gameCards.length > round &&
+      isDeckShuffled
+    ) {
       setCurrentInfluencer(gameCards[0]);
     } else {
       setGameEnd(true);

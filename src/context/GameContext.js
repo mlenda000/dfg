@@ -242,6 +242,7 @@ const GameProvider = ({ children }) => {
         roundTimer,
         message,
         responseMsg,
+        isDeckShuffled,
         setMessage,
         setRoundTimer,
         setWaitingForPlayers,
