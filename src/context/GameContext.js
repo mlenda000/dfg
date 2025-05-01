@@ -6,6 +6,7 @@ import {
 } from "../services/fireBaseFunctions";
 import usePartySocket from "partysocket/react";
 import { PARTYKIT_HOST } from "../services/env";
+import { parse } from "path-browserify";
 
 const GameContext = createContext();
 
@@ -105,6 +106,14 @@ const GameProvider = ({ children }) => {
                 }) ||
                 prevGameRoom?.roomData ||
                 [],
+            }));
+            break;
+          case "roomUpdate-PlayerLeft":
+            setGameRoom((prevGameRoom) => ({
+              ...prevGameRoom,
+              room: parsedMessage?.room,
+              count: parsedMessage?.count,
+              roomData: parsedMessage?.roomData?.players || [],
             }));
             break;
           case "roundStart":
@@ -211,6 +220,7 @@ const GameProvider = ({ children }) => {
       sendMessage({
         type: "startingDeck",
         data: influencerCards,
+        gameRoom: gameRoom,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
