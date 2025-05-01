@@ -64,13 +64,17 @@ const MainTable = ({
       setCurrentInfluencer(gameCards[0]);
     } else {
       console.log(
-        "No influencer cards available or deck not shuffled yet. influencerCards:",
-        influencerCards
+        "No influencer cards available or deck not shuffled yet. influencerCards:"
       );
       //   setGameEnd(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    gameCards,
+    influencerCards.length,
+    isDeckShuffled,
+    round,
+    setCurrentInfluencer,
+  ]);
 
   useEffect(() => {
     setThemeStyle(currentInfluencer?.villain);
