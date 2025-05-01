@@ -118,14 +118,14 @@ export const ImageCarousel = ({ images }) => {
   useEffect(() => {
     setTimeout(() => {
       setDetected(false);
-    }, 3000);
+    }, 2000);
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 1 second
+    }, 2000); // Change image every 3 second
     return () => clearInterval(interval);
   }, [images]);
-
+  console.log(images[currentIndex].toLowerCase() + ".png");
   return (
     <>
       {detected ? (

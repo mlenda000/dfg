@@ -7,7 +7,6 @@ const ResultModal = ({ setRoundEnd }) => {
   const { setShowResponseModal } = useContext(GameContext);
 
   const [showComponents, setShowComponents] = useState(false);
-  const [resultMessage, setResultMessage] = useState("0");
 
   useEffect(() => {
     const timer = setTimeout(() => {

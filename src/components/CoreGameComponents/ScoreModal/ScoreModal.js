@@ -2,8 +2,6 @@ import { useContext, useEffect, useCallback } from "react";
 import { GameContext } from "../../../context/GameContext";
 import { ThemeContext } from "../../../context/ThemeContext";
 
-//TODO: style this properly with all content that needs to be displayed and is returned form the game
-
 const ScoreModal = ({ setIsEndGame }) => {
   const {
     gameRound,

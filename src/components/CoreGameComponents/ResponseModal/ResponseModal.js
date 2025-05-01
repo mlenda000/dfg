@@ -9,7 +9,7 @@ const ResponseModal = ({ setShowResponseModal }) => {
     const timer = setTimeout(() => {
       setShowScoreCard(true);
       setShowResponseModal(false);
-    }, 1500);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [setShowResponseModal, setShowScoreCard]);

@@ -16,7 +16,6 @@ const MainTable = ({
   mainTableItems,
   setMainTableItems,
   setSubmitForScoring,
-  //   setGameEnd,
 }) => {
   const {
     influencerCards,
@@ -26,7 +25,7 @@ const MainTable = ({
     setMessage,
     isDeckShuffled,
     setFinalRound,
-    setGameEnd,
+    setEndGame,
   } = useContext(GameContext);
   const { setThemeStyle } = useContext(ThemeContext);
 
@@ -59,25 +58,25 @@ const MainTable = ({
     setMessage,
     setSubmitForScoring,
   ]);
-  let index = 0;
+  const indexRef = React.useRef(0);
   useEffect(() => {
     if (
       influencerCards.length > 0 &&
       gameCards.length > round &&
       isDeckShuffled
     ) {
-      setCurrentInfluencer(gameCards[index]);
-      index++;
-      if (index === 14) {
+      setCurrentInfluencer(gameCards[indexRef.current]);
+      indexRef.current++;
+      console.log(indexRef.current);
+      if (indexRef.current === 15) {
         setFinalRound(true);
-      } else if (index === 15) {
-        setGameEnd(true);
+      } else if (indexRef.current === 16) {
+        setEndGame(true);
       }
     } else {
       console.log(
         "No influencer cards available or deck not shuffled yet. influencerCards:"
       );
-      //   setGameEnd(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
