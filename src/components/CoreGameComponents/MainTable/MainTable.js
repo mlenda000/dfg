@@ -47,6 +47,10 @@ const MainTable = ({
     };
     if (message === "endOfRound") {
       resetTable();
+      setTimeout(() => {
+        setCurrentInfluencer(gameCards[indexRef.current]);
+        indexRef.current++;
+      }, 11000); // Wait for 11 seconds before setting the next influencer
     }
   }, [
     mainTableItems,
@@ -57,6 +61,8 @@ const MainTable = ({
     message,
     setMessage,
     setSubmitForScoring,
+    setCurrentInfluencer,
+    gameCards,
   ]);
   const indexRef = React.useRef(0);
   const newPlayerRef = React.useRef(true);
@@ -85,13 +91,6 @@ const MainTable = ({
     setEndGame,
     gameCards,
   ]);
-
-  useEffect(() => {
-    if (message === "endOfRound") {
-      setCurrentInfluencer(gameCards[indexRef.current]);
-      indexRef.current++;
-    }
-  }, [message, gameCards, setCurrentInfluencer]);
 
   useEffect(() => {
     setThemeStyle(currentInfluencer?.villain);
