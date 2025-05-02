@@ -1,16 +1,14 @@
-.players-area{
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-
+.players-area {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
 }
 
-.players-hand{
-    display:flex;
-    align-items: center;
-    padding-inline: 16px;
-    gap: 8px;
-    position: absolute;
-    bottom: 40px;
-
+.players-hand {
+  display: flex;
+  align-items: center;
+  padding-inline: 16px;
+  gap: 16px;
+  position: absolute;
+  bottom: 40px;
 }
