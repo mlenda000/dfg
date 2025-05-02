@@ -40,7 +40,7 @@ const GameProvider = ({ children }) => {
 
   useEffect(() => {
     fetchCategoryCards("category_cards", setCategoryCards);
-    fetchInfluencerCards("misinformation_cards", setInfluencerCards);
+    // fetchInfluencerCards("misinformation_cards", setInfluencerCards);
   }, []);
 
   // responses from the server
@@ -107,7 +107,10 @@ const GameProvider = ({ children }) => {
                 }) ||
                 prevGameRoom?.roomData ||
                 [],
+              deck: parsedMessage?.deck?.data || [],
             }));
+            setInfluencerCards(parsedMessage?.deck?.data || []);
+            setIsDeckShuffled(true);
             break;
           case "roomUpdate-PlayerLeft":
             setGameRoom((prevGameRoom) => ({
@@ -161,7 +164,10 @@ const GameProvider = ({ children }) => {
               ...prevGameRoom,
               roomData: parsedMessage?.players,
             }));
-            setMessage("endOfRound");
+            setMessage(
+              setTimeout(() => "endOfRound"),
+              11000
+            );
             setResponseMsg({
               wasCorrect: parsedMessage?.players?.find(
                 (player) => player.id === playerId
@@ -182,6 +188,10 @@ const GameProvider = ({ children }) => {
           case "shuffledDeck":
             console.log("Deck shuffled ----------------------");
             setInfluencerCards(parsedMessage?.data);
+            setIsDeckShuffled(true);
+            break;
+          case "retrieveDeck":
+            setInfluencerCards(parsedMessage?.deck?.data);
             setIsDeckShuffled(true);
             break;
           default:
@@ -217,7 +227,12 @@ const GameProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (influencerCards?.length > 0 && !isDeckShuffled) {
+    console.log(gameRoom, "gameRoom in GameProvider");
+    console.log(influencerCards, "influencerCards in GameProvider");
+    console.log(isDeckShuffled, "isDeckShuffled in GameProvider");
+    // console.log(!influencerCards?.length > 0 && !isDeckShuffled && gameRoom);
+    if (influencerCards?.length > 0 && !isDeckShuffled && gameRoom) {
+      console.log("Sending startingDeck message with influencerCards");
       sendMessage({
         type: "startingDeck",
         data: influencerCards,
@@ -225,7 +240,7 @@ const GameProvider = ({ children }) => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [influencerCards]);
+  }, [influencerCards, gameRoom]);
   return (
     <GameContext.Provider
       value={{
