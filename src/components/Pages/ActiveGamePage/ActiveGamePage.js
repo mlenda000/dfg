@@ -1,11 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GameContext } from "../../../context/GameContext";
-// import { GlobalContext } from "../../../context/GlobalContext";
 import MainTable from "../../CoreGameComponents/MainTable/MainTable";
 import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
 import { Droppable } from "../../GenericComponents/Droppable/Droppable";
 import { DndContext } from "@dnd-kit/core";
-import { all } from "axios";
 
 const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
   const {

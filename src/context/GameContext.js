@@ -164,10 +164,7 @@ const GameProvider = ({ children }) => {
               ...prevGameRoom,
               roomData: parsedMessage?.players,
             }));
-            setMessage(
-              setTimeout(() => "endOfRound"),
-              11000
-            );
+            setMessage("endOfRound");
             setResponseMsg({
               wasCorrect: parsedMessage?.players?.find(
                 (player) => player.id === playerId
