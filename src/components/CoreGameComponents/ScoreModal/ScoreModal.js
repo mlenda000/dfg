@@ -21,7 +21,11 @@ const ScoreModal = ({ setIsEndGame }) => {
   const { setThemeStyle } = useContext(ThemeContext);
 
   const handleDeal = useCallback(() => {
-    const gameCards = [...influencerCards];
+    console.log(influencerCards, "influencerCards");
+
+    const gameCards = Array.isArray(influencerCards)
+      ? [...influencerCards]
+      : [];
 
     if (gameCards.length > gameRound) {
       setCurrentInfluencer(gameCards[gameRound]);

@@ -30,7 +30,7 @@ const MainTable = ({
   const { setThemeStyle } = useContext(ThemeContext);
 
   const gameCards = React.useMemo(
-    () => [...influencerCards],
+    () => (Array.isArray(influencerCards) ? [...influencerCards] : []),
     [influencerCards]
   );
 
@@ -59,33 +59,39 @@ const MainTable = ({
     setSubmitForScoring,
   ]);
   const indexRef = React.useRef(0);
+  const newPlayerRef = React.useRef(true);
   useEffect(() => {
-    if (
-      influencerCards.length > 0 &&
-      gameCards.length > round &&
-      isDeckShuffled
-    ) {
-      setCurrentInfluencer(gameCards[indexRef.current]);
-      indexRef.current++;
-      console.log(indexRef.current);
-      if (indexRef.current === 15) {
-        setFinalRound(true);
-      } else if (indexRef.current === 16) {
-        setEndGame(true);
+    if (influencerCards?.length > 0 && isDeckShuffled) {
+      if (newPlayerRef.current) {
+        setCurrentInfluencer(gameCards[indexRef.current]);
+        indexRef.current++;
+        newPlayerRef.current = false; // Mark the player as no longer new
       }
     } else {
       console.log(
         "No influencer cards available or deck not shuffled yet. influencerCards:"
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (indexRef.current === 15) {
+      setFinalRound(true);
+    } else if (indexRef.current === 16) {
+      setEndGame(true);
+    }
   }, [
-    gameCards,
-    influencerCards.length,
+    influencerCards,
     isDeckShuffled,
-    round,
     setCurrentInfluencer,
+    setFinalRound,
+    setEndGame,
+    gameCards,
   ]);
+
+  useEffect(() => {
+    if (message === "endOfRound") {
+      setCurrentInfluencer(gameCards[indexRef.current]);
+      indexRef.current++;
+    }
+  }, [message, gameCards, setCurrentInfluencer]);
 
   useEffect(() => {
     setThemeStyle(currentInfluencer?.villain);
