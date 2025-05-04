@@ -45,6 +45,7 @@ body {
   padding: 0;
 
   color: white;
+  min-width:675px;
 }
 
 /* custom fonts */

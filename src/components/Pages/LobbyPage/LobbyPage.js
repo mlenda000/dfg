@@ -46,62 +46,67 @@ const LobbyPage = () => {
   return (
     <>
       {webSocketReady && (
-        <div
-          style={{
-            backgroundImage: `url(${
-              process.env.PUBLIC_URL +
-              `/images/backgrounds/${themeBackgrounds[themeStyle]}`
-            })`,
-            backgroundSize: "cover",
-            margin: "0",
-            padding: "0",
-            position: "absolute",
-            top: 0,
-            width: "100%",
-            height: "100vh",
-          }}
-        >
+        <>
+          <div className="main-login">
+            <img
+              src={process.env.PUBLIC_URL + "/images/login-button.png"}
+              alt="Logo"
+              className="main-login__image"
+              style={{ cursor: "pointer", zIndex: 2 }}
+            />
+          </div>
           <div
             style={{
+              backgroundImage: `url(${
+                process.env.PUBLIC_URL +
+                `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+              })`,
+              backgroundSize: "cover",
+              margin: "0",
+              padding: "0",
               position: "absolute",
               top: 0,
-              left: 0,
               width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
-              zIndex: 1,
+              height: "100vh",
             }}
-          />
-          <button onClick={() => navigate(-1)} className="back-button">
-            <img
-              src={`${process.env.PUBLIC_URL}/images/back-button.png`}
-              alt="Go back"
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+                zIndex: 1,
+              }}
             />
-          </button>
-          <img
-            src={process.env.PUBLIC_URL + "/images/login-button.png"}
-            alt="Logo"
-            className="main-login"
-            style={{ cursor: "pointer", zIndex: 2 }}
-          />
-          <div className="lobby">
-            <img
-              src={process.env.PUBLIC_URL + "/images/join-game.png"}
-              alt="Join game"
-              style={{ zIndex: 2, marginBottom: "20px" }}
-            />
-            <div className="lobby__rooms">
-              {rooms &&
-                rooms.map((room) => (
-                  <RoomTab
-                    room={room}
-                    onClick={() => handleClick(playerName, room, avatar)}
-                    key={room}
-                  />
-                ))}
+            <button onClick={() => navigate(-1)} className="back-button">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+                alt="Go back"
+              />
+            </button>
+            <div className="lobby">
+              <img
+                src={process.env.PUBLIC_URL + "/images/join-game.png"}
+                alt="Join game"
+                style={{ zIndex: 2, marginBottom: "20px" }}
+                className="instructions-title"
+              />
+              <div className="lobby__rooms">
+                {rooms &&
+                  rooms.map((room) => (
+                    <RoomTab
+                      room={room}
+                      onClick={() => handleClick(playerName, room, avatar)}
+                      key={room}
+                    />
+                  ))}
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

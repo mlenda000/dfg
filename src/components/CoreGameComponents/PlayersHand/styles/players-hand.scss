@@ -1,7 +1,15 @@
 .players-area {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  padding-top: 40px;
+
+  @media (max-width: 768px) {
+    padding-top: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 10px;
+  }
 }
 
 .players-hand {
@@ -11,4 +19,17 @@
   gap: 16px;
   position: absolute;
   bottom: 40px;
+
+  @media (max-width: 768px) {
+    padding-inline: 12px;
+    gap: 12px;
+    bottom: 30px;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    padding-inline: 8px;
+    gap: 8px;
+    bottom: 20px;
+  }
 }

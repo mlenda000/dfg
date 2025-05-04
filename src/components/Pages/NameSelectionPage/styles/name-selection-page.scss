@@ -3,12 +3,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 120px;
-  width: 100%;
   position: relative;
 
   .name-selection__title {
     margin-block: 32px;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 1rem;
+      margin-left: -100px;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 0.5rem;
+    }
   }
 
   .name-selection__input {
@@ -17,19 +28,70 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+
+    @media (max-width: 1024px) {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 1rem;
+      margin-left: -100px;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 0.5rem;
+    }
   }
 
   .name-selection__button {
     position: absolute;
     border: 0;
-    right: 120px;
-    bottom: 120px;
+    right: 5%;
+    bottom: 5%;
     margin-top: 4rem;
   }
 }
+
 .name-selection__avatar {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .name-selection {
+    margin-top: 80px;
+
+    .name-selection__button {
+      right: 10%;
+      bottom: 10%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .name-selection {
+    margin-top: 60px;
+
+    .next-button {
+      margin-right: 30px;
+    }
+
+    .name-selection__button {
+      right: 15%;
+      bottom: 15%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .name-selection {
+    margin-top: 40px;
+
+    .name-selection__button {
+      right: 20px;
+      bottom: 20px;
+    }
+  }
 }
