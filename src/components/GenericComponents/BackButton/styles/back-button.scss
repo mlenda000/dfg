@@ -1,33 +1,57 @@
 .back-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    visibility: hidden;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  visibility: hidden;
+  z-index: 1;
 
-    img {
-        visibility: visible;
-    }
-    &:hover {
-        transform: scale(1.1);
-        cursor: pointer;
-    }
+  img {
+    visibility: visible;
+  }
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }
 .next-button {
-    position: absolute;
-    bottom: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: transparent;
+  visibility: hidden;
+  z-index: 1;
+  margin-right: -100px;
+
+  img {
+    visibility: visible;
+  }
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    top: 0;
+    bottom: auto;
     right: 0;
-    background-color: transparent;
-    visibility: hidden;
-    z-index: 1;
-    margin-right: -100px;
+    margin-right: -120px;
+    margin-top: -16px;
 
     img {
-        visibility: visible;
+      transform: scale(0.9);
     }
-    &:hover {
-        transform: scale(1.1);
-        cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    top: 0;
+    bottom: auto;
+    right: 0;
+    margin-right: -150px;
+    margin-top: -14px;
+
+    img {
+      transform: scale(0.8);
     }
+  }
 }

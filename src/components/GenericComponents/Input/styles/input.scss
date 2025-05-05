@@ -1,23 +1,48 @@
-.input{
-    background-color: rgba(0, 0, 0, 0.4);
-    border: 0;
-    border-radius: 20px;
-    color:white;
-    width:50vw;
-    height: 80px;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 80px;
-    font-family: "subway-berlin-ot", sans-serif;
-    margin-bottom: 2rem;
-    -webkit-text-stroke: black 3px;
-    -webkit-text-stroke: ;
-    &::placeholder{
-        color: white;
-        
-        opacity: 0.5;
-    }
+.input {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 0;
+  border-radius: 20px;
+  color: white;
+  width: 50vw;
+  height: 80px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 5vw;
+  font-family: "subway-berlin-ot", sans-serif;
+  margin-bottom: 2rem;
+  -webkit-text-stroke: black 3px;
 
+  &::placeholder {
+    color: white;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 56px;
+    &::placeholder {
+      color: white;
+      opacity: 0.6;
+      -webkit-text-stroke: black 2px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 42px;
+    &::placeholder {
+      color: white;
+      opacity: 0.7;
+      -webkit-text-stroke: black 2px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 32px;
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+      -webkit-text-stroke: black 1px;
+    }
+  }
 }

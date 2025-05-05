@@ -7,49 +7,58 @@ const Main = () => {
   const navigate = useNavigate();
   const handleClick = () => navigate("/information");
   return (
-    <div
-      className="main-page"
-      style={{
-        backgroundImage: `url(${
-          process.env.PUBLIC_URL +
-          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
-        })`,
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
-          zIndex: 0,
-        }}
-      />
-      <div className="main">
+    <>
+      <div className="main-login">
         <img
-          src={process.env.PUBLIC_URL + "/images/SuperDebunkers.png"}
-          alt="Super Debunkers"
-          width="50%"
-          height="auto"
-          style={{ zIndex: 1 }}
-        />
-
-        <img
-          src={process.env.PUBLIC_URL + "/images/play-button.png"}
-          alt="Play"
-          onClick={handleClick}
-          style={{ cursor: "pointer", marginTop: "-60px", zIndex: 1 }}
+          src={process.env.PUBLIC_URL + "/images/login-button.png"}
+          alt="Logo"
+          style={{ cursor: "pointer" }}
+          className="main-login__image"
         />
       </div>
-      <img
-        src={process.env.PUBLIC_URL + "/images/login-button.png"}
-        alt="Logo"
-        className="main-login"
-        style={{ cursor: "pointer" }}
-      />
-    </div>
+      <div
+        className="main-page"
+        style={{
+          backgroundImage: `url(${
+            process.env.PUBLIC_URL +
+            `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+          })`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "repeat-y",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+            zIndex: 0,
+          }}
+        />
+        <div className="main">
+          <img
+            src={process.env.PUBLIC_URL + "/images/SuperDebunkers.png"}
+            alt="Super Debunkers"
+            width="50%"
+            height="auto"
+            style={{ zIndex: 1 }}
+          />
+          <img
+            src={process.env.PUBLIC_URL + "/images/play-button.png"}
+            alt="Play"
+            onClick={handleClick}
+            style={{ cursor: "pointer", marginTop: "-60px", zIndex: 1 }}
+            className="play-button__image"
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

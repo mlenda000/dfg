@@ -1,39 +1,76 @@
-.avatar-image-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: rgba(0,0,0,.4);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 3px solid rgba(255,255,255,1);
-    overflow: hidden;
-    margin-block: 4rem;
-}
-.avatar-image-container:hover{
-    cursor: pointer;
-    transform: scale(1.3) ;
-    transition: transform 0.3s ease-in-out;
-}
-.avatar-image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.avatar-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid rgba(255, 255, 255, 1);
+  overflow: hidden;
+  margin-block: 4rem;
+
+  @media (max-width: 1024px) {
+    margin-block: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 60%;
+    height: auto;
+    margin-block: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 50%;
+    margin-block: 0.5rem;
+  }
 }
 
-.avatar-image-container__mini{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-
-    overflow: hidden;
+.avatar-image-container:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+  transition: transform 0.3s ease-in-out;
 }
-.avatar-image-container__chosen-avatar{
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background-color: rgba(0,0,0,.4);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 3px solid rgba(255,255,255,.4);
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-image-container__mini {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
+
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.avatar-image-container__chosen-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.4);
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media (max-width: 480px) {
+    width: 75px;
+    height: 75px;
+  }
 }

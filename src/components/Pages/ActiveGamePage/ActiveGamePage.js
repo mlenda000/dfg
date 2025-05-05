@@ -111,23 +111,27 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
         handleDrop(e);
       }}
     >
-      <div style={{ zIndex: 2 }}>
-        <Droppable>
-          <MainTable
-            items={mainTableItems}
-            round={gameRound}
-            currentInfluencer={currentInfluencer}
-            setCurrentInfluencer={setCurrentInfluencer}
-            finishRound={finishRound}
-            setRoundEnd={setRoundEnd}
-            setPlayersHandItems={setPlayersHandItems}
-            mainTableItems={mainTableItems}
-            setMainTableItems={setMainTableItems}
-            originalItems={playersHand}
-            setSubmitForScoring={setSubmitForScoring}
-          />
-        </Droppable>
-        <PlayersHand items={playersHandItems} />
+      <div style={{ zIndex: 2 }} className="active-game-page">
+        <div className="top-section">
+          <Droppable style={{ padding: 0, paddingInline: "4px" }}>
+            <MainTable
+              items={mainTableItems}
+              round={gameRound}
+              currentInfluencer={currentInfluencer}
+              setCurrentInfluencer={setCurrentInfluencer}
+              finishRound={finishRound}
+              setRoundEnd={setRoundEnd}
+              setPlayersHandItems={setPlayersHandItems}
+              mainTableItems={mainTableItems}
+              setMainTableItems={setMainTableItems}
+              originalItems={playersHand}
+              setSubmitForScoring={setSubmitForScoring}
+            />
+          </Droppable>
+        </div>
+        <div className="bottom-section">
+          <PlayersHand items={playersHandItems} />
+        </div>
       </div>
     </DndContext>
   );

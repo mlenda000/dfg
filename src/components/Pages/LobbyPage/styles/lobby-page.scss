@@ -7,18 +7,42 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-background);
+
   .lobby__title {
-    font-size: 4em;
+    font-size: 3em;
     font-family: "podium-soft", sans-serif;
     color: #e89aa8;
   }
+
   .lobby__rooms {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 800px;
-    gap: 20px;
+    max-width: 600px;
+    gap: 15px;
+  }
+
+  @media (min-width: 768px) {
+    .lobby__title {
+      font-size: 4em;
+    }
+
+    .lobby__rooms {
+      max-width: 700px;
+      gap: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lobby__title {
+      font-size: 5em;
+    }
+
+    .lobby__rooms {
+      max-width: 800px;
+      gap: 25px;
+    }
   }
 }
