@@ -102,3 +102,90 @@
   bottom: 25px;
   right: 30px;
 }
+
+@media (max-width: 1024px) {
+  .influencer-card {
+    min-width: 500px;
+
+    .influencer-card__content {
+      max-width: 600px;
+      max-height: 350px;
+    }
+    .influencer-card__title {
+      font-size: 20px;
+    }
+    .influencer-card__description {
+      font-size: 14px;
+    }
+    .influencer-card__text {
+      width: 350px;
+      padding-inline: 20px;
+    }
+  }
+
+  .influencer-card__modal {
+    min-width: 400px;
+
+    .influencer-card__content {
+      width: 500px;
+      height: 300px;
+    }
+    .influencer-card__title {
+      font-size: 20px;
+    }
+    .influencer-card__description {
+      font-size: 12px;
+    }
+    .influencer-card__text {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .influencer-card {
+    min-width: 300px;
+    max-width: 90%;
+
+    .influencer-card__content {
+      max-width: 100%;
+      max-height: 300px;
+    }
+    .influencer-card__title {
+      font-size: 16px;
+    }
+    .influencer-card__images {
+      max-height: 300px;
+      width: auto;
+    }
+    .influencer-card__description {
+      font-size: 12px;
+    }
+    .influencer-card__text {
+      width: 100%;
+      padding-inline: 16px;
+    }
+    .influencer-card__tactic-count {
+      bottom: 10px;
+      right: 20px;
+    }
+  }
+
+  .influencer-card__modal {
+    min-width: 300px;
+
+    .influencer-card__content {
+      width: 100%;
+      height: 250px;
+    }
+    .influencer-card__title {
+      font-size: 18px;
+    }
+    .influencer-card__description {
+      font-size: 10px;
+    }
+    .influencer-card__text {
+      font-size: 10px;
+    }
+  }
+}

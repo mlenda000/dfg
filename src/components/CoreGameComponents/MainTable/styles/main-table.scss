@@ -26,12 +26,14 @@
     background-color: rgba(0, 0, 0, 0.4);
     outline: 3px dashed rgba(255, 255, 255, 0.2);
     outline-offset: -20px;
+    position: relative;
+    min-height: 400px;
   }
 
   .main-table__background {
     position: absolute;
     top: 43%;
-    right: 17%;
+    right: 30%;
     color: #e89aab;
     font-family: "technology";
     font-size: 22px;
@@ -58,38 +60,64 @@
       grid-template-columns: repeat(2, 1fr);
       padding-inline: 12px;
       padding-bottom: 30px;
+      min-height: 300px;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 12px;
     }
 
     .main-table__background {
-      top: 40%;
-      right: 10%;
       font-size: 18px;
     }
 
     .main-table__finish-round {
-      right: 12px;
+      right: 240px;
       width: 80px;
     }
   }
+  @media (max-width: 1028px) {
+    grid-template-columns: 1fr;
+    padding-inline: 14px;
 
+    .main-table__tactics {
+      grid-template-columns: repeat(2, 1fr);
+      padding-inline: 14px;
+      padding-bottom: 35px;
+      min-height: 350px;
+      width: 70%;
+      margin: 0 auto;
+      margin-top: 16px;
+    }
+
+    .main-table__background {
+      font-size: 20px;
+      top: 40%;
+      right: 30%;
+    }
+
+    .main-table__finish-round {
+      right: 140px;
+      width: 90px;
+    }
+  }
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     padding-inline: 8px;
 
     .main-table__tactics {
-      grid-template-columns: 1fr;
       padding-inline: 8px;
       padding-bottom: 20px;
+      width: 90%;
     }
 
     .main-table__background {
-      top: 35%;
-      right: 5%;
+      right: 20%;
       font-size: 16px;
     }
 
     .main-table__finish-round {
-      right: 8px;
+      right: 55px;
+      bottom: 10px;
       width: 60px;
     }
   }

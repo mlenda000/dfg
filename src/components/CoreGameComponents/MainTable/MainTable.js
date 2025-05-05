@@ -138,6 +138,15 @@ const MainTable = ({
         />
       </div>
       <div className="main-table__tactics">
+        <div
+          className="main-table__background"
+          style={finishRound ? { display: "none" } : { display: "block" }}
+        >
+          <img
+            src={process.env.PUBLIC_URL + "/images/place-cards.png"}
+            alt="Place cards"
+          />
+        </div>
         {items.map((card) => (
           <TacticsCard
             name={card?.name}
@@ -160,15 +169,6 @@ const MainTable = ({
           />
         </div>
       )}
-      <div
-        className="main-table__background"
-        style={finishRound ? { display: "none" } : { display: "block" }}
-      >
-        <img
-          src={process.env.PUBLIC_URL + "/images/place-cards.png"}
-          alt="Place cards"
-        />
-      </div>
     </div>
   );
 };
