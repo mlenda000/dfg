@@ -23,11 +23,6 @@ const Main = () => {
             process.env.PUBLIC_URL +
             `/images/backgrounds/${themeBackgrounds[themeStyle]}`
           })`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "repeat-y",
-          height: "100%",
-          width: "100%",
         }}
       >
         <div

@@ -52,60 +52,63 @@ const GamePage = () => {
   }, [roundStart, setRoundStart]);
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${
-          process.env.PUBLIC_URL +
-          `/images/backgrounds/${themeBackgrounds[themeStyle]}`
-        })`,
-        backgroundSize: "cover",
-
-        position: "absolute",
-        top: 0,
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <>
-        {gameState === "lobby" && <LobbyPage />}
-        {gameState === "newRoom" && <CreateRoomPage />}
-        {gameState === "game" && (
-          <>
-            <Scoreboard
-              roundHasEnded={roundHasEnded}
-              setRoundHasEnded={setRoundHasEnded}
-            />
-            <ActiveGamePage
-              setRoundEnd={setRoundEnd}
-              roundHasEnded={roundHasEnded}
-              setRoundHasEnded={setRoundHasEnded}
-            />
-            {/* {waitingForPlayers && (
+    <>
+      <div
+        style={{
+          backgroundImage: `url(${
+            process.env.PUBLIC_URL +
+            `/images/backgrounds/${themeBackgrounds[themeStyle]}`
+          })`,
+        }}
+        className="main-page"
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
+            zIndex: 0,
+          }}
+        />
+      </div>
+      {gameState === "lobby" && <LobbyPage />}
+      {gameState === "newRoom" && <CreateRoomPage />}
+      {gameState === "game" && (
+        <>
+          <Scoreboard
+            roundHasEnded={roundHasEnded}
+            setRoundHasEnded={setRoundHasEnded}
+          />
+          <ActiveGamePage
+            setRoundEnd={setRoundEnd}
+            roundHasEnded={roundHasEnded}
+            setRoundHasEnded={setRoundHasEnded}
+          />
+          {/* {waitingForPlayers && (
               <WaitingModal setWaitingForPlayers={setWaitingForPlayers} />
             )} */}
-            {roundStart && <RoundModal setRoundStart={setRoundStart} />}
-            {roundEnd && <ResultModal setRoundEnd={setRoundEnd} />}
-            {showResponseModal && (
-              <ResponseModal setShowResponseModal={setShowResponseModal} />
-            )}
-            {showScoreCard && (
-              <ScoreModal
-                setScoreCard={setShowScoreCard}
-                endGame={endGame}
-                setIsEndGame={setIsEndGame}
-              />
-            )}
-            {isEndGame && (
-              <EndGameModal
-                setEndGame={setEndGame}
-                setIsEndGame={setIsEndGame}
-              />
-            )}
-          </>
-        )}
-        {gameState === "end" && <GameEndPage />}
-      </>
-    </div>
+          {roundStart && <RoundModal setRoundStart={setRoundStart} />}
+          {roundEnd && <ResultModal setRoundEnd={setRoundEnd} />}
+          {showResponseModal && (
+            <ResponseModal setShowResponseModal={setShowResponseModal} />
+          )}
+          {showScoreCard && (
+            <ScoreModal
+              setScoreCard={setShowScoreCard}
+              endGame={endGame}
+              setIsEndGame={setIsEndGame}
+            />
+          )}
+          {isEndGame && (
+            <EndGameModal setEndGame={setEndGame} setIsEndGame={setIsEndGame} />
+          )}
+        </>
+      )}
+      {gameState === "end" && <GameEndPage />}
+    </>
   );
 };
 

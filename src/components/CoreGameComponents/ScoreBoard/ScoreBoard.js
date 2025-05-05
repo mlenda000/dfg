@@ -17,22 +17,19 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
 
   return (
     <div className="scoreboard">
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(190, 190, 190, 0.6)", // Adjust the color and transparency
-          zIndex: 0,
-        }}
-      />
       <img
         src={`${process.env.PUBLIC_URL}/images/home-button.png`}
         alt="home"
         onClick={() => navigate("/")}
         style={{ cursor: "pointer", zIndex: 2 }}
+        className="scoreboard__home-button"
+      />
+      <img
+        src={`${process.env.PUBLIC_URL}/images/home-button-small.png`}
+        alt="home"
+        onClick={() => navigate("/")}
+        style={{ cursor: "pointer", zIndex: 2 }}
+        className="scoreboard__home-button-small"
       />
 
       <div className="scoreboard__avatar">
@@ -64,19 +61,17 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
             );
           })}
       </div>
-      <div style={{ width: "200px", zIndex: 2 }}>
+      <div className="scoreboard-timer" style={{ zIndex: 2 }}>
         {showGameTimer ? (
-          <div className="scoreboard__timer" style={{ zIndex: 2 }}>
-            <GameTimer
-              initialMinutes={0}
-              initialSeconds={roundTimer}
-              initialMilliseconds={0}
-              roundHasEnded={roundHasEnded}
-              setRoundHasEnded={setRoundHasEnded}
-            />
-          </div>
+          <GameTimer
+            initialMinutes={0}
+            initialSeconds={roundTimer}
+            initialMilliseconds={0}
+            roundHasEnded={roundHasEnded}
+            setRoundHasEnded={setRoundHasEnded}
+          />
         ) : (
-          <h1 className="scoreboard__timer" style={{ zIndex: 2 }}>
+          <h1>
             <span className="scoreboard__score-numeric" style={{ zIndex: 2 }}>
               Round {gameRound}
             </span>

@@ -17,7 +17,7 @@ const LobbyPage = () => {
   const handleClick = (name, room, avatar) => {
     // console.log("handleClick", name, room);
     avatar = avatar.substring(avatar.lastIndexOf("/") + 1);
-    if (room === "New game") {
+    if (room === "Create room") {
       setGameState("newRoom");
     } else {
       sendMessage({
@@ -31,7 +31,7 @@ const LobbyPage = () => {
 
   useEffect(() => {
     if (webSocketReady && !isConnected) {
-      const filteredRooms = rooms.find((room) => room !== "New game");
+      const filteredRooms = rooms.find((room) => room !== "Create room");
       const message = {
         type: "enteredLobby",
         room: filteredRooms,
@@ -61,14 +61,8 @@ const LobbyPage = () => {
                 process.env.PUBLIC_URL +
                 `/images/backgrounds/${themeBackgrounds[themeStyle]}`
               })`,
-              backgroundSize: "cover",
-              margin: "0",
-              padding: "0",
-              position: "absolute",
-              top: 0,
-              width: "100%",
-              height: "100vh",
             }}
+            className="main-page"
           >
             <div
               style={{

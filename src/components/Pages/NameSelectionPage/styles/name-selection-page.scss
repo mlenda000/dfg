@@ -4,21 +4,26 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-top: 180px;
 
   .name-selection__title {
     margin-block: 32px;
+    width: 25%;
 
     @media (max-width: 1024px) {
       margin-bottom: 1.5rem;
+      width: 30%;
     }
 
     @media (max-width: 768px) {
       margin-bottom: 1rem;
       margin-left: -100px;
+      width: 40%;
     }
 
     @media (max-width: 480px) {
       margin-bottom: 0.5rem;
+      width: 80%;
     }
   }
 
@@ -61,7 +66,7 @@
 
 @media (max-width: 1024px) {
   .name-selection {
-    margin-top: 80px;
+    margin-top: 180px;
 
     .name-selection__button {
       right: 10%;
@@ -72,7 +77,7 @@
 
 @media (max-width: 768px) {
   .name-selection {
-    margin-top: 60px;
+    margin-top: 260px;
 
     .next-button {
       margin-right: 30px;
@@ -87,7 +92,8 @@
 
 @media (max-width: 480px) {
   .name-selection {
-    margin-top: 40px;
+    margin-top: 240px;
+    margin-left: 100px;
 
     .name-selection__button {
       right: 20px;
