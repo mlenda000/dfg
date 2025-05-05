@@ -28,20 +28,14 @@ const NameSelectionPage = () => {
           style={{ cursor: "pointer", zIndex: 2 }}
         />
       </div>
+
       <div
-        className="name-selection "
+        className="main-page"
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL +
             `/images/backgrounds/${themeBackgrounds[themeStyle]}`
           })`,
-          backgroundSize: "cover",
-          margin: "0",
-          padding: "0",
-          position: "relative",
-          top: 0,
-          width: "100%",
-          height: "100vh",
         }}
       >
         <div
@@ -61,7 +55,6 @@ const NameSelectionPage = () => {
             alt="Go back"
           />
         </button>
-
         <button onClick={handleSubmit} className="next-button">
           <img
             src={process.env.PUBLIC_URL + "/images/next-button.png"}
@@ -74,34 +67,35 @@ const NameSelectionPage = () => {
             }}
           />
         </button>
-
-        <img
-          src={process.env.PUBLIC_URL + "/images/name-profile.png"}
-          alt="Logo"
-          style={{ width: "25%", height: "auto", zIndex: 2 }}
-          className="name-selection__title"
-        />
-
-        <form
-          className="name-selection__input"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-          style={{ zIndex: 2 }}
-        >
-          {avatar && (
-            <div className="name-selection__avatar" style={{ zIndex: 2 }}>
-              <AvatarImage src={avatar} display="chosen-avatar" />
-            </div>
-          )}
-          <Input
-            value={playerName}
-            onChange={(e) => setPlayerName(e.target.value)}
-            placeholder="Enter your name"
-            themeStyle={themeStyle}
+        <div className="name-selection">
+          <img
+            src={process.env.PUBLIC_URL + "/images/name-profile.png"}
+            alt="Logo"
+            style={{ height: "auto", zIndex: 2 }}
+            className="name-selection__title"
           />
-        </form>
+
+          <form
+            className="name-selection__input"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+            style={{ zIndex: 2 }}
+          >
+            {avatar && (
+              <div className="name-selection__avatar" style={{ zIndex: 2 }}>
+                <AvatarImage src={avatar} display="chosen-avatar" />
+              </div>
+            )}
+            <Input
+              value={playerName}
+              onChange={(e) => setPlayerName(e.target.value)}
+              placeholder="Enter your name"
+              themeStyle={themeStyle}
+            />
+          </form>
+        </div>
       </div>
     </>
   );

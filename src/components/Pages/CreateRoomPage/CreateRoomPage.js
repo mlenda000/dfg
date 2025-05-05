@@ -24,19 +24,12 @@ const CreateRoomPage = () => {
 
   return (
     <div
-      className="create-room"
+      className="create-room main-page"
       style={{
         backgroundImage: `url(${
           process.env.PUBLIC_URL +
           `/images/backgrounds/${themeBackgrounds[themeStyle]}`
         })`,
-        backgroundSize: "cover",
-        margin: "0",
-        padding: "0",
-        position: "absolute",
-        top: 0,
-        width: "100%",
-        height: "100vh",
       }}
     >
       <button onClick={() => navigate(-1)} className="back-button">

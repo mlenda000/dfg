@@ -55,29 +55,37 @@
     margin-top: -25px;
     margin-left: -5px;
   }
+  @media (max-width: 480px) {
+    width: 110px;
+    margin-top: -20;
+    margin-left: -10px;
+    margin-bottom: -60px;
+  }
 }
 .scoreboard-timer {
-  width: 150px;
-  margin-top: -20px;
+  width: 180px;
+  margin-top: -30px;
   margin-right: 0;
 
   @media (max-width: 1200px) {
-    width: 130px;
+    width: 180px;
+    margin-top: -25px;
   }
 
   @media (max-width: 1028px) {
-    width: 120px;
+    width: 160px;
+    margin-top: -20px;
   }
 
   @media (max-width: 768px) {
-    width: 50px;
-    margin: 0;
+    width: 130px;
     margin-top: -25px;
   }
 
   @media (max-width: 480px) {
-    width: 80px;
-    margin-top: 0;
+    width: 120px;
+    margin-top: -20;
+    margin-bottom: -60px;
   }
 }
 
@@ -102,6 +110,58 @@
 
   @media (max-width: 480px) {
     font-size: 1em;
+    -webkit-text-stroke: 1px black;
     margin-right: 5px;
+  }
+}
+.scoreboard__home-button-small {
+  display: none;
+
+  @media (max-width: 1200px) {
+    font-size: 1.4em;
+  }
+
+  @media (max-width: 1028px) {
+    font-size: 1.3em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+    margin-top: -40px;
+    margin-left: -20px;
+    margin-right: 10px;
+    transform: scale(0.8);
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1em;
+    margin-right: 5px;
+    margin-left: -40px;
+    margin-bottom: -60px;
+    display: block;
+  }
+}
+.scoreboard__home-button {
+  display: block;
+
+  @media (max-width: 1200px) {
+    font-size: 1.4em;
+  }
+
+  @media (max-width: 1028px) {
+    font-size: 1.3em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+    margin-right: 10px;
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1em;
+    margin-right: 5px;
+    display: none;
   }
 }
