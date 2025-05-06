@@ -80,7 +80,7 @@ const MainTable = ({
     }
     if (gameRound === 5) {
       setFinalRound(true);
-    } else if (gameRound === 6) {
+    } else if (gameRound === 5) {
       setEndGame(true);
     }
   }, [
