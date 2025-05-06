@@ -20,14 +20,14 @@ const EndGameModal = ({ setEndGame, setIsEndGame }) => {
   return (
     <div className="round-modal__overlay" style={{ zIndex: 100 }}>
       <div className="score-modal__content ">
-        <img
-          src={process.env.PUBLIC_URL + `/images/Avatars/${topPlayer.avatar}`}
-          alt={topPlayer.name}
-          width={"50px"}
-          height={"50px"}
-        />
-        <h1>{topPlayer.name} Wins!!!</h1>
         <div className="score-modal__scores">
+          <img
+            src={process.env.PUBLIC_URL + `/images/Avatars/${topPlayer.avatar}`}
+            alt={topPlayer.name}
+            width={"150px"}
+            height={"auto"}
+          />
+          <h1>{topPlayer.name} Wins!!!</h1>
           <img
             src={process.env.PUBLIC_URL + "/images/scoreboard.png"}
             alt="Scoreboard"

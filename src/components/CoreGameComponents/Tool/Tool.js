@@ -7,19 +7,20 @@ const Tool = ({ showResults }) => {
 
   return (
     <div className="tool__container">
-      <img
-        src={`${process.env.PUBLIC_URL}/images/tool/tool-wrapper.png`}
-        alt="tool"
-        className="tool-image"
-        style={{
-          display: "grid",
-          placeItems: "center",
-          position: "relative",
-          width: "755px",
-          height: "auto",
-          zIndex: 5,
-        }}
-      />
+      <div className="tool-image">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/tool/tool-wrapper.png`}
+          alt="tool"
+          style={{
+            display: "grid",
+            placeItems: "center",
+            position: "relative",
+            width: "100%",
+            height: "auto",
+            zIndex: 5,
+          }}
+        />
+      </div>
       <div
         style={{
           position: "absolute",

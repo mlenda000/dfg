@@ -1,7 +1,7 @@
 {
   "name": "design-for-good",
   "version": "0.1.0",
-  "homepage": "https://dfg-mark-lendackys-projects.vercel.app/",
+  "homepage": "https://dfg-five.vercel.app/",
   "private": true,
   "dependencies": {
     "@dnd-kit/sortable": "^10.0.0",
