@@ -26,6 +26,7 @@ const MainTable = ({
     isDeckShuffled,
     setFinalRound,
     setEndGame,
+    gameRound,
   } = useContext(GameContext);
   const { setThemeStyle } = useContext(ThemeContext);
 
@@ -69,8 +70,7 @@ const MainTable = ({
   useEffect(() => {
     if (influencerCards?.length > 0 && isDeckShuffled) {
       if (newPlayerRef.current) {
-        setCurrentInfluencer(gameCards[indexRef.current]);
-        indexRef.current++;
+        setCurrentInfluencer(gameCards[gameRound]);
         newPlayerRef.current = false; // Mark the player as no longer new
       }
     } else {
@@ -78,9 +78,9 @@ const MainTable = ({
         "No influencer cards available or deck not shuffled yet. influencerCards:"
       );
     }
-    if (indexRef.current === 15) {
+    if (gameRound === 5) {
       setFinalRound(true);
-    } else if (indexRef.current === 16) {
+    } else if (gameRound === 6) {
       setEndGame(true);
     }
   }, [
@@ -90,6 +90,7 @@ const MainTable = ({
     setFinalRound,
     setEndGame,
     gameCards,
+    gameRound,
   ]);
 
   useEffect(() => {

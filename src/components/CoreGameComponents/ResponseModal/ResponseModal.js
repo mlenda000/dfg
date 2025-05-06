@@ -3,7 +3,7 @@ import { GameContext } from "../../../context/GameContext";
 import { useEffect } from "react";
 
 const ResponseModal = ({ setShowResponseModal }) => {
-  const { gameRound, responseMsg, setShowScoreCard } = useContext(GameContext);
+  const { responseMsg, setShowScoreCard } = useContext(GameContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
