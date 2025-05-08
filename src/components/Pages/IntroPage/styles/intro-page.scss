@@ -1,0 +1,32 @@
+.intro-page {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+.intro-page__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 24px;
+  width: 60%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.intro-page__title {
+  font-size: 72px;
+  font-weight: normal;
+  margin-bottom: 12px;
+  font-family: "subway-berlin-ot", sans-serif;
+  -webkit-text-stroke: black 3px;
+}
+.intro-page__description {
+  text-align: center;
+  width: 90%;
+  font-size: 44px;
+  font-weight: normal;
+  margin-bottom: 12px;
+  font-family: "subway-berlin-ot", sans-serif;
+  -webkit-text-stroke: black 2px;
+}

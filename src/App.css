@@ -10,6 +10,7 @@
 @import "./components/Pages/PlayerSelectionPage/styles/player-selection-page.scss";
 @import "./components/Pages/CreateRoomPage/styles/create-room-page.scss";
 @import "./components/Pages/NameSelectionPage/styles/name-selection-page.scss";
+@import "./components/Pages/IntroPage/styles/intro-page.scss";
 
 /* component style sheets */
 @import "./components/GenericComponents/Button/styles/button.scss";

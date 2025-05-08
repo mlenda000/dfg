@@ -22,7 +22,9 @@ const EndGameModal = ({ setEndGame, setIsEndGame }) => {
       <div className="score-modal__content ">
         <div className="score-modal__scores">
           <img
-            src={process.env.PUBLIC_URL + `/images/Avatars/${topPlayer.avatar}`}
+            src={
+              process.env.PUBLIC_URL + `/images/Avatars/${topPlayer?.avatar}`
+            }
             alt={topPlayer.name}
             width={"150px"}
             height={"auto"}
@@ -40,19 +42,19 @@ const EndGameModal = ({ setEndGame, setIsEndGame }) => {
           {gameRoom?.roomData
             ?.sort((a, b) => b.score - a.score) // Sort players by score in descending order
             .map((player, index) => (
-              <div className="score-modal__players" key={player.name}>
+              <div className="score-modal__players" key={player?.name}>
                 <div className="score-modal__player-left">
                   <div style={{ marginRight: "12px" }}>{index + 1} .</div>
                   <img
                     src={
                       process.env.PUBLIC_URL +
-                      `/images/Avatars/${player.avatar}`
+                      `/images/Avatars/${player?.avatar}`
                     }
-                    alt={player.name}
+                    alt={player?.name}
                     width={"50px"}
                     height={"50px"}
                   />
-                  <div>{player.name}</div>
+                  <div>{player?.name}</div>
                 </div>
                 <div>{player?.score}</div>
               </div>

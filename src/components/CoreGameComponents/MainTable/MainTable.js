@@ -70,7 +70,7 @@ const MainTable = ({
   useEffect(() => {
     if (influencerCards?.length > 0 && isDeckShuffled) {
       if (newPlayerRef.current) {
-        setCurrentInfluencer(gameCards[gameRound]);
+        setCurrentInfluencer(gameCards[gameRound - 1]);
         newPlayerRef.current = false; // Mark the player as no longer new
       }
     } else {
@@ -80,7 +80,6 @@ const MainTable = ({
     }
     if (gameRound === 5) {
       setFinalRound(true);
-    } else if (gameRound === 5) {
       setEndGame(true);
     }
   }, [
