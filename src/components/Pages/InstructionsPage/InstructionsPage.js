@@ -36,56 +36,85 @@ const InstructionsPage = () => {
             zIndex: 0,
           }}
         />
-        <div className="information-page" zIndex={2}>
-          <button
-            onClick={() => navigate(-1)}
-            className="back-button"
-            style={{ zIndex: 2 }}
-          >
-            <img
-              src={process.env.PUBLIC_URL + "/images/back-button.png"}
-              alt="Go back"
-              style={{ cursor: "pointer" }}
-            />
-          </button>
-
+      </div>
+      <div className="instructions-page" zIndex={2}>
+        <button
+          onClick={() => navigate(-1)}
+          className="back-button"
+          style={{ zIndex: 2 }}
+        >
           <img
-            src={process.env.PUBLIC_URL + "/images/instructions.png"}
-            alt="Instructions"
-            style={{ zIndex: 2, marginBottom: "-40px" }}
-            className="instructions-title"
-          />
-          <div className="information-page__content" style={{ zIndex: 2 }}>
-            <div
-              className="information-page__description"
-              style={{ zIndex: 2 }}
-            >
-              <ol>
-                <li>
-                  You will be shown online articles which you must examine
-                  carefully and determine if its real or fake.
-                </li>
-                <li>Take your time to read the Article Carefully.</li>
-                <li>
-                  Think about whether the article seems true or if something
-                  feels off. Does it sound believable?
-                </li>
-                <li>
-                  Pick a Debunker Card: If you think the article is fake, choose
-                  the debunker card that shows what’s wrong with it.
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <button onClick={handleClick} className="next-button">
-          <img
-            src={process.env.PUBLIC_URL + "/images/next-button.png"}
-            alt="Logo"
-            style={{ cursor: "pointer", width: "50%", height: "auto" }}
+            src={process.env.PUBLIC_URL + "/images/back-button.png"}
+            alt="Go back"
+            style={{ cursor: "pointer" }}
           />
         </button>
+
+        <div className="instruction-page__content" style={{ zIndex: 2 }}>
+          <div className="information-page__description" style={{ zIndex: 2 }}>
+            <ol>
+              <li>
+                <p>
+                  You'll see a news card and need to decide if it's real or
+                  fake.
+                </p>
+                <img
+                  src={process.env.PUBLIC_URL + "/images/news-card.png"}
+                  alt="News Card"
+                  className="instruction-page__image"
+                />
+              </li>
+              <li>
+                <p>
+                  If it's fake, you'll have to figure out which trick the
+                  villains are using!
+                </p>
+                <img
+                  src={process.env.PUBLIC_URL + "/images/tactic-cards.png"}
+                  alt="tactic cards"
+                  className="instruction-page__image"
+                />
+              </li>
+              <li>
+                <p>
+                  If you think the news card is telling the truth, use the
+                  “Facts” card.
+                </p>
+                <img
+                  src={process.env.PUBLIC_URL + "/images/new-cards/true.png"}
+                  alt="Facts Card"
+                  height={200}
+                />
+              </li>
+              <li>
+                <p>
+                  The little eye symbols at the bottom right of each news card
+                  shows how many tricks are being used.
+                </p>
+                <img
+                  src={process.env.PUBLIC_URL + "/images/eye-symbol.png"}
+                  alt="Eye Symbol"
+                  className="instruction-page__image"
+                />
+              </li>
+              <li>
+                <p>
+                  If you make the wrong guesses, you will lose followers, but if
+                  you guess correctly, you will gain more.
+                </p>
+                <p>The player with the most followers at the end wins!</p>
+              </li>
+            </ol>
+          </div>
+        </div>
       </div>
+      <button onClick={handleClick} className="next-button">
+        <img
+          src={process.env.PUBLIC_URL + "/images/next-button.png"}
+          alt="Logo"
+          style={{ cursor: "pointer", width: "50%", height: "auto" }}
+        />
+      </button>
     </>
   );
 };
