@@ -15,7 +15,7 @@
   }
 }
 .next-button {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   background-color: transparent;
@@ -44,6 +44,7 @@
   }
 
   @media (max-width: 768px) {
+    position: absolute;
     top: 0;
     bottom: auto;
     right: 0;
@@ -52,6 +53,18 @@
 
     img {
       transform: scale(0.8);
+    }
+  }
+  @media (max-width: 480px) {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    right: 0;
+    margin-right: -150px;
+    margin-top: -14px;
+
+    img {
+      transform: scale(0.7);
     }
   }
 }

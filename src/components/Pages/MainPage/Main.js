@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Main = () => {
   const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const handleClick = () => navigate("/information");
+  const handleClick = () => navigate("/intro");
   return (
     <>
       <div className="main-login">
