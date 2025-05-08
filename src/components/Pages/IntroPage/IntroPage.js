@@ -52,10 +52,11 @@ const IntroPage = () => {
             />
           </button>
           <div className="intro-page__content">
-            <div className="intro-page__title">WELCOME TO BASECAMP</div>
+            <div className="intro-page__title">WELCOME DEBUNKERS!</div>
             <div className="intro-page__description">
-              Here you will be trained to debunk misinformation, expose fake
-              news, and spot holes in lies.
+              This is Base Camp, where you'll learn to spot lies and expose fake
+              news on your journey to becoming a Super Debunker. Stay focused,
+              check the facts and uncover what's real and what's fake!
             </div>
           </div>
         </div>

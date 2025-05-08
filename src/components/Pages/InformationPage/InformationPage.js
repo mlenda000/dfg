@@ -53,10 +53,19 @@ const InformationPage = () => {
         </div>
         <div className="information-page__content">
           <div className="information-page__text ">
-            <div className="information-page__title">YOUR GOAL</div>
+            <div className="information-page__title">
+              DEBUNKERS! Here's your mission.
+            </div>
             <div className="information-page__description">
-              Here you will be trained to debunk misinformation, expose fake
-              news, and spot holes in lies.
+              <p>
+                In a world of news and gossip, super villains spread fake news
+                to create confusion. Outsmart them, expose their tricks and
+                reveal the truth.
+              </p>
+              <p>
+                The more fake news you debunk, the more followers you gain,
+                bringing you one step closer to becoming a Super Debunker!
+              </p>
             </div>
           </div>
           <img
