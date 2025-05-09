@@ -126,7 +126,6 @@ export const ImageCarousel = ({ images }) => {
     }, 2000); // Change image every 3 second
     return () => clearInterval(interval);
   }, [images]);
-  console.log(images[currentIndex].toLowerCase() + ".png");
   return (
     <>
       {detected ? (

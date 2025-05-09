@@ -13,7 +13,6 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {}, [JSON.stringify(gameRoom?.roomData)]);
-  //   console.log(gameRoom, "gameRoom in scoreboard");
 
   return (
     <div className="scoreboard">

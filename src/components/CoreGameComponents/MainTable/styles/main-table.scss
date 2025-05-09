@@ -42,8 +42,8 @@
 
   .main-table__finish-round {
     position: absolute;
-    bottom: -2px;
-    right: 18px;
+    bottom: 18px;
+    right: 35px;
     width: 100px;
     height: auto;
   }
@@ -72,11 +72,11 @@
     }
 
     .main-table__finish-round {
-      right: 240px;
-      width: 80px;
+      right: 253px;
+      width: 90px;
     }
   }
-  @media (max-width: 1028px) {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     padding-inline: 14px;
 
@@ -97,7 +97,7 @@
     }
 
     .main-table__finish-round {
-      right: 140px;
+      right: 170px;
       width: 90px;
     }
   }
@@ -118,7 +118,7 @@
 
     .main-table__finish-round {
       right: 55px;
-      bottom: 10px;
+      bottom: 20px;
       width: 60px;
     }
   }

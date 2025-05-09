@@ -9,7 +9,6 @@ const RoomTab = ({ room, type, onClick }) => {
   React.useEffect(() => {
     // Trigger a re-render or handle updates when players change
     if (gameRoom?.gameData) {
-      //   console.log("Players updated:", gameRoom.gameData);
     }
   }, [gameRoom?.gameData]);
 

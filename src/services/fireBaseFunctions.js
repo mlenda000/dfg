@@ -44,6 +44,5 @@ export const fetchInfluencerCards = async (
       villain: doc.data().villain,
     };
   });
-  console.log(results);
   setInfluencerCards(results);
 };

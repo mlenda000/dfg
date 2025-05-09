@@ -21,8 +21,6 @@ const ScoreModal = ({ setIsEndGame }) => {
   const { setThemeStyle } = useContext(ThemeContext);
 
   const handleDeal = useCallback(() => {
-    console.log(influencerCards, "influencerCards");
-
     const gameCards = Array.isArray(influencerCards)
       ? [...influencerCards]
       : [];

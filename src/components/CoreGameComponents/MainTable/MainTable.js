@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import InfluencerCard from "../InfluencerCard/InfluencerCard";
 import TacticsCard from "../TacticsCard/TacticsCard";
 import { GameContext } from "../../../context/GameContext";
@@ -6,7 +6,6 @@ import { ThemeContext } from "../../../context/ThemeContext";
 
 const MainTable = ({
   items,
-  round,
   currentInfluencer,
   setCurrentInfluencer,
   finishRound,
@@ -29,6 +28,7 @@ const MainTable = ({
     gameRound,
   } = useContext(GameContext);
   const { setThemeStyle } = useContext(ThemeContext);
+  const [playerReady, setPlayerReady] = React.useState(false);
 
   const gameCards = React.useMemo(
     () => (Array.isArray(influencerCards) ? [...influencerCards] : []),
@@ -43,6 +43,7 @@ const MainTable = ({
         (item) => item.collection !== "category_cards"
       );
 
+      setPlayerReady(false);
       setMainTableItems(filteredItems);
       setSubmitForScoring(false);
     };
@@ -106,8 +107,8 @@ const MainTable = ({
   }, [currentInfluencer]);
 
   const handlePlayerReady = () => {
-    // console.log("Player is ready" + gameRoom?.roomData);
     sendMessage({ type: "playerReady", players: gameRoom?.roomData });
+    setPlayerReady(true);
   };
 
   const handleReturnCard = (cardId) => {
@@ -115,6 +116,9 @@ const MainTable = ({
     if (cardToReturn) {
       setMainTableItems((items) => items.filter((item) => item.id !== cardId));
       setPlayersHandItems((items) => [...items, cardToReturn]);
+      if (mainTableItems?.length === 0) {
+        setPlayerReady(false);
+      }
       sendMessage({ type: "return card", cardId });
     }
   };
@@ -161,7 +165,11 @@ const MainTable = ({
       {finishRound && (
         <div onClick={handlePlayerReady} className="main-table__finish-round">
           <img
-            src={`${process.env.PUBLIC_URL}/images/next-button.png`}
+            src={
+              playerReady
+                ? `${process.env.PUBLIC_URL}/images/ready-button.png`
+                : `${process.env.PUBLIC_URL}/images/not-ready-button.png`
+            }
             alt="Ready"
             width={"100%"}
             height={"100%"}

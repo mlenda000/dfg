@@ -84,12 +84,6 @@ const GameProvider = ({ children }) => {
             });
             break;
           case "undo":
-            console.log(
-              "undo message from server",
-              parsedMessage?.type,
-              parsedMessage?.id,
-              parsedMessage?.data
-            );
             const removeThisManyCards = Number(parsedMessage?.id);
             setCardMessage(removeThisManyCards);
             break;
@@ -117,24 +111,18 @@ const GameProvider = ({ children }) => {
               ...prevGameRoom,
               room: parsedMessage?.room,
               count: parsedMessage?.count,
-              roomData: parsedMessage?.roomData?.players || [],
+              roomData: parsedMessage?.roomData || [],
             }));
             break;
           case "roundStart":
-            console.log("Game started with room data:", parsedMessage);
             setRoundTimer(30); // Reset round timer to 30 seconds
             setShowGameTimer(true);
             break;
           case "playerReady":
-            console.log(parsedMessage?.roomData, "playerReady");
             setGameRoom((prevGameRoom) => ({
               ...prevGameRoom,
               roomData:
                 prevGameRoom?.roomData?.map((player) => {
-                  console.log(
-                    player,
-                    " ----------------------------------- player in playerReady"
-                  );
                   const updatedPlayer = parsedMessage?.roomData.find(
                     (data) => data.id === parsedMessage?.sender
                   );
@@ -176,14 +164,9 @@ const GameProvider = ({ children }) => {
                 (player) => player.id === playerId
               )?.streak,
             });
-            console.log(
-              "All players scoreUpdated:",
-              parsedMessage,
-              "----------------------------------------------"
-            );
+
             break;
           case "shuffledDeck":
-            console.log("Deck shuffled ----------------------");
             setInfluencerCards(parsedMessage?.data);
             setIsDeckShuffled(true);
             break;
@@ -220,16 +203,10 @@ const GameProvider = ({ children }) => {
 
   const handleMessage = (message) => {
     // Implement your message handling logic here
-    // console.log("New message:", message);
   };
 
   useEffect(() => {
-    console.log(gameRoom, "gameRoom in GameProvider");
-    console.log(influencerCards, "influencerCards in GameProvider");
-    console.log(isDeckShuffled, "isDeckShuffled in GameProvider");
-    // console.log(!influencerCards?.length > 0 && !isDeckShuffled && gameRoom);
     if (influencerCards?.length > 0 && !isDeckShuffled && gameRoom) {
-      console.log("Sending startingDeck message with influencerCards");
       sendMessage({
         type: "startingDeck",
         data: influencerCards,

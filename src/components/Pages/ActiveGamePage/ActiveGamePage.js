@@ -80,7 +80,6 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
       );
 
     if (allPlayersReady && !submitForScoring) {
-      console.log("All players are ready and conditional let me in");
       setRoundHasEnded(true);
       handleFinishRound();
       setSubmitForScoring(true);
