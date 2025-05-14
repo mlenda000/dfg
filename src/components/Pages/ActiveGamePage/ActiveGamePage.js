@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { GameContext } from "../../../context/GameContext";
+import { GlobalContext } from "../../../context/GlobalContext";
 import MainTable from "../../CoreGameComponents/MainTable/MainTable";
 import PlayersHand from "../../CoreGameComponents/PlayersHand/PlayersHand";
 import { Droppable } from "../../GenericComponents/Droppable/Droppable";
@@ -17,7 +18,7 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
     playerId,
     messages,
   } = useContext(GameContext);
-  //   const { playerName } = useContext(GlobalContext);
+  const { playerName } = useContext(GlobalContext);
   const playersHand = categoryCards?.filter((card) => card.imageUrl);
 
   const [mainTableItems, setMainTableItems] = useState([]);
@@ -64,9 +65,11 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
 
   useEffect(() => {
     const handleFinishRound = () => {
+      const player = gameRoom.roomData.find((p) => p.name === playerName);
+
       sendMessage({
         type: "endOfRound",
-        players: gameRoom.roomData,
+        players: [player],
         round: gameRound,
       });
       setRoundEnd(true);

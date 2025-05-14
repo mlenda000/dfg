@@ -7,7 +7,7 @@ const EndGameModal = ({ setEndGame, setIsEndGame }) => {
   const { gameRoom } = useContext(GameContext);
 
   const topPlayer = gameRoom?.roomData?.reduce(
-    (top, player) => (player.score > (top?.score || 0) ? player : top),
+    (top, player) => (player?.score > (top?.score || 0) ? player : top),
     null
   );
 
@@ -25,11 +25,11 @@ const EndGameModal = ({ setEndGame, setIsEndGame }) => {
             src={
               process.env.PUBLIC_URL + `/images/Avatars/${topPlayer?.avatar}`
             }
-            alt={topPlayer.name}
+            alt={topPlayer?.name}
             width={"150px"}
             height={"auto"}
           />
-          <h1>{topPlayer.name} Wins!!!</h1>
+          <h1>{topPlayer?.name} Wins!!!</h1>
           <img
             src={process.env.PUBLIC_URL + "/images/scoreboard.png"}
             alt="Scoreboard"
