@@ -27,6 +27,8 @@ function App() {
             <Route path="/instructions" element={<InstructionsPage />} />
             <Route path="/player-selection" element={<PlayerSelectionPage />} />
             <Route path="/name-selection" element={<NameSelectionPage />} />
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/credits" element={<CreditsPage />} />
             <Route
               path="/game"
               element={
