@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
 import { ThemeContext } from "../../../context/ThemeContext";
@@ -6,18 +6,19 @@ import Input from "../../GenericComponents/Input/Input";
 
 const CreateRoomPage = () => {
   const navigate = useNavigate();
-  const { room, setRoom, setRooms, setGameState } = useContext(GameContext);
+  const { setRooms, setGameState } = useContext(GameContext);
   const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
+  const [currentInput, setCurrentInput] = useState();
   const handleInput = (value) => {
-    setRoom(value);
+    setCurrentInput(value);
   };
 
   const handleSubmit = () => {
-    if (room === "") {
+    if (currentInput === "") {
       alert("Please enter a room name");
       return;
     } else {
-      setRooms((prevRooms) => [...prevRooms, room]);
+      setRooms((prevRooms) => [...prevRooms, currentInput]);
       setGameState("lobby");
     }
   };
@@ -58,14 +59,6 @@ const CreateRoomPage = () => {
             alt="Go back"
           />
         </button>
-
-        <button onClick={handleSubmit} className="next-button">
-          <img
-            src={process.env.PUBLIC_URL + "/images/next-button.png"}
-            alt="Logo"
-            style={{ cursor: "pointer", width: "50%", height: "auto" }}
-          />
-        </button>
         <div className="create-room__container">
           <img
             src={process.env.PUBLIC_URL + "/images/new-game.png"}
@@ -86,6 +79,18 @@ const CreateRoomPage = () => {
               />
             </div>
           </form>
+          <button onClick={handleSubmit} className="next-button">
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                `/images/${
+                  currentInput ? "pink-next-button.png" : "gray-next-button.png"
+                }`
+              }
+              alt="Logo"
+              style={{ cursor: "pointer", width: "50%", height: "auto" }}
+            />
+          </button>
         </div>
       </div>
     </>

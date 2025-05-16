@@ -55,18 +55,7 @@ const NameSelectionPage = () => {
             alt="Go back"
           />
         </button>
-        <button onClick={handleSubmit} className="next-button">
-          <img
-            src={process.env.PUBLIC_URL + "/images/next-button.png"}
-            alt="Logo"
-            style={{
-              cursor: "pointer",
-              width: "50%",
-              height: "auto",
-              zIndex: 2,
-            }}
-          />
-        </button>
+
         <div className="name-selection">
           <img
             src={process.env.PUBLIC_URL + "/images/name-profile.png"}
@@ -95,6 +84,23 @@ const NameSelectionPage = () => {
               themeStyle={themeStyle}
             />
           </form>
+          <button onClick={handleSubmit} className="next-button">
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                `/images/${
+                  playerName ? "pink-next-button.png" : "gray-next-button.png"
+                }`
+              }
+              alt="Logo"
+              style={{
+                cursor: "pointer",
+                width: "50%",
+                height: "auto",
+                zIndex: 2,
+              }}
+            />
+          </button>
         </div>
       </div>
     </>

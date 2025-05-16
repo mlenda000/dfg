@@ -113,11 +113,16 @@ const MainTable = ({
   };
 
   const handleReturnCard = (cardId) => {
+    console.log("Card ID to return:", cardId);
     const cardToReturn = mainTableItems.find((item) => item.id === cardId);
     if (cardToReturn) {
-      setMainTableItems((items) => items.filter((item) => item.id !== cardId));
+      console.log("Card to return:", cardToReturn);
+      const updatedItems = mainTableItems.filter((item) => item.id !== cardId);
+      setMainTableItems(updatedItems);
+
       setPlayersHandItems((items) => [...items, cardToReturn]);
-      if (mainTableItems?.length === 0) {
+      if (updatedItems?.length === 0) {
+        console.log("No cards left on the table");
         console.log("No cards left on the table");
         setPlayerReady(false);
         setFinishRound(false);

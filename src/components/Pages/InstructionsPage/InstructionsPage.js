@@ -107,14 +107,19 @@ const InstructionsPage = () => {
             </ol>
           </div>
         </div>
+        <button onClick={handleClick} className="next-button">
+          <img
+            src={process.env.PUBLIC_URL + "/images/lets-go-button.png"}
+            alt="Logo"
+            style={{
+              cursor: "pointer",
+              width: "50%",
+              height: "auto",
+              marginBottom: "30px",
+            }}
+          />
+        </button>
       </div>
-      <button onClick={handleClick} className="next-button">
-        <img
-          src={process.env.PUBLIC_URL + "/images/next-button.png"}
-          alt="Logo"
-          style={{ cursor: "pointer", width: "50%", height: "auto" }}
-        />
-      </button>
     </>
   );
 };
