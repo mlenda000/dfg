@@ -1,9 +1,12 @@
+button {
+  border: none;
+  background-color: transparent;
+}
+
 .back-button {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: transparent;
-  visibility: hidden;
   z-index: 1;
 
   img {
@@ -15,13 +18,8 @@
   }
 }
 .next-button {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background-color: transparent;
-  visibility: hidden;
-  z-index: 1;
-  margin-right: -100px;
+  text-align: center;
+  z-index: 2;
 
   img {
     visibility: visible;
@@ -32,37 +30,17 @@
   }
 
   @media (max-width: 1024px) {
-    top: 0;
-    bottom: auto;
-    right: 0;
-    margin-right: -120px;
-    margin-top: -16px;
-
     img {
       transform: scale(0.9);
     }
   }
 
   @media (max-width: 768px) {
-    position: absolute;
-    top: 0;
-    bottom: auto;
-    right: 0;
-    margin-right: -150px;
-    margin-top: -14px;
-
     img {
       transform: scale(0.8);
     }
   }
   @media (max-width: 480px) {
-    position: absolute;
-    top: 0;
-    bottom: auto;
-    right: 0;
-    margin-right: -150px;
-    margin-top: -14px;
-
     img {
       transform: scale(0.7);
     }

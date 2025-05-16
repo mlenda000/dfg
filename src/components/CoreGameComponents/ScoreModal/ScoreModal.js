@@ -101,16 +101,6 @@ const ScoreModal = ({ setIsEndGame }) => {
             ))}
         </div>
       </div>
-      {/* <div className="round-modal__button">
-        <img
-          src={process.env.PUBLIC_URL + "/images/next-button.png"}
-          alt="Ready for next round"
-          width={"50%"}
-          height={"auto"}
-          style={{ cursor: "pointer" }}
-          onClick={handleDeal}
-        />
-      </div> */}
     </div>
   );
 };

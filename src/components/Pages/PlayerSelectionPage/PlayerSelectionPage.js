@@ -64,14 +64,6 @@ const PlayerSelectionPage = () => {
           />
         </button>
 
-        <button onClick={handleSubmit} className="next-button">
-          <img
-            src={process.env.PUBLIC_URL + "/images/next-button.png"}
-            alt="Logo"
-            style={{ cursor: "pointer", width: "50%", height: "auto" }}
-          />
-        </button>
-
         <img
           src={process.env.PUBLIC_URL + "/images/select-profile.png"}
           alt="Select profile"
@@ -97,6 +89,18 @@ const PlayerSelectionPage = () => {
             ))}
           </div>
         </form>
+        <button onClick={handleSubmit} className="next-button">
+          <img
+            src={
+              process.env.PUBLIC_URL +
+              `/images/${
+                avatar ? "pink-next-button.png" : "gray-next-button.png"
+              }`
+            }
+            alt="Logo"
+            style={{ cursor: "pointer", width: "50%", height: "auto" }}
+          />
+        </button>
       </div>
     </>
   );

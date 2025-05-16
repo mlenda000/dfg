@@ -19,7 +19,7 @@ const RoomTab = ({ room, type, onClick }) => {
       style={{ zIndex: 2 }}
     >
       <h2 className="room-tab__title">{room}</h2>
-      {gameRoom?.count > 0 && room === gameRoom?.room && (
+      {gameRoom?.roomData?.length > 0 && room === gameRoom?.room && (
         <div className="player-avatars">
           {gameRoom?.roomData?.map((player, index) => {
             return (

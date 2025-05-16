@@ -59,14 +59,14 @@ const IntroPage = () => {
               check the facts and uncover what's real and what's fake!
             </div>
           </div>
+          <button onClick={handleClick} className="next-button">
+            <img
+              src={process.env.PUBLIC_URL + "/images/pink-next-button.png"}
+              alt="Logo"
+              style={{ cursor: "pointer", width: "50%", height: "auto" }}
+            />
+          </button>
         </div>
-        <button onClick={handleClick} className="next-button">
-          <img
-            src={process.env.PUBLIC_URL + "/images/next-button.png"}
-            alt="Logo"
-            style={{ cursor: "pointer", width: "50%", height: "auto" }}
-          />
-        </button>
       </div>
     </>
   );

@@ -1,8 +1,11 @@
 .intro-page {
   display: grid;
-  place-items: center;
+  place-content: center;
   height: 100%;
+  gap: 0;
+  place-items: center;
 }
+
 .intro-page__content {
   display: flex;
   flex-direction: column;
@@ -10,10 +13,11 @@
   justify-content: center;
   border-radius: 12px;
   padding: 24px;
-  width: 60%;
+  width: 80%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .intro-page__title {
   font-size: 72px;
   font-weight: normal;
@@ -21,6 +25,7 @@
   font-family: "subway-berlin-ot", sans-serif;
   -webkit-text-stroke: black 3px;
 }
+
 .intro-page__description {
   text-align: center;
   width: 90%;
@@ -29,4 +34,58 @@
   margin-bottom: 12px;
   font-family: "subway-berlin-ot", sans-serif;
   -webkit-text-stroke: black 2px;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .intro-page__title {
+    font-size: 56px;
+  }
+  .intro-page__description {
+    font-size: 36px;
+  }
+  .intro-page__content {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .intro-page__title {
+    font-size: 44px;
+  }
+  .intro-page__description {
+    font-size: 28px;
+  }
+  .intro-page__content {
+    width: 95%;
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-page__title {
+    font-size: 32px;
+  }
+  .intro-page__description {
+    font-size: 20px;
+  }
+  .intro-page__content {
+    padding: 16px;
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-page__title {
+    font-size: 24px;
+    -webkit-text-stroke: black 1px;
+  }
+  .intro-page__description {
+    font-size: 16px;
+    -webkit-text-stroke: black 1px;
+  }
+  .intro-page__content {
+    padding: 8px;
+    margin-top: 64px;
+  }
 }
