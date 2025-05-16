@@ -66,7 +66,7 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
   useEffect(() => {
     const handleFinishRound = () => {
       const player = gameRoom.roomData.find((p) => p.name === playerName);
-
+      console.log("Player in handleFinishRound after firing from conditional");
       sendMessage({
         type: "endOfRound",
         players: [player],
@@ -82,7 +82,16 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
         (player) => player?.status === true && player?.tacticUsed?.length > 0
       );
 
+    console.log(
+      "All players ready:",
+      allPlayersReady,
+      "useEffect is triggering"
+    );
+
     if (allPlayersReady && !submitForScoring) {
+      console.log(
+        "All players are ready to finish the round and I am in the conditional"
+      );
       setRoundHasEnded(true);
       handleFinishRound();
       setSubmitForScoring(true);
@@ -97,6 +106,7 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
     submitForScoring,
     messages,
     setRoundEnd,
+    playerName,
   ]);
 
   useEffect(() => {
@@ -122,6 +132,7 @@ const ActiveGamePage = ({ setRoundEnd, roundHasEnded, setRoundHasEnded }) => {
               currentInfluencer={currentInfluencer}
               setCurrentInfluencer={setCurrentInfluencer}
               finishRound={finishRound}
+              setFinishRound={setFinishRound}
               setRoundEnd={setRoundEnd}
               setPlayersHandItems={setPlayersHandItems}
               mainTableItems={mainTableItems}

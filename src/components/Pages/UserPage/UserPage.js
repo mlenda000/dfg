@@ -13,7 +13,20 @@ const UserPage = () => {
       }}
       className="main-page"
     >
-      <h1>User Page</h1>
+      <h1
+        style={{
+          backgroundColor: "yellow",
+          color: "green",
+          width: "fit-content",
+          marginInline: "32px",
+          //   padding: "16px",
+          paddingInline: "16px",
+          paddingBlock: "8px",
+          border: "6px solid red",
+        }}
+      >
+        User Page
+      </h1>
     </div>
   );
 };

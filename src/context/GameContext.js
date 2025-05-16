@@ -45,7 +45,7 @@ const GameProvider = ({ children }) => {
 
   // responses from the server
   const [messages, setMessages] = useState([]);
-  console.log("GameProvider initialized with room:", PARTYKIT_HOST);
+  //   console.log("GameProvider initialized with room:", PARTYKIT_HOST);
   const ws = usePartySocket({
     //connects to the servers web address
     host: PARTYKIT_HOST,

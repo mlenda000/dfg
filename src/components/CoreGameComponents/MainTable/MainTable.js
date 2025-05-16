@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import InfluencerCard from "../InfluencerCard/InfluencerCard";
 import TacticsCard from "../TacticsCard/TacticsCard";
 import { GameContext } from "../../../context/GameContext";
@@ -9,6 +9,7 @@ const MainTable = ({
   currentInfluencer,
   setCurrentInfluencer,
   finishRound,
+  setFinishRound,
   setRoundEnd,
   setPlayersHandItems,
   originalItems,
@@ -117,11 +118,14 @@ const MainTable = ({
       setMainTableItems((items) => items.filter((item) => item.id !== cardId));
       setPlayersHandItems((items) => [...items, cardToReturn]);
       if (mainTableItems?.length === 0) {
+        console.log("No cards left on the table");
         setPlayerReady(false);
+        setFinishRound(false);
+        sendMessage({ type: "playerNotReady", players: gameRoom?.roomData });
       }
-      sendMessage({ type: "return card", cardId });
     }
   };
+  console.log(gameRoom.roomData);
 
   return (
     <div className="main-table">
@@ -162,12 +166,14 @@ const MainTable = ({
           />
         ))}
       </div>
-      {finishRound && (
+      {
         <div onClick={handlePlayerReady} className="main-table__finish-round">
           <img
             src={
-              playerReady
+              !playerReady && finishRound
                 ? `${process.env.PUBLIC_URL}/images/ready-button.png`
+                : playerReady && finishRound
+                ? `${process.env.PUBLIC_URL}/images/checked-button.png`
                 : `${process.env.PUBLIC_URL}/images/not-ready-button.png`
             }
             alt="Ready"
@@ -176,7 +182,7 @@ const MainTable = ({
             style={{ cursor: "pointer" }}
           />
         </div>
-      )}
+      }
     </div>
   );
 };

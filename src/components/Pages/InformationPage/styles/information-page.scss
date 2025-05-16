@@ -45,6 +45,11 @@
   z-index: 2;
   width: 70%;
   height: auto;
+  margin-top: -20px;
+}
+
+.information-page__description p {
+  margin-block-end: 4px;
 }
 @media (max-width: 1200px) {
   .information-page__title {
