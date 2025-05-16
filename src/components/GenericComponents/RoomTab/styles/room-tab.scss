@@ -10,6 +10,14 @@
   font-family: "DIN-alternate", sans-serif;
   font-size: 1.2em;
   padding-inline: 40px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid rgb(226, 31, 73);
+    box-shadow: 0 0 10px rgb(226, 31, 73);
+  }
 
   @media (max-width: 1024px) {
     font-size: 1em;

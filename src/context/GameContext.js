@@ -90,8 +90,7 @@ const GameProvider = ({ children }) => {
           case "roomUpdate":
             setGameRoom((prevGameRoom) => ({
               ...prevGameRoom,
-              room: prevGameRoom?.room,
-              count: prevGameRoom?.count,
+              count: parsedMessage?.count,
               roomData:
                 parsedMessage?.players?.map((newPlayer) => {
                   const existingPlayer = prevGameRoom?.roomData?.find(
