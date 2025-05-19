@@ -13,6 +13,7 @@ import ResponseModal from "../../CoreGameComponents/ResponseModal/ResponseModal"
 import ScoreModal from "../../CoreGameComponents/ScoreModal/ScoreModal";
 import WaitingModal from "../../CoreGameComponents/WaitingModal/WaitingModal";
 import EndGameModal from "../../CoreGameComponents/EndGameModal/EndGameModal";
+import InfoModal from "../../Modals/InfoModal/InfoModal";
 
 const GamePage = () => {
   const {
@@ -35,6 +36,7 @@ const GamePage = () => {
   const [roundHasEnded, setRoundHasEnded] = useState(false);
   const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
   const [isEndGame, setIsEndGame] = useState(false);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 
   useEffect(() => {
     if (gameRoom?.count === 5) {
@@ -81,6 +83,8 @@ const GamePage = () => {
           <Scoreboard
             roundHasEnded={roundHasEnded}
             setRoundHasEnded={setRoundHasEnded}
+            isInfoModalOpen={isInfoModalOpen}
+            setIsInfoModalOpen={setIsInfoModalOpen}
           />
           <ActiveGamePage
             setRoundEnd={setRoundEnd}
@@ -104,6 +108,9 @@ const GamePage = () => {
           )}
           {isEndGame && (
             <EndGameModal setEndGame={setEndGame} setIsEndGame={setIsEndGame} />
+          )}
+          {isInfoModalOpen && (
+            <InfoModal isOpen={isInfoModalOpen} onClose={setIsInfoModalOpen} />
           )}
         </>
       )}

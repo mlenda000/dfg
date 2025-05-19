@@ -5,7 +5,12 @@ import { GameContext } from "../../../context/GameContext";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 import GameTimer from "../GameTimer/GameTimer";
 
-const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
+const Scoreboard = ({
+  roundHasEnded,
+  setRoundHasEnded,
+  isInfoModalOpen,
+  setIsInfoModalOpen,
+}) => {
   //   const { playerName, avatar } = useContext(GlobalContext);
   const { gameRound, showGameTimer, gameRoom, roundTimer } =
     useContext(GameContext);
@@ -60,22 +65,35 @@ const Scoreboard = ({ roundHasEnded, setRoundHasEnded }) => {
             );
           })}
       </div>
-      <div className="scoreboard-timer" style={{ zIndex: 2 }}>
-        {showGameTimer ? (
-          <GameTimer
-            initialMinutes={0}
-            initialSeconds={roundTimer}
-            initialMilliseconds={0}
-            roundHasEnded={roundHasEnded}
-            setRoundHasEnded={setRoundHasEnded}
+      <div style={{ zIndex: 2 }} className="scoreboard-right__container ">
+        <div className="scoreboard-timer">
+          {showGameTimer ? (
+            <GameTimer
+              initialMinutes={0}
+              initialSeconds={roundTimer}
+              initialMilliseconds={0}
+              roundHasEnded={roundHasEnded}
+              setRoundHasEnded={setRoundHasEnded}
+            />
+          ) : (
+            <h1>
+              <span className="scoreboard__score-numeric" style={{ zIndex: 2 }}>
+                Round {gameRound}
+              </span>
+            </h1>
+          )}
+        </div>
+        <button
+          className="scoreboard-info__image"
+          onClick={() => setIsInfoModalOpen(!isInfoModalOpen)}
+        >
+          <img
+            src={`${process.env.PUBLIC_URL}/images/info-button.png`}
+            alt="Scoreboard"
+            width={"100%"}
+            style={{ zIndex: 2 }}
           />
-        ) : (
-          <h1>
-            <span className="scoreboard__score-numeric" style={{ zIndex: 2 }}>
-              Round {gameRound}
-            </span>
-          </h1>
-        )}
+        </button>
       </div>
     </div>
   );
