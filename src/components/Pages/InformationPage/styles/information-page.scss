@@ -25,7 +25,7 @@
 }
 
 .information-page__title {
-  font-size: 72px;
+  font-size: 60px;
   font-weight: normal;
   font-family: "subway-berlin-ot", sans-serif;
   -webkit-text-stroke: black 3px;
@@ -53,7 +53,7 @@
 }
 @media (max-width: 1200px) {
   .information-page__title {
-    font-size: 64px;
+    font-size: 52px;
   }
 
   .information-page__description {
@@ -63,7 +63,7 @@
 
 @media (max-width: 1024px) {
   .information-page__title {
-    font-size: 56px;
+    font-size: 46px;
   }
 
   .information-page__description {
@@ -84,11 +84,12 @@
   .information-page__title {
     font-size: 40px;
     margin-bottom: 20px;
+    -webkit-text-stroke: 0.8px black;
   }
 
   .information-page__description {
     font-size: 24px;
     line-height: 28px;
-    -webkit-text-stroke: 0.5px black;
+    -webkit-text-stroke: 0.2px black;
   }
 }
