@@ -46,7 +46,7 @@ const GamePage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setRoundStart(false);
-    }, 3500);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, [roundStart, setRoundStart]);
