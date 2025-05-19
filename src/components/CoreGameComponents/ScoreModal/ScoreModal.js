@@ -63,7 +63,7 @@ const ScoreModal = ({ setIsEndGame }) => {
   useEffect(() => {
     setTimeout(() => {
       handleDeal();
-    }, 4000);
+    }, 3000);
   }, [handleDeal, setShowResponseModal, showResponseModal]);
 
   return (
