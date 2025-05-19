@@ -12,6 +12,7 @@ import UserPage from "./components/Pages/UserPage/UserPage";
 import InstructionsPage from "./components/Pages/InstructionsPage/InstructionsPage";
 import PlayerSelectionPage from "./components/Pages/PlayerSelectionPage/PlayerSelectionPage";
 import NameSelectionPage from "./components/Pages/NameSelectionPage/NameSelectionPage";
+import ScrollToTop from "./components/GenericComponents/ScrollToTop/ScrollToTop";
 
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
     <GlobalProvider>
       <ThemeProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/intro" element={<IntroPage />} />
