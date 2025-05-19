@@ -40,6 +40,9 @@
 @import "./components//CoreGameComponents//WaitingModal/styles/waiting-modal.scss";
 @import "./components/CoreGameComponents/EndGameModal/styles/end-game-modal.scss";
 
+/* modal style sheets */
+@import "./components/Modals/InfoModal/styles/info-modal.scss";
+
 /* global style sheets */
 body {
   margin: 0;
