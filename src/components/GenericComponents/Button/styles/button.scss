@@ -1,55 +1,54 @@
-.button-next{
-    background-color: rgba(31, 174, 100, 1);
-    border: white;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-family: 'StussyScript', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    width: 175px;
-    height: 50px;
-    padding: 10px 20px;
-    text-align: center;
+.button-next {
+  background-color: rgba(31, 174, 100, 1);
+  border: white;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-family: "subway-berlin-ot", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  width: 175px;
+  height: 50px;
+  padding: 10px 20px;
+  text-align: center;
 }
-.button-next:hover{
-    background-color: rgb(12, 77, 43);
-}
-
-.button-primary{
-    background-color: #383B92;
-    border-radius: 50px;
-    color: white;
-    cursor: pointer;
-    font-family: 'StussyScript', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    width: 275px;
-    height: 85px;
-    padding: 10px 20px;
-    text-align: center;
-}
-.button-primary:hover{
-    background-color: rgb(117, 15, 49);
+.button-next:hover {
+  background-color: rgb(12, 77, 43);
 }
 
-.button-secondary{
-    background-color: rgb(114, 114, 114);
-    border: white;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-family: 'StussyScript', sans-serif;
-    font-size: 20px;
-    width: 175px;
-    height: 50px;
-    padding: 10px 20px;
-    text-align: center;
+.button-primary {
+  background-color: #383b92;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  font-family: "subway-berlin-ot", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  width: 275px;
+  height: 85px;
+  padding: 10px 20px;
+  text-align: center;
 }
-.button-secondary:hover{
-    background-color: rgb(77, 76, 76);
+.button-primary:hover {
+  background-color: rgb(117, 15, 49);
 }
 
-.button-navigation{
-    
+.button-secondary {
+  background-color: rgb(114, 114, 114);
+  border: white;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-family: "subway-berlin-ot", sans-serif;
+  font-size: 20px;
+  width: 175px;
+  height: 50px;
+  padding: 10px 20px;
+  text-align: center;
+}
+.button-secondary:hover {
+  background-color: rgb(77, 76, 76);
+}
+
+.button-navigation {
 }

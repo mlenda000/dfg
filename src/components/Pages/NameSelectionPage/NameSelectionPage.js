@@ -57,12 +57,7 @@ const NameSelectionPage = () => {
         </button>
 
         <div className="name-selection">
-          <img
-            src={process.env.PUBLIC_URL + "/images/name-profile.png"}
-            alt="Logo"
-            style={{ height: "auto", zIndex: 2 }}
-            className="name-selection__title"
-          />
+          <h2 className="name-selection__header">Select your Debunker</h2>
 
           <form
             className="name-selection__input"
@@ -84,7 +79,11 @@ const NameSelectionPage = () => {
               themeStyle={themeStyle}
             />
           </form>
-          <button onClick={handleSubmit} className="next-button">
+          <button
+            onClick={handleSubmit}
+            className="next-button"
+            style={{ marginTop: "-50px", paddingTop: 0 }}
+          >
             <img
               src={
                 process.env.PUBLIC_URL +

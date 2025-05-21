@@ -26,6 +26,33 @@
       width: 80%;
     }
   }
+  .name-selection__header {
+    font-family: "subway-berlin-ot", sans-serif;
+    font-size: 72px;
+    margin-block: 0;
+    -webkit-text-stroke: black 1px;
+    z-index: 2;
+
+    @media (max-width: 1200px) {
+      font-size: 60px;
+      -webkit-text-stroke: black 0.9px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 48px;
+      -webkit-text-stroke: black 0.8px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 36px;
+      -webkit-text-stroke: black 0.7px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 28px;
+      -webkit-text-stroke: black 0.5px;
+    }
+  }
 
   .name-selection__input {
     display: flex;

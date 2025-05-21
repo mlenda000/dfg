@@ -27,8 +27,8 @@
   background-color: white;
   color: black;
   font-size: 22px;
-  font-weight: normal;
-  font-family: "DIN-alternate", sans-serif;
+  font-family: "plus-jakarta-sans", sans-serif;
+  font-weight: 300;
 
   li {
     margin-bottom: 6px;
@@ -54,23 +54,20 @@
 
 .info-modal__title {
   text-align: center;
-  font-size: 56px;
-  font-weight: bold;
-  font-family: "subway-berlin-ot", sans-serif;
-  color: white;
-  -webkit-text-stroke: black 1px;
+  font-size: 40px;
+  font-family: "alfa-slab-one", sans-serif;
   margin-bottom: 4px;
 
   @media (max-width: 1200px) {
-    font-size: 44px;
+    font-size: 32px;
     -webkit-text-stroke: black 0.8px;
   }
   @media (max-width: 1024px) {
-    font-size: 36px;
+    font-size: 28px;
     -webkit-text-stroke: black 0.7px;
   }
   @media (max-width: 768px) {
-    font-size: 28px;
+    font-size: 26px;
     -webkit-text-stroke: black 0.6px;
   }
   @media (max-width: 480px) {

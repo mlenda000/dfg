@@ -1,47 +1,48 @@
 /* Page style sheets */
-@import "./components/Pages/LobbyPage/styles/lobby-page.scss";
-@import "./components/Pages/MainPage/styles/main.scss";
+@import "./components/Pages/ActiveGamePage/styles/active-game-page.scss";
+@import "./components/Pages/CreateRoomPage/styles/create-room-page.scss";
+@import "./components/Pages/CreditsPage/styles/credits-page.scss";
+@import "./components/Pages/GameEndPage/styles/game-end-page.scss";
+@import "./components/Pages/GamePage/styles/game-page.scss";
 @import "./components/Pages/InformationPage/styles/information-page.scss";
 @import "./components/Pages/InstructionsPage/styles/instructions-page.scss";
-@import "./components/Pages/SettingsPage/styles/settings-page.scss";
-@import "./components/Pages/GamePage/styles/game-page.scss";
-@import "./components/Pages/ActiveGamePage/styles/active-game-page.scss";
-@import "./components/Pages/CreditsPage/styles/credits-page.scss";
-@import "./components/Pages/PlayerSelectionPage/styles/player-selection-page.scss";
-@import "./components/Pages/CreateRoomPage/styles/create-room-page.scss";
-@import "./components/Pages/NameSelectionPage/styles/name-selection-page.scss";
 @import "./components/Pages/IntroPage/styles/intro-page.scss";
+@import "./components/Pages/LobbyPage/styles/lobby-page.scss";
+@import "./components/Pages/MainPage/styles/main.scss";
+@import "./components/Pages/NameSelectionPage/styles/name-selection-page.scss";
+@import "./components/Pages/PlayerSelectionPage/styles/player-selection-page.scss";
+@import "./components/Pages/SettingsPage/styles/settings-page.scss";
+@import "./components/Pages/UserPage/styles/user-page.scss";
 
 /* component style sheets */
-@import "./components/GenericComponents/Button/styles/button.scss";
-@import "./components//GenericComponents/Header/styles/header.scss";
-@import "./components/GenericComponents/SortableCard/styles/sortable-card.scss";
-@import "./components/GenericComponents/SortableItem/styles/sortable-item.scss";
-@import "./components//GenericComponents/Input/styles/input.scss";
 @import "./components/GenericComponents/AvatarImage/styles/avatar-image.scss";
 @import "./components/GenericComponents/BackButton/styles/back-button.scss";
+@import "./components/GenericComponents/Button/styles/button.scss";
+@import "./components//GenericComponents/Header/styles/header.scss";
+@import "./components//GenericComponents/Input/styles/input.scss";
 @import "./components/GenericComponents/RoomTab/styles/room-tab.scss";
+@import "./components/GenericComponents/SortableCard/styles/sortable-card.scss";
+@import "./components/GenericComponents/SortableItem/styles/sortable-item.scss";
 
 /* game dedicated style sheets */
 @import "./components/CoreGameComponents/CategoryCard/styles/category-card.scss";
-@import "./components/CoreGameComponents/InfluencerCard/styles/influencer-card.scss";
-@import "./components//CoreGameComponents//PlayersHand/styles/players-hand.scss";
-@import "./components//CoreGameComponents/MainTable/styles/main-table.scss";
-@import "./components/CoreGameComponents/TacticsCard/styles/tactics-card.scss";
-@import "./components/CoreGameComponents/ScoreBoard/styles/scoreboard.scss";
-@import "./components/CoreGameComponents/ResultModal/styles/result-modal.scss";
-@import "./components/CoreGameComponents/ReasonsCard/styles/reasons-card.scss";
-@import "./components/CoreGameComponents/Tool/styles/tool.scss"; 
 @import "./components/CoreGameComponents/GameTimer/styles/game-timer.scss";
-@import "./components//CoreGameComponents/RoundModal/styles/round-modal.scss";
-@import "./components/CoreGameComponents/ResultModal/styles/result-modal.scss";
-@import "./components/CoreGameComponents/ResponseModal/styles/response-modal.scss";
-@import "./components/CoreGameComponents/ScoreModal/styles/score-modal.scss";
-@import "./components//CoreGameComponents//WaitingModal/styles/waiting-modal.scss";
-@import "./components/CoreGameComponents/EndGameModal/styles/end-game-modal.scss";
+@import "./components/CoreGameComponents/InfluencerCard/styles/influencer-card.scss";
+@import "./components//CoreGameComponents/MainTable/styles/main-table.scss";
+@import "./components//CoreGameComponents//PlayersHand/styles/players-hand.scss";
+@import "./components/CoreGameComponents/ReasonsCard/styles/reasons-card.scss";
+@import "./components/CoreGameComponents/ScoreBoard/styles/scoreboard.scss";
+@import "./components/CoreGameComponents/TacticsCard/styles/tactics-card.scss";
+@import "./components/CoreGameComponents/Tool/styles/tool.scss"; 
 
 /* modal style sheets */
+@import "./components/Modals/EndGameModal/styles/end-game-modal.scss";
 @import "./components/Modals/InfoModal/styles/info-modal.scss";
+@import "./components/Modals/ResponseModal/styles/response-modal.scss";
+@import "./components/Modals/ResultModal/styles/result-modal.scss";
+@import "./components/Modals/RoundModal/styles/round-modal.scss";
+@import "./components/Modals/ScoreModal/styles/score-modal.scss";
+@import "./components/Modals/WaitingModal/styles/waiting-modal.scss";
 
 /* global style sheets */
 body {
@@ -49,34 +50,33 @@ body {
   padding: 0;
   color: white;
 }
+#root:has(.active-game-page) {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+    #root:has(.active-game-page) {
+        height: 160vh;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #root:has(.active-game-page) {
+        height: 180vh;
+    }
+}
+
+@media (max-width: 480px) {
+    #root:has(.active-game-page) {
+        height: 170vh;
+    }
+}
 
 /* custom fonts */
-@font-face {
-    font-family: 'Technology';
-    src: url('../public/fonts/Technology.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'Technology-Bold';
-    src: url('../public/fonts/Technology-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Digital-Numbers';
-    src: url('../public/fonts/DigitalNumbers-Regular.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Oxanium';
-    src: url('../public/fonts/Oxanium-VariableFont_wght.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
 @font-face {
     font-family: 'podium-soft';
     src: url('../public/fonts/podium-soft-regular.woff') format('woff');
@@ -86,19 +86,7 @@ body {
 @font-face {
     font-family: 'DIN-alternate';
     src: url('../public/fonts/DINAlternate-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'StussyScript';
-    src: url('../public/fonts/StussyScript-Regular.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Bradley';
-    src: url('../public/fonts/Bradley\ Hand\ Bold.ttf') format('truetype');
-    font-weight: bold;
+    font-weight: normal;
     font-style: normal;
 }
 @font-face {

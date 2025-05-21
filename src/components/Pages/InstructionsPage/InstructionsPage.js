@@ -53,6 +53,7 @@ const InstructionsPage = () => {
 
         <div className="instruction-page__content" style={{ zIndex: 2 }}>
           <div className="information-page__description" style={{ zIndex: 2 }}>
+            <h2 className="instruction-page__image-header">How to Play</h2>
             <ol>
               <li>
                 <p>

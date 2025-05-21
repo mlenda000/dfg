@@ -7,12 +7,12 @@ import ActiveGamePage from "../ActiveGamePage/ActiveGamePage";
 import GameEndPage from "../GameEndPage/GameEndPage";
 import LobbyPage from "../LobbyPage/LobbyPage";
 import CreateRoomPage from "../CreateRoomPage/CreateRoomPage";
-import ResultModal from "../../CoreGameComponents/ResultModal/ResultModal";
-import RoundModal from "../../CoreGameComponents/RoundModal/RoundModal";
-import ResponseModal from "../../CoreGameComponents/ResponseModal/ResponseModal";
-import ScoreModal from "../../CoreGameComponents/ScoreModal/ScoreModal";
-import WaitingModal from "../../CoreGameComponents/WaitingModal/WaitingModal";
-import EndGameModal from "../../CoreGameComponents/EndGameModal/EndGameModal";
+import ResultModal from "../../Modals/ResultModal/ResultModal";
+import RoundModal from "../../Modals/RoundModal/RoundModal";
+import ResponseModal from "../../Modals/ResponseModal/ResponseModal";
+import ScoreModal from "../../Modals/ScoreModal/ScoreModal";
+import WaitingModal from "../../Modals/WaitingModal/WaitingModal";
+import EndGameModal from "../../Modals/EndGameModal/EndGameModal";
 import InfoModal from "../../Modals/InfoModal/InfoModal";
 
 const GamePage = () => {
