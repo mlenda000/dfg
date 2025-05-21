@@ -4,6 +4,9 @@
   align-items: center;
   min-width: 580px;
   position: relative;
+  border: solid 3px black;
+  border-radius: 10px;
+  overflow: hidden;
 
   .influencer-card__content {
     --color-primary: black;

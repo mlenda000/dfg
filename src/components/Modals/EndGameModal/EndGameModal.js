@@ -23,7 +23,8 @@ const EndGameModal = ({ setEndGame, setIsEndGame }) => {
         <div className="score-modal__scores">
           <img
             src={
-              process.env.PUBLIC_URL + `/images/Avatars/${topPlayer?.avatar}`
+              process.env.PUBLIC_URL +
+              `/images/winningAvatars/${topPlayer?.avatar}`
             }
             alt={topPlayer?.name}
             width={"150px"}

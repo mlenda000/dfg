@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
 
-import Tool from "../Tool/Tool"; // Assuming Tool is a component you want to show in the modal
+import Tool from "../../CoreGameComponents/Tool/Tool"; // Assuming Tool is a component you want to show in the modal
 
 const ResultModal = ({ setRoundEnd }) => {
   const { setShowResponseModal } = useContext(GameContext);

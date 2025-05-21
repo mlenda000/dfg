@@ -64,11 +64,7 @@ const PlayerSelectionPage = () => {
           />
         </button>
 
-        <img
-          src={process.env.PUBLIC_URL + "/images/select-profile.png"}
-          alt="Select profile"
-          className="player-selection__title"
-        />
+        <h2 className="player-selection__header">Select your Debunker</h2>
 
         <form
           onSubmit={(e) => {

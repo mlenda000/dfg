@@ -24,22 +24,39 @@ const InfoModal = ({ isOpen, onClose }) => {
         <h1 className="info-modal__title">How to play</h1>
         <ol>
           <li>
-            You’ll see a news card and need to decide if it’s real or fake.
+            You’ll see a <span style={{ fontWeight: 900 }}>news card</span> and
+            need to decide if it’s{" "}
+            <span style={{ fontWeight: 900 }}>real or fake.</span>
           </li>
           <li>
-            If you think it’s fake, try to guess which trick is being used by
-            picking a card below!
-          </li>
-          <li>If you think the news card is real, pick the “Facts” card.</li>
-          <li>
-            Look for the “eye” symbols at the bottom right of each news card —
-            they show how many tricks are being used.
+            If you think it’s <span style={{ fontWeight: 900 }}>fake</span>, try
+            to <span style={{ fontWeight: 900 }}>guess which trick</span> is
+            being used by picking a{" "}
+            <span style={{ fontWeight: 900 }}>card below</span>!
           </li>
           <li>
-            If you guess wrong, you’ll lose followers and if you guess right,
-            you’ll gain more followers!
+            If you think the{" "}
+            <span style={{ fontWeight: 900 }}>news card is real</span>, pick the{" "}
+            <span style={{ fontWeight: 900 }}>“Facts” card</span>.
           </li>
-          <li>The player with the most followers at the end wins!</li>
+          <li>
+            Look for the <span style={{ fontWeight: 900 }}>“eye”</span> symbols
+            at the bottom right of each news card — they{" "}
+            <span style={{ fontWeight: 900 }}>show how many tricks</span> are
+            being used.
+          </li>
+          <li>
+            If you <span style={{ fontWeight: 900 }}>guess wrong</span>, you’ll
+            <span style={{ fontWeight: 900 }}>lose followers</span> and if you
+            <span style={{ fontWeight: 900 }}>guess right</span>, you’ll{" "}
+            <span style={{ fontWeight: 900 }}>gain</span>
+            more <span style={{ fontWeight: 900 }}>followers!</span>
+          </li>
+          <li>
+            <span style={{ fontWeight: 900 }}>The player</span> with the{" "}
+            <span style={{ fontWeight: 900 }}>most followers</span> at the end{" "}
+            <span style={{ fontWeight: 900 }}>wins!</span>
+          </li>
         </ol>
       </div>
     </modal>
