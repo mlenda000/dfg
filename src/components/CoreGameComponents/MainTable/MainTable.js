@@ -170,24 +170,24 @@ const MainTable = ({
             onUndo={handleReturnCard}
           />
         ))}
+        {
+          <div onClick={handlePlayerReady} className="main-table__finish-round">
+            <img
+              src={
+                !playerReady && finishRound
+                  ? `${process.env.PUBLIC_URL}/images/ready-button.png`
+                  : playerReady && finishRound
+                  ? `${process.env.PUBLIC_URL}/images/checked-button.png`
+                  : `${process.env.PUBLIC_URL}/images/not-ready-button.png`
+              }
+              alt="Ready"
+              width={"100%"}
+              height={"100%"}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        }
       </div>
-      {
-        <div onClick={handlePlayerReady} className="main-table__finish-round">
-          <img
-            src={
-              !playerReady && finishRound
-                ? `${process.env.PUBLIC_URL}/images/ready-button.png`
-                : playerReady && finishRound
-                ? `${process.env.PUBLIC_URL}/images/checked-button.png`
-                : `${process.env.PUBLIC_URL}/images/not-ready-button.png`
-            }
-            alt="Ready"
-            width={"100%"}
-            height={"100%"}
-            style={{ cursor: "pointer" }}
-          />
-        </div>
-      }
     </div>
   );
 };

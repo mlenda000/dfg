@@ -3,7 +3,7 @@ import { GlobalContext } from "../../../context/GlobalContext";
 import { GameContext } from "../../../context/GameContext";
 
 const RoomTab = ({ room, type, onClick }) => {
-  const { gameRoom } = useContext(GameContext);
+  const { gameRoom, gameRound } = useContext(GameContext);
   const { playerName } = useContext(GlobalContext);
 
   React.useEffect(() => {
@@ -12,11 +12,13 @@ const RoomTab = ({ room, type, onClick }) => {
     }
   }, [gameRoom?.gameData]);
 
+  console.log("gameRoom", gameRoom);
   return (
     <button
       className="room-tab"
       onClick={() => onClick(playerName, room)}
       style={{ zIndex: 2 }}
+      disabled={gameRoom.count >= 5 || gameRound > 1}
     >
       <h2 className="room-tab__title">{room}</h2>
       {gameRoom?.roomData?.length > 0 && room === gameRoom?.room && (

@@ -39,8 +39,9 @@
 
   .main-table__finish-round {
     position: absolute;
+    left: 50%;
     bottom: 18px;
-    right: 35px;
+    transform: translateX(-50%);
     width: 100px;
     height: auto;
   }
