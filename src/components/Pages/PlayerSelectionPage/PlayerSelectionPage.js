@@ -29,16 +29,8 @@ const PlayerSelectionPage = () => {
 
   return (
     <>
-      <div className="main-login">
-        <img
-          src={process.env.PUBLIC_URL + "/images/login-button.png"}
-          alt="Logo"
-          className="main-login__image"
-          style={{ cursor: "pointer" }}
-        />
-      </div>
       <div
-        className="player-selection main-page"
+        className="main-page"
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL +
@@ -46,6 +38,14 @@ const PlayerSelectionPage = () => {
           })`,
         }}
       >
+        <div className="main-login">
+          <img
+            src={process.env.PUBLIC_URL + "/images/login-button.png"}
+            alt="Logo"
+            className="main-login__image"
+            style={{ cursor: "pointer" }}
+          />
+        </div>
         <div
           style={{
             position: "absolute",
@@ -57,13 +57,15 @@ const PlayerSelectionPage = () => {
             zIndex: 0,
           }}
         />
-        <button onClick={() => navigate(-1)} className="back-button">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/back-button.png`}
-            alt="Go back"
-          />
-        </button>
+      </div>
+      <button onClick={() => navigate(-1)} className="back-button">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+          alt="Go back"
+        />
+      </button>
 
+      <div className="player-selection">
         <h2 className="player-selection__header">Select your Debunker</h2>
 
         <form

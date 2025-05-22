@@ -21,7 +21,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   padding: 24px;
-  width: 60%;
+  width: 80%;
 }
 
 .information-page__title {
@@ -59,6 +59,9 @@
   .information-page__description {
     font-size: 38px;
   }
+  .information-page__text {
+    width: 85%;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -67,6 +70,9 @@
   }
 
   .information-page__description {
+    width: 90%;
+  }
+  .information-page__text {
     width: 75%;
   }
 }
@@ -79,17 +85,23 @@
   .information-page__description {
     -webkit-text-stroke: 0.5px black;
   }
+  .information-page__text {
+    width: 80%;
+  }
 }
 @media (max-width: 480px) {
   .information-page__title {
-    font-size: 40px;
+    font-size: 32px;
     margin-bottom: 20px;
-    -webkit-text-stroke: 0.8px black;
+    -webkit-text-stroke: 1px black;
   }
 
   .information-page__description {
     font-size: 24px;
     line-height: 28px;
-    -webkit-text-stroke: 0.2px black;
+    -webkit-text-stroke: 0.1px black;
+  }
+  .information-page__text {
+    width: 90%;
   }
 }
