@@ -47,6 +47,39 @@
   height: auto;
   object-fit: cover;
 }
+.main-page__credits-button {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: "subway-berlin-ot", sans-serif;
+  -webkit-text-stroke: black 1.5px;
+  margin-top: -50px;
+  cursor: pointer;
+
+  @media (max-width: 1200px) {
+    font-size: 3.3rem;
+    font-weight: 800;
+    -webkit-text-stroke: black 1.2px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 3.5rem;
+    font-weight: 700;
+    -webkit-text-stroke: black 1px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 3.8rem;
+    font-weight: 600;
+    -webkit-text-stroke: black 1px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 4rem;
+    font-weight: 500;
+    -webkit-text-stroke: black 2.5px;
+  }
+}
 
 @media (max-width: 1024px) {
   .main-page {

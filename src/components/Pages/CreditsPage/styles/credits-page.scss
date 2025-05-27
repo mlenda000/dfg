@@ -1,0 +1,35 @@
+.credits-page {
+  font-size: 1.2rem;
+  font-family: "plus-jakarta-sans", sans-serif;
+  display: grid;
+  place-items: center;
+  margin-top: 180px;
+}
+.credits-page__content {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  border: solid black 3px;
+  padding: 12px 32px;
+}
+.credits-page__title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 0;
+  font-family: "subway-berlin-ot", sans-serif;
+  -webkit-text-stroke: black 2px;
+  text-align: center;
+}
+.credits-page__list {
+  list-style: none;
+
+  li {
+    padding-block: 4px;
+  }
+  li:first-child {
+    padding-top: 0;
+  }
+}
+.credits-page__job {
+  font-size: 0.9rem;
+}

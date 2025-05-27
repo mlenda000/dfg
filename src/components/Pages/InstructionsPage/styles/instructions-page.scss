@@ -5,8 +5,8 @@
   width: 100%;
 }
 .instruction-page__content {
-  margin-top: 150px;
-  width: 50%;
+  margin-top: 160px;
+  width: 80%;
   background-color: rgba(0, 0, 0, 0.5);
   font-family: "subway-berlin-ot", sans-serif;
   font-size: 28px;
@@ -66,5 +66,49 @@
 
   @media (max-width: 480px) {
     width: 80%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .instruction-page__content {
+    width: 80%;
+    padding: 20px 40px;
+    font-size: 22px;
+  }
+  .instruction-page__description {
+    font-size: 20px;
+    line-height: 36px;
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .instruction-page__content {
+    width: 80%;
+    padding: 20px 40px;
+    font-size: 22px;
+  }
+  .instruction-page__description {
+    font-size: 20px;
+    line-height: 36px;
+    margin-bottom: 100px;
+  }
+}
+@media (max-width: 768px) {
+  .instruction-page__content {
+    width: 80%;
+    padding: 15px 30px;
+    font-size: 22px;
+  }
+  .instruction-page__description {
+    font-size: 20px;
+    line-height: 36px;
+  }
+}
+@media (max-width: 480px) {
+  .instruction-page__content {
+    width: 80%;
+    font-size: 22px;
+    padding: 10px 20px;
   }
 }

@@ -40,34 +40,40 @@
 @media (max-width: 1200px) {
   .intro-page__title {
     font-size: 56px;
+    -webkit-text-stroke: black 2px;
   }
   .intro-page__description {
     font-size: 36px;
+    -webkit-text-stroke: black 1.7px;
   }
   .intro-page__content {
-    width: 90%;
+    width: 85%;
   }
 }
 
 @media (max-width: 1024px) {
   .intro-page__title {
     font-size: 44px;
+    -webkit-text-stroke: black 2px;
   }
   .intro-page__description {
     font-size: 28px;
+    -webkit-text-stroke: black 1.2px;
   }
   .intro-page__content {
-    width: 95%;
+    width: 90%;
     margin-top: 32px;
   }
 }
 
 @media (max-width: 768px) {
   .intro-page__title {
-    font-size: 32px;
+    font-size: 36px;
+    -webkit-text-stroke: black 2px;
   }
   .intro-page__description {
-    font-size: 20px;
+    font-size: 24px;
+    -webkit-text-stroke: black 1px;
   }
   .intro-page__content {
     padding: 16px;
@@ -77,12 +83,12 @@
 
 @media (max-width: 480px) {
   .intro-page__title {
-    font-size: 24px;
+    font-size: 32px;
     -webkit-text-stroke: black 1px;
   }
   .intro-page__description {
-    font-size: 16px;
-    -webkit-text-stroke: black 1px;
+    font-size: 24px;
+    -webkit-text-stroke: black 0.8px;
   }
   .intro-page__content {
     padding: 8px;

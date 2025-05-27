@@ -20,15 +20,6 @@ const NameSelectionPage = () => {
   };
   return (
     <>
-      <div className="main-login">
-        <img
-          src={process.env.PUBLIC_URL + "/images/login-button.png"}
-          alt="Logo"
-          className="main-login__image"
-          style={{ cursor: "pointer", zIndex: 2 }}
-        />
-      </div>
-
       <div
         className="main-page"
         style={{
@@ -36,8 +27,17 @@ const NameSelectionPage = () => {
             process.env.PUBLIC_URL +
             `/images/backgrounds/${themeBackgrounds[themeStyle]}`
           })`,
+          position: "fixed",
         }}
       >
+        <div className="main-login">
+          <img
+            src={process.env.PUBLIC_URL + "/images/login-button.png"}
+            alt="Logo"
+            className="main-login__image"
+            style={{ cursor: "pointer", zIndex: 2 }}
+          />
+        </div>
         <div
           style={{
             position: "absolute",
@@ -49,14 +49,16 @@ const NameSelectionPage = () => {
             zIndex: 1,
           }}
         />
-        <button onClick={() => navigate(-1)} className="back-button">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/back-button.png`}
-            alt="Go back"
-          />
-        </button>
+      </div>
+      <button onClick={() => navigate(-1)} className="back-button">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/back-button.png`}
+          alt="Go back"
+        />
+      </button>
 
-        <div className="name-selection">
+      <div className="name-selection">
+        <div className="name-selection__content">
           <h2 className="name-selection__header">Select your Debunker</h2>
 
           <form

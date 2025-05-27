@@ -51,6 +51,13 @@ const Main = () => {
             style={{ cursor: "pointer", marginTop: "-60px", zIndex: 1 }}
             className="play-button__image"
           />
+          <button
+            onClick={() => navigate("/credits")}
+            style={{ zIndex: 2 }}
+            className="main-page__credits-button"
+          >
+            Credits
+          </button>
         </div>
       </div>
     </>
