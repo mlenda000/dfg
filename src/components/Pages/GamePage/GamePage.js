@@ -96,7 +96,7 @@ const GamePage = () => {
             )} */}
           {roundStart && <RoundModal setRoundStart={setRoundStart} />}
           {roundEnd && <ResultModal setRoundEnd={setRoundEnd} />}
-          {true && (
+          {showResponseModal && (
             <ResponseModal setShowResponseModal={setShowResponseModal} />
           )}
           {showScoreCard && (
