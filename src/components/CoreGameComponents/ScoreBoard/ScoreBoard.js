@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameContext } from "../../../context/GameContext";
-// import { GlobalContext } from "../../../context/GlobalContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
 import GameTimer from "../GameTimer/GameTimer";
 
@@ -11,27 +11,32 @@ const Scoreboard = ({
   isInfoModalOpen,
   setIsInfoModalOpen,
 }) => {
-  //   const { playerName, avatar } = useContext(GlobalContext);
   const { gameRound, showGameTimer, gameRoom, roundTimer } =
     useContext(GameContext);
+  const { setThemeStyle, setCurrentTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {}, [JSON.stringify(gameRoom?.roomData)]);
+  const goHome = () => {
+    setThemeStyle("all");
+    setCurrentTheme("all");
+    navigate("/");
+  };
 
   return (
     <div className="scoreboard">
       <img
         src={`${process.env.PUBLIC_URL}/images/home-button.png`}
         alt="home"
-        onClick={() => navigate("/")}
+        onClick={goHome}
         style={{ cursor: "pointer", zIndex: 2 }}
         className="scoreboard__home-button"
       />
       <img
         src={`${process.env.PUBLIC_URL}/images/home-button-small.png`}
         alt="home"
-        onClick={() => navigate("/")}
+        onClick={goHome}
         style={{ cursor: "pointer", zIndex: 2 }}
         className="scoreboard__home-button-small"
       />

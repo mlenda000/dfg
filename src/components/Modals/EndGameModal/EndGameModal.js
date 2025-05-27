@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { GameContext } from "../../../context/GameContext";
+import { ThemeContext } from "../../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
 const EndGameModal = ({ setEndGame, setIsEndGame }) => {
   const navigate = useNavigate();
   const { gameRoom } = useContext(GameContext);
+  const { setThemeStyle, setCurrentTheme } = useContext(ThemeContext);
 
   const topPlayer = gameRoom?.roomData?.reduce(
     (top, player) => (player?.score > (top?.score || 0) ? player : top),
@@ -13,6 +15,8 @@ const EndGameModal = ({ setEndGame, setIsEndGame }) => {
 
   const handleClick = () => {
     setEndGame(false);
+    setThemeStyle("all");
+    setCurrentTheme("all");
     navigate("/");
     setIsEndGame(false);
   };
