@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 
-const AvatarImage = ({ src, alt, avatar, setAvatar, display }) => {
+const AvatarImage = ({
+  src,
+  alt,
+  avatar,
+  setAvatar,
+  display,
+  playerSelection,
+}) => {
   const [srcName, setSrcName] = useState("");
   const [avatarName, setAvatarName] = useState("");
 
@@ -43,8 +50,12 @@ const AvatarImage = ({ src, alt, avatar, setAvatar, display }) => {
             : process.env.PUBLIC_URL + `/images/Avatars/${src}`
         }
         alt={alt}
-        onClick={(e) => setAvatar(e.target.src)}
-        style={{ borderRadius: "50%", cursor: "pointer", zIndex: 2 }}
+        onClick={playerSelection ? (e) => setAvatar(e.target.src) : null}
+        style={{
+          borderRadius: "50%",
+          cursor: playerSelection && "pointer",
+          zIndex: 2,
+        }}
         className="avatar-image"
       />
     </div>

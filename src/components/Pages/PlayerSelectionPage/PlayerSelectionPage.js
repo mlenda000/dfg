@@ -82,6 +82,7 @@ const PlayerSelectionPage = () => {
                   avatar={avatar}
                   setAvatar={setAvatar}
                   key={`${avatar}-${index}`}
+                  playerSelection={true}
                 />
               </div>
             ))}
