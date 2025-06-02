@@ -40,7 +40,7 @@ const Main = () => {
           <img
             src={process.env.PUBLIC_URL + "/images/SuperDebunkers.png"}
             alt="Super Debunkers"
-            width="50%"
+            width="45%"
             height="auto"
             style={{ zIndex: 1 }}
           />
@@ -48,7 +48,7 @@ const Main = () => {
             src={process.env.PUBLIC_URL + "/images/play-button.png"}
             alt="Play"
             onClick={handleClick}
-            style={{ cursor: "pointer", marginTop: "-60px", zIndex: 1 }}
+            style={{ cursor: "pointer", marginTop: "-10px", zIndex: 1 }}
             className="play-button__image"
           />
           <button

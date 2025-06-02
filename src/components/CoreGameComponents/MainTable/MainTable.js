@@ -181,9 +181,10 @@ const MainTable = ({
                   : `${process.env.PUBLIC_URL}/images/not-ready-button.png`
               }
               alt="Ready"
-              width={"100%"}
-              height={"100%"}
+              width={"180%"}
+              height={"auto"}
               style={{ cursor: "pointer" }}
+        
             />
           </div>
         }

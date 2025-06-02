@@ -40,7 +40,7 @@
 }
 .player-selection__header {
   font-family: "subway-berlin-ot", sans-serif;
-  font-size: 72px;
+  font-size: 100px;
   margin-block: 0;
   -webkit-text-stroke: black 1px;
   z-index: 2;
@@ -69,7 +69,9 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
-  margin-inline: 40px;
+  margin-inline: auto;
+  max-width: 70%;
+  max-height: 70%;
 
   .player-selection__avatar {
     display: flex;
