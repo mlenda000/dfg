@@ -51,7 +51,7 @@ const LobbyPage = () => {
               src={process.env.PUBLIC_URL + "/images/login-button.png"}
               alt="Logo"
               className="main-login__image"
-              style={{ cursor: "pointer", zIndex: 2 }}
+              style={{ cursor: "pointer", zIndex: 2, position: "fixed" }}
             />
           </div>
           <div
@@ -84,7 +84,7 @@ const LobbyPage = () => {
               <img
                 src={process.env.PUBLIC_URL + "/images/join-game.png"}
                 alt="Join game"
-                style={{ zIndex: 2, marginBottom: "20px" }}
+                style={{ zIndex: 2, marginBottom: "50px",width: "25%",height: "auto" }}
                 className="instructions-title"
               />
               <div className="lobby__rooms">

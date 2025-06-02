@@ -63,7 +63,7 @@ const IntroPage = () => {
             <img
               src={process.env.PUBLIC_URL + "/images/pink-next-button.png"}
               alt="Logo"
-              style={{ cursor: "pointer", width: "50%", height: "auto" }}
+              style={{ cursor: "pointer", width: "60%", height: "auto" }}
             />
           </button>
         </div>

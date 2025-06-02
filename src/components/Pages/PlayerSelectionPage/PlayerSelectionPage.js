@@ -96,7 +96,7 @@ const PlayerSelectionPage = () => {
               }`
             }
             alt="Logo"
-            style={{ cursor: "pointer", width: "50%", height: "auto" }}
+            style={{ cursor: "pointer", width: "70%", height: "auto" }}
           />
         </button>
       </div>

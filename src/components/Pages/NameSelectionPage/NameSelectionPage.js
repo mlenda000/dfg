@@ -5,6 +5,7 @@ import { ThemeContext } from "../../../context/ThemeContext";
 
 import Input from "../../GenericComponents/Input/Input";
 import AvatarImage from "../../GenericComponents/AvatarImage/AvatarImage";
+import { browserPopupRedirectResolver } from "firebase/auth";
 
 const NameSelectionPage = () => {
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ const NameSelectionPage = () => {
 
       <div className="name-selection">
         <div className="name-selection__content">
-          <h2 className="name-selection__header">Select your Debunker</h2>
+         {/* <h2 className="name-selection__header">Select your Debunker</h2> */}
 
           <form
             className="name-selection__input"
@@ -96,7 +97,7 @@ const NameSelectionPage = () => {
               alt="Logo"
               style={{
                 cursor: "pointer",
-                width: "50%",
+                width: "70%",
                 height: "auto",
                 zIndex: 2,
               }}

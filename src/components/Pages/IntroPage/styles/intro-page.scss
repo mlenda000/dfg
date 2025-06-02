@@ -4,6 +4,7 @@
   height: 100%;
   gap: 0;
   place-items: center;
+  margin-top: 3%;
 }
 
 .intro-page__content {
@@ -31,9 +32,10 @@
   width: 90%;
   font-size: 44px;
   font-weight: normal;
+  letter-spacing: 1px;
   margin-bottom: 12px;
   font-family: "subway-berlin-ot", sans-serif;
-  -webkit-text-stroke: black 2px;
+  -webkit-text-stroke: black 1px;
 }
 
 /* Responsive styles */

@@ -2,8 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
-  border-radius: 20px;
+  width: 60%;
+  height: 35%;
+  border-radius: 10px;
   border: 0;
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
@@ -35,9 +36,9 @@
 }
 
 .room-tab__title {
-  font-size: 80px;
+  font-size: 70px;
   font-family: "subway-berlin-ot", sans-serif;
-  -webkit-text-stroke: black 2px;
+  -webkit-text-stroke: black 1px;
   margin-block: 12px;
 
   @media (max-width: 1024px) {

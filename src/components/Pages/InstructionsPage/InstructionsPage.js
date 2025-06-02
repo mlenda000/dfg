@@ -13,7 +13,7 @@ const InstructionsPage = () => {
           src={process.env.PUBLIC_URL + "/images/login-button.png"}
           alt="Logo"
           className="main-login__image"
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", position: "fixed"}}
         />
       </div>
       <div
@@ -54,53 +54,57 @@ const InstructionsPage = () => {
         <div className="instruction-page__content" style={{ zIndex: 2 }}>
           <div className="information-page__description" style={{ zIndex: 2 }}>
             <h2 className="instruction-page__image-header">How to Play</h2>
-            <ol>
+            <ol className="instructions-list">
               <li>
-                <p>
+                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
                   You'll see a news card and need to decide if it's real or
                   fake.
                 </p>
                 <img
+                  style={{ padding: "30px" }}
                   src={process.env.PUBLIC_URL + "/images/news-card.png"}
                   alt="News Card"
                   className="instruction-page__image"
                 />
               </li>
               <li>
-                <p>
+                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
                   If it's fake, you'll have to figure out which trick the
                   villains are using!
                 </p>
                 <img
+                  style={{ padding: "30px" }}
                   src={process.env.PUBLIC_URL + "/images/tactic-cards.png"}
                   alt="tactic cards"
                   className="instruction-page__image"
                 />
               </li>
               <li>
-                <p>
+                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
                   If you think the news card is telling the truth, use the
                   “Facts” card.
                 </p>
                 <img
+                  style={{ padding: "50px" }}
                   src={process.env.PUBLIC_URL + "/images/new-cards/true.png"}
                   alt="Facts Card"
                   height={200}
                 />
               </li>
               <li>
-                <p>
+                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
                   The little eye symbols at the bottom right of each news card
                   shows how many tricks are being used.
                 </p>
                 <img
+                  style={{ padding: "50px" }}
                   src={process.env.PUBLIC_URL + "/images/eye-symbol.png"}
                   alt="Eye Symbol"
                   className="instruction-page__image"
                 />
               </li>
               <li>
-                <p>
+                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
                   If you make the wrong guesses, you will lose followers, but if
                   you guess correctly, you will gain more.
                 </p>
@@ -115,9 +119,10 @@ const InstructionsPage = () => {
             alt="Logo"
             style={{
               cursor: "pointer",
-              width: "50%",
+              width: "60%",
               height: "auto",
               marginBottom: "30px",
+              marginTop: "60px",
             }}
           />
         </button>

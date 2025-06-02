@@ -12,7 +12,7 @@
   color: white;
   display: grid;
   place-items: center;
-  margin-top: 14vh;
+  margin-top: 20vh;
 }
 
 .main-login__image {
@@ -43,14 +43,17 @@
 }
 
 .play-button__image {
-  width: auto;
+  width: 30%;
   height: auto;
   object-fit: cover;
 }
 .main-page__credits-button {
+  position: absolute;
+  right: 1%;
+  top: 97%;
   color: white;
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 600;
   font-family: "subway-berlin-ot", sans-serif;
   -webkit-text-stroke: black 1.5px;
   margin-top: -50px;
