@@ -1,11 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
+import { fetchCategoryCards } from "../../../services/fireBaseFunctions";
 import { useNavigate } from "react-router-dom";
+import CategoryCard from "../../CoreGameComponents/CategoryCard/CategoryCard";
 
 const InstructionsPage = () => {
   const navigate = useNavigate();
   const handleClick = () => navigate("/player-selection");
   const { themeStyle, themeBackgrounds } = useContext(ThemeContext);
+  const [categoryCards, setCategoryCards] = useState([]);
+
+  useEffect(() => {
+    fetchCategoryCards("category_cards", setCategoryCards);
+    // fetchInfluencerCards("misinformation_cards", setInfluencerCards);
+  }, []);
+  const allCards = categoryCards?.filter((card) => card.imageUrl);
+  const cards = allCards.filter((card) => card.category !== "True");
   return (
     <>
       <div className="main-login">
@@ -13,7 +23,7 @@ const InstructionsPage = () => {
           src={process.env.PUBLIC_URL + "/images/login-button.png"}
           alt="Logo"
           className="main-login__image"
-          style={{ cursor: "pointer", position: "fixed"}}
+          style={{ cursor: "pointer", position: "fixed" }}
         />
       </div>
       <div
@@ -56,7 +66,13 @@ const InstructionsPage = () => {
             <h2 className="instruction-page__image-header">How to Play</h2>
             <ol className="instructions-list">
               <li>
-                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
+                <p
+                  style={{
+                    width: "80%",
+                    margin: "0 auto",
+                    textAlign: "center",
+                  }}
+                >
                   You'll see a news card and need to decide if it's real or
                   fake.
                 </p>
@@ -68,19 +84,53 @@ const InstructionsPage = () => {
                 />
               </li>
               <li>
-                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
+                <p
+                  style={{
+                    width: "80%",
+                    margin: "0 auto",
+                    textAlign: "center",
+                    paddingBottom: 80,
+                  }}
+                >
                   If it's fake, you'll have to figure out which trick the
-                  villains are using!
+                  villains are using! <br /> ** Hover over the card for more
+                  details. **
                 </p>
-                <img
-                  style={{ padding: "30px" }}
-                  src={process.env.PUBLIC_URL + "/images/tactic-cards.png"}
-                  alt="tactic cards"
-                  className="instruction-page__image"
-                />
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(5, 1fr)",
+                    gridTemplateRows: "repeat(2, auto)",
+                    gap: "8px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%" * 0.66,
+                    position: "relative",
+                  }}
+                >
+                  {cards &&
+                    cards.map((card) => {
+                      return (
+                        <CategoryCard
+                          key={card.id}
+                          name={card.name}
+                          description={card.description}
+                          image={card.imageUrl}
+                          id={card.id}
+                          location="instructions"
+                        />
+                      );
+                    })}
+                </div>
               </li>
               <li>
-                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
+                <p
+                  style={{
+                    width: "80%",
+                    margin: "0 auto",
+                    textAlign: "center",
+                  }}
+                >
                   If you think the news card is telling the truth, use the
                   “Facts” card.
                 </p>
@@ -92,7 +142,13 @@ const InstructionsPage = () => {
                 />
               </li>
               <li>
-                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
+                <p
+                  style={{
+                    width: "80%",
+                    margin: "0 auto",
+                    textAlign: "center",
+                  }}
+                >
                   The little eye symbols at the bottom right of each news card
                   shows how many tricks are being used.
                 </p>
@@ -104,7 +160,13 @@ const InstructionsPage = () => {
                 />
               </li>
               <li>
-                <p style={{ width: "80%", margin: "0 auto", textAlign: "center" }}>
+                <p
+                  style={{
+                    width: "80%",
+                    margin: "0 auto",
+                    textAlign: "center",
+                  }}
+                >
                   If you make the wrong guesses, you will lose followers, but if
                   you guess correctly, you will gain more.
                 </p>

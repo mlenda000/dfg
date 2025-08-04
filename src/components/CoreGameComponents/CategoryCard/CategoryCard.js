@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryCard = ({ name, image, text }) => {
+const CategoryCard = ({ name, image, text, location }) => {
   //ratio 2.5 : 3.5
 
   return (
@@ -17,7 +17,13 @@ const CategoryCard = ({ name, image, text }) => {
         </div>
       ) : (
         <div className="category-card" id="playersHand">
-          <div className="category-card__content">
+          <div
+            className={
+              location === "instructions"
+                ? "category-card__content-instructions"
+                : "category-card__content"
+            }
+          >
             <img
               src={process.env.PUBLIC_URL + "/images/new-cards/" + image}
               alt={name}
